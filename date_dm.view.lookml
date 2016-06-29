@@ -5,12 +5,12 @@
   - dimension: cal_date_label
     type: string
     sql: ${TABLE}.CAL_DATE_LABEL
-    hidden: true
 
   - dimension: cal_dt
     type: time
     convert_tz: false
     sql: ${TABLE}.CAL_DT
+    hidden: true
 
   - dimension: cal_itd_day_no
     type: number
@@ -44,16 +44,19 @@
     type: number
     value_format: '0'
     sql: ${TABLE}.CAL_MONTH_DAY_NO
+    hidden: true
 
   - dimension: cal_month_dt
     type: time
     convert_tz: false
     sql: ${TABLE}.CAL_MONTH_DT
+    hidden: true
 
   - dimension: cal_month_week_no
     type: number
     value_format: '0'
     sql: ${TABLE}.CAL_MONTH_WEEK_NO
+    hidden: true
 
   - dimension: cal_ptd_bt
     type: string
@@ -68,16 +71,19 @@
   - dimension: cal_quarter_day_no
     type: number
     sql: ${TABLE}.CAL_QUARTER_DAY_NO
+    hidden: true
 
   - dimension: cal_quarter_month_no
     type: number
     value_format: '0'
     sql: ${TABLE}.CAL_QUARTER_MONTH_NO
+    hidden: true
 
   - dimension: cal_quarter_week_no
     type: number
     value_format: '0'
     sql: ${TABLE}.CAL_QUARTER_WEEK_NO
+    hidden: true
 
   - dimension: cal_week_day_no
     type: number
@@ -88,14 +94,17 @@
     type: time
     convert_tz: false
     sql: ${TABLE}.CAL_WEEK_ENDING_DT
+    hidden: true
 
   - dimension: cal_weekday_fl
     type: string
     sql: ${TABLE}.CAL_WEEKDAY_FL
+    hidden: true
 
   - dimension: cal_weekend_fl
     type: string
     sql: ${TABLE}.CAL_WEEKEND_FL
+    hidden: true
 
   - dimension: cal_year_day_no
     type: number
@@ -105,7 +114,6 @@
   - dimension: cal_year_month_label
     type: string
     sql: ${TABLE}.CAL_YEAR_MONTH_LABEL
-    hidden: true
 
   - dimension: cal_year_month_no
     type: number
@@ -175,16 +183,19 @@
     type: number
     value_format: '0'
     sql: ${TABLE}.ISO_MONTH_DAY_NO
+    hidden: true
 
   - dimension: iso_month_dt
     type: time
     convert_tz: false
     sql: ${TABLE}.ISO_MONTH_DT
+    hidden: true
 
   - dimension: iso_month_week_no
     type: number
     value_format: '0'
     sql: ${TABLE}.ISO_MONTH_WEEK_NO
+    hidden: true
 
   - dimension: iso_ptd_bt
     type: string
@@ -200,26 +211,31 @@
     type: number
     value_format: '0'
     sql: ${TABLE}.ISO_QUARTER_DAY_NO
+    hidden: true
 
   - dimension: iso_quarter_month_no
     type: number
     value_format: '0'
     sql: ${TABLE}.ISO_QUARTER_MONTH_NO
+    hidden: true
 
   - dimension: iso_quarter_week_no
     type: number
     value_format: '0'
     sql: ${TABLE}.ISO_QUARTER_WEEK_NO
+    hidden: true
 
   - dimension: iso_week_day_no
     type: number
     value_format: '0'
     sql: ${TABLE}.ISO_WEEK_DAY_NO
+    hidden: true
 
   - dimension: iso_week_ending_dt
     type: time
     convert_tz: false
     sql: ${TABLE}.ISO_WEEK_ENDING_DT
+    hidden: true
 
   - dimension: iso_year_day_no
     type: number
