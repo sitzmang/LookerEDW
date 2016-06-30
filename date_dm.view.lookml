@@ -52,6 +52,11 @@
     sql: ${TABLE}.CAL_MONTH_DT
     hidden: true
 
+  - dimension: cal_month_label
+    group_label: 'Calendar'
+    type: string
+    sql: ${TABLE}.CAL_MONTH_LABEL
+
   - dimension: cal_ptd_bt
     group_label: 'Calendar'
     type: string
@@ -99,11 +104,6 @@
     type: number
     value_format: '0'
     sql: ${TABLE}.CAL_YEAR_DAY_NO
-
-  - dimension: cal_year_month_label
-    group_label: 'Calendar'
-    type: string
-    sql: ${TABLE}.CAL_YEAR_MONTH_LABEL
 
   - dimension: cal_year_month_no
     group_label: 'Calendar'
@@ -182,6 +182,12 @@
     sql: ${TABLE}.ISO_MONTH_DT
     hidden: true
 
+  - dimension: iso_month_label
+    group_label: 'ISO'
+    type: string
+    sql: ${TABLE}.ISO_MONTH_LABEL
+    hidden: false
+
   - dimension: iso_month_week_no
     group_label: 'ISO'
     type: number
@@ -241,12 +247,6 @@
     type: number
     value_format: '0'
     sql: ${TABLE}.ISO_YEAR_DAY_NO
-
-  - dimension: iso_year_month_label
-    group_label: 'ISO'
-    type: string
-    sql: ${TABLE}.ISO_YEAR_MONTH_LABEL
-    hidden: true
 
   - dimension: iso_year_month_no
     group_label: 'ISO'
