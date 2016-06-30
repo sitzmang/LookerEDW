@@ -14,10 +14,10 @@
     sql: ${TABLE}.SRC_PRODUCT_ID
     hidden: true
 
-#-- other
+#-- dimensions
 
   - dimension: description
-    label: "Description"
+    label: "Product Description"
     type: string
     sql: ${TABLE}.DESCRIPTION
 

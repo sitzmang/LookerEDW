@@ -87,6 +87,11 @@
     sql: ${TABLE}.SRC_PRODUCT_ID
     hidden: true
 
+  - dimension: order_line_status_cd
+    type: string
+    sql: ${TABLE}.order_line_status_cd
+    hidden: true
+
 #-- other
 
   - dimension: order_dt

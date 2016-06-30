@@ -26,3 +26,9 @@
       sql_on: ${sales_channel_dm.sales_channel_cd} = ${order_line_f.sales_channel_cd}
       type: inner
       relationship: many_to_one
+
+    - join: order_line_status_dm
+      view_label: 'Order Line Status'
+      sql_on: ${order_line_status_dm.order_line_status_cd} = ${order_line_f.order_line_status_cd}
+      type: inner
+      relationship: many_to_one
