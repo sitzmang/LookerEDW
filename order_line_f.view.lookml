@@ -16,6 +16,11 @@
     value_format_name: decimal_0
     sql: ${TABLE}.SRC_ORDER_NO
 
+  - measure: order_line_cnt
+    label: "Order Lines"
+    type: count
+    value_format_name: decimal_0
+
   - measure: sku_cnt
     label: "SKUs"
     type: count_distinct
@@ -38,37 +43,43 @@
     label: 'AOV'
     type: number
     value_format_name: usd
-    sql: ${product_sales_amt} / ${order_cnt}
+    sql: ${product_sales_amt} / nullif( ${order_cnt}, 0 )
     
   - measure: avg_order_unit_cnt
     label: 'AOU'
     type: number
     value_format_name: decimal_1
-    sql: ${unit_cnt} / ${order_cnt}
+    sql: ${unit_cnt} / nullif( ${order_cnt}, 0 )
     
   - measure: avg_customer_amt
     label: 'Avg Customer $'
     type: number
     value_format_name: usd
-    sql: ${product_sales_amt} / ${customer_cnt}
+    sql: ${product_sales_amt} / nullif( ${customer_cnt}, 0 )
     
   - measure: avg_customer_unit_cnt
     label: 'Avg Customer Units'
     type: number
     value_format_name: decimal_1
-    sql: ${unit_cnt} / ${customer_cnt}
+    sql: ${unit_cnt} / nullif( ${customer_cnt}, 0 )
     
   - measure: avg_sku_amt
     label: 'Avg SKU $'
     type: number
     value_format_name: usd
-    sql: ${product_sales_amt} / ${sku_cnt}
+    sql: ${product_sales_amt} / nullif( ${sku_cnt}, 0 )
     
   - measure: avg_sku_unit_cnt
     label: 'Avg SKU Units'
     type: number
     value_format_name: decimal_1
-    sql: ${unit_cnt} / ${sku_cnt}
+    sql: ${unit_cnt} / nullif( ${sku_cnt}, 0 )
+    
+  - measure: avg_unit_amt
+    label: 'Avg Unit $'
+    type: number
+    value_format_name: usd
+    sql: ${product_sales_amt} / nullif( ${unit_cnt}, 0 )
     
 #-- fk
 
