@@ -48,7 +48,7 @@
     label: "Sales Channel Cd"
     type: string
     sql: ${TABLE}.SALES_CHANNEL_CD
-    hidden: true
+    hidden: false
 
   - dimension: sales_channel_name
     label: "Sales Channel Name"
