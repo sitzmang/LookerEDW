@@ -10,13 +10,13 @@
   persist_for: 12 hours
   joins:
     - join: date_dm
-      view_label: 'Order Date'
+      view_label: 'Date Ordered'
       sql_on: ${date_dm.date_sid} = ${order_line_f.order_date_sid}
       type: inner
       relationship: many_to_one
 
     - join: ship_date_dm
-      view_label: 'Ship Date'
+      view_label: 'Date Shipped'
       sql_on: ${ship_date_dm.date_sid} = ${order_line_f.ship_date_sid}
       type: inner
       relationship: many_to_one
