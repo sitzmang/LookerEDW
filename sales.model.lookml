@@ -11,7 +11,13 @@
   joins:
     - join: date_dm
       view_label: 'Order Date'
-      sql_on: ${date_dm.date_sid} = ${order_line_f.date_sid}
+      sql_on: ${date_dm.date_sid} = ${order_line_f.order_date_sid}
+      type: inner
+      relationship: many_to_one
+
+    - join: ship_date_dm
+      view_label: 'Ship Date'
+      sql_on: ${ship_date_dm.date_sid} = ${order_line_f.ship_date_sid}
       type: inner
       relationship: many_to_one
 

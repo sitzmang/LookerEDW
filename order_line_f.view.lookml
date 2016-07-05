@@ -83,9 +83,14 @@
     
 #-- fk
 
-  - dimension: date_sid
+  - dimension: order_date_sid
     type: number
-    sql: ${TABLE}.DATE_SID
+    sql: ${TABLE}.ORDER_DATE_SID
+    hidden: true
+
+  - dimension: ship_date_sid
+    type: number
+    sql: ${TABLE}.SHIP_DATE_SID
     hidden: true
 
   - dimension: sales_channel_cd
