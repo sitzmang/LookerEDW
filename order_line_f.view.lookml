@@ -1,5 +1,5 @@
 - view: order_line_f
-  sql_table_name: main.gs_order_line_f
+  sql_table_name: MAIN.GS2_ORDER_LINE_F
   fields:
 
 #-- measures
@@ -8,13 +8,13 @@
     label: "Customers"
     type: count_distinct
     value_format_name: decimal_0
-    sql: ${TABLE}.SRC_CUSTOMER_NO
+    sql: ${TABLE}.customer_shk
 
   - measure: order_cnt
     label: "Orders"
     type: count_distinct
     value_format_name: decimal_0
-    sql: ${TABLE}.SRC_ORDER_NO
+    sql: ${TABLE}.order_shk
 
   - measure: order_line_cnt
     label: "Order Lines"
@@ -25,7 +25,7 @@
     label: "SKUs"
     type: count_distinct
     value_format_name: decimal_0
-    sql: ${TABLE}.SRC_PRODUCT_ID
+    sql: ${TABLE}.product_shk
 
   - measure: product_sales_amt
     label: "Product Sales Amt"
@@ -83,47 +83,72 @@
     
 #-- fk
 
+  - dimension: billing_state_shk
+    type: string
+    sql: ${TABLE}.BILLING_STATE_SHK
+    hidden: true
+
+  - dimension: customer_shk
+    type: string
+    sql: ${TABLE}.CUSTOMER_SHK
+    hidden: true
+
+  - dimension: dlr_off_discount_amt
+    type: string
+    sql: ${TABLE}.DLR_OFF_DISCOUNT_AMT
+    hidden: true
+
   - dimension: order_date_sid
-    type: number
+    type: string
     sql: ${TABLE}.ORDER_DATE_SID
     hidden: true
 
+  - dimension: order_line_status_shk
+    type: string
+    sql: ${TABLE}.ORDER_LINE_STATUS_SHK
+    hidden: true
+
+  - dimension: order_shk
+    type: string
+    sql: ${TABLE}.ORDER_SHK
+    hidden: true
+
+  - dimension: pct_off_discount_amt
+    type: string
+    sql: ${TABLE}.PCT_OFF_DISCOUNT_AMT
+    hidden: true
+
+  - dimension: product_cost_amt
+    type: string
+    sql: ${TABLE}.PRODUCT_COST_AMT
+    hidden: true
+
+  - dimension: product_margin_amt
+    type: string
+    sql: ${TABLE}.PRODUCT_MARGIN_AMT
+    hidden: true
+
+  - dimension: product_shk
+    type: string
+    sql: ${TABLE}.PRODUCT_SHK
+    hidden: true
+
+  - dimension: sales_amt
+    type: string
+    sql: ${TABLE}.SALES_AMT
+    hidden: true
+
+  - dimension: sales_channel_shk
+    type: string
+    sql: ${TABLE}.SALES_CHANNEL_SHK
+    hidden: true
+
   - dimension: ship_date_sid
-    type: number
+    type: string
     sql: ${TABLE}.SHIP_DATE_SID
     hidden: true
 
-  - dimension: sales_channel_cd
+  - dimension: shipping_sales_amt
     type: string
-    sql: ${TABLE}.SALES_CHANNEL_CD
+    sql: ${TABLE}.SHIPPING_SALES_AMT
     hidden: true
-
-  - dimension: src_product_id
-    type: string
-    sql: ${TABLE}.SRC_PRODUCT_ID
-    hidden: true
-
-  - dimension: order_line_status_cd
-    type: string
-    sql: ${TABLE}.order_line_status_cd
-    hidden: true
-
-#-- other
-
-  - dimension: order_dt
-    type: time
-    convert_tz: false
-    sql: ${TABLE}.ORDER_DT
-    hidden: true
-
-  - dimension: src_customer_no
-    type: string
-    sql: ${TABLE}.SRC_CUSTOMER_NO
-    hidden: true
-
-  - dimension: src_order_no
-    type: string
-    sql: ${TABLE}.SRC_ORDER_NO
-    hidden: true
-
-
