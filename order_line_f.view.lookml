@@ -33,6 +33,12 @@
     value_format_name: usd_0
     sql: ${TABLE}.PRODUCT_SALES_AMT
 
+  - measure: shipping_sales_amt
+    label: "Shipping Sales Amt"
+    type: sum
+    value_format_name: usd_0
+    sql: ${TABLE}.SHIPPING_SALES_AMT
+
   - measure: unit_cnt
     label: "Units"
     type: sum
@@ -146,9 +152,4 @@
   - dimension: ship_date_sid
     type: string
     sql: ${TABLE}.SHIP_DATE_SID
-    hidden: true
-
-  - dimension: shipping_sales_amt
-    type: string
-    sql: ${TABLE}.SHIPPING_SALES_AMT
     hidden: true

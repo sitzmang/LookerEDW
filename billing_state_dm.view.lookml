@@ -23,6 +23,7 @@
   - dimension: iso_state_cd
     type: string
     sql: ${TABLE}.ISO_STATE_CD
+    hidden: true
 
   - dimension: state_cd
     type: string
