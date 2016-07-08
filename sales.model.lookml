@@ -44,3 +44,9 @@
       sql_on: ${billing_state_dm.state_cd_shk} = ${order_line_f.billing_state_shk}
       type: inner
       relationship: many_to_one
+
+    - join: customer_dm
+      view_label: 'Customer'
+      sql_on: ${customer_dm.customer_shk} = ${order_line_f.customer_shk}
+      type: inner
+      relationship: many_to_one

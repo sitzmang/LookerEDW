@@ -39,6 +39,12 @@
     value_format_name: usd_0
     sql: ${TABLE}.SHIPPING_SALES_AMT
 
+  - measure: sales_tax_amt
+    label: "Sales Tax Amt"
+    type: sum
+    value_format_name: usd_0
+    sql: ${TABLE}.sales_tax_amt
+
   - measure: unit_cnt
     label: "Units"
     type: sum
