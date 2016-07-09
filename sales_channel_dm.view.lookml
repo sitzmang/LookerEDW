@@ -21,6 +21,7 @@
     label: "Company Name"
     type: string
     sql: ${TABLE}.company_name
+    drill_fields: [general_mgr_name,sales_channel_rollup_name,sales_channel_name]
 
   - dimension: general_mgr_cd
     label: "GM Cd"
@@ -32,6 +33,7 @@
     label: "GM Name"
     type: string
     sql: ${TABLE}.general_mgr_name
+    drill_fields: [sales_channel_rollup_name,sales_channel_name]
 
   - dimension: sales_channel_rollup_cd
     label: "Sales Channel Rollup Cd"
@@ -43,6 +45,7 @@
     label: "Sales Channel Rollup Name"
     type: string
     sql: ${TABLE}.SALES_CHANNEL_ROLLUP_NAME
+    drill_fields: [sales_channel_name]
 
   - dimension: sales_channel_cd
     label: "Sales Channel Cd"
@@ -54,6 +57,7 @@
     label: "Sales Channel Name"
     type: string
     sql: ${TABLE}.SALES_CHANNEL_NAME
+    drill_fields: [product_dm.profit_centre_name]
 
 #-- other
 

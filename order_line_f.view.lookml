@@ -5,48 +5,51 @@
 #-- measures
 
   - measure: customer_cnt
-    label: "Customers"
+    label: 'Customers'
     type: count_distinct
     value_format_name: decimal_0
     sql: ${TABLE}.customer_shk
+    description: 'Distinct Customer Count'
 
   - measure: order_cnt
-    label: "Orders"
+    label: 'Orders'
     type: count_distinct
     value_format_name: decimal_0
     sql: ${TABLE}.order_shk
+    description: 'Distinct Order Count'
 
   - measure: order_line_cnt
-    label: "Order Lines"
+    label: 'Order Lines'
     type: count
     value_format_name: decimal_0
 
   - measure: sku_cnt
-    label: "SKUs"
+    label: 'SKUs'
     type: count_distinct
     value_format_name: decimal_0
     sql: ${TABLE}.product_shk
+    description: 'Distinct SKU Count'
 
   - measure: product_sales_amt
-    label: "Product Sales Amt"
+    label: 'Product Sales Amt'
     type: sum
     value_format_name: usd_0
     sql: ${TABLE}.PRODUCT_SALES_AMT
 
   - measure: shipping_sales_amt
-    label: "Shipping Sales Amt"
+    label: 'Shipping Sales Amt'
     type: sum
     value_format_name: usd_0
     sql: ${TABLE}.SHIPPING_SALES_AMT
 
   - measure: sales_tax_amt
-    label: "Sales Tax Amt"
+    label: 'Sales Tax Amt'
     type: sum
     value_format_name: usd_0
     sql: ${TABLE}.sales_tax_amt
 
   - measure: unit_cnt
-    label: "Units"
+    label: 'Units'
     type: sum
     value_format_name: decimal_0
     sql: ${TABLE}.UNIT_CNT
@@ -56,12 +59,14 @@
     type: number
     value_format_name: usd
     sql: ${product_sales_amt} / nullif( ${order_cnt}, 0 )
+    description: 'Avg Order Value'
     
   - measure: avg_order_unit_cnt
     label: 'AOU'
     type: number
     value_format_name: decimal_1
     sql: ${unit_cnt} / nullif( ${order_cnt}, 0 )
+    description: 'Avg Order Units'
     
   - measure: avg_customer_amt
     label: 'Avg Customer $'
