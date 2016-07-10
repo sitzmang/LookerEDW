@@ -111,12 +111,14 @@
     type: number
     value_format: '0'
     sql: ${TABLE}.CAL_YEAR_MONTH_NO
+    drill_fields: [cal_year_day_no,cal_dt]
 
   - dimension: cal_year_no
     group_label: 'Calendar'
     type: number
     value_format: '0'
     sql: ${TABLE}.CAL_YEAR_NO
+    drill_fields: [cal_year_quarter_no,cal_year_month_no,cal_year_day_no,cal_dt]
 
   - dimension: cal_year_quarter_label
     group_label: 'Calendar'
@@ -129,6 +131,7 @@
     type: number
     value_format: '0'
     sql: ${TABLE}.CAL_YEAR_QUARTER_NO
+    drill_fields: [cal_year_month_no,cal_year_day_no,cal_dt]
 
   - dimension: date_sid
     type: string
@@ -258,6 +261,7 @@
     type: number
     value_format: '0'
     sql: ${TABLE}.ISO_YEAR_MONTH_NO
+    drill_fields: [iso_year_week_no,iso_year_day_no,cal_dt]
 
   - dimension: iso_year_no
     label: 'ISO Year No'
@@ -265,6 +269,7 @@
     type: number
     value_format: '0'
     sql: ${TABLE}.ISO_YEAR_NO
+    drill_fields: [iso_year_quarter_no,iso_year_month_no,iso_year_week_no,iso_year_day_no,cal_dt]
 
   - dimension: iso_year_quarter_label
     group_label: 'ISO'
@@ -278,6 +283,7 @@
     type: number
     value_format: '0'
     sql: ${TABLE}.ISO_YEAR_QUARTER_NO
+    drill_fields: [iso_year_month_no,iso_year_week_no,iso_year_day_no,cal_dt]
 
   - dimension: iso_year_week_label
     group_label: 'ISO'
@@ -291,3 +297,4 @@
     type: number
     value_format: '0'
     sql: ${TABLE}.ISO_YEAR_WEEK_NO
+    drill_fields: [iso_year_day_no,cal_dt]
