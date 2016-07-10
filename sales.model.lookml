@@ -9,6 +9,9 @@
   label: 'Order Line Sales'
   view_label: '1) Measures'
   persist_for: 12 hours
+  always_join: [order_line_status_dm]
+  always_filter:
+    order_line_status_dm.master_line_status_cd: 'DMND'
   joins:
     - join: system_dm
       view_label: 'System'
@@ -64,6 +67,9 @@
   label: 'Order Line Sales TYLY'
   view_label: '1) Measures'
   persist_for: 12 hours
+  always_join: [order_line_status_dm]
+  always_filter:
+    order_line_status_dm.master_line_status_cd: 'DMND'
   joins:
     - join: order_date_dm
       from: date_dm
