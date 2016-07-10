@@ -10,13 +10,15 @@
   view_label: '1) Measures'
   persist_for: 12 hours
   joins:
-    - join: date_dm
+    - join: order_date_dm
+      from: date_dm
       view_label: '2) Date Ordered'
-      sql_on: ${date_dm.date_sid} = ${order_line_f.order_date_sid}
+      sql_on: ${order_date_dm.date_sid} = ${order_line_f.order_date_sid}
       type: inner
       relationship: many_to_one
 
     - join: ship_date_dm
+      from: date_dm
       view_label: '3) Date Shipped'
       sql_on: ${ship_date_dm.date_sid} = ${order_line_f.ship_date_sid}
       type: inner
@@ -57,13 +59,15 @@
   view_label: '1) Measures'
   persist_for: 12 hours
   joins:
-    - join: date_dm
+    - join: order_date_dm
+      from: date_dm
       view_label: '2) Date Ordered'
-      sql_on: ${date_dm.date_sid} = ${order_line_f_tyly.order_date_sid}
+      sql_on: ${order_date_dm.date_sid} = ${order_line_f_tyly.order_date_sid}
       type: inner
       relationship: many_to_one
 
     - join: ship_date_dm
+      from: date_dm
       view_label: '3) Date Shipped'
       sql_on: ${ship_date_dm.date_sid} = ${order_line_f_tyly.ship_date_sid}
       type: inner
