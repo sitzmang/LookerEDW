@@ -16,6 +16,11 @@
     sql: ${TABLE}.CUSTOMER_PREFIX
     hidden: true
 
+  - dimension: customer_type_name
+    label: 'Customer Type Name'
+    type: string
+    sql: ${TABLE}.customer_type_name
+
   - dimension: email_adrs
     label: 'E-mail Address'
     type: string

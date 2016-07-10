@@ -286,6 +286,7 @@
     hidden: true
 
   - dimension: iso_year_week_no
+    label: 'ISO Year Week No'
     group_label: 'ISO'
     type: number
     value_format: '0'

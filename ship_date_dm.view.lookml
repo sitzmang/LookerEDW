@@ -64,10 +64,11 @@
     hidden: true
 
   - dimension: cal_ptd_label
+    label: 'Cal Period-to-Date'
     group_label: 'Calendar'
     type: string
     sql: ${TABLE}.CAL_PTD_LABEL
-    hidden: true
+    hidden: false
 
   - dimension: cal_quarter_day_no
     group_label: 'Calendar'
@@ -183,6 +184,7 @@
     hidden: true
 
   - dimension: iso_month_label
+    label: 'ISO Month Label'
     group_label: 'ISO'
     type: string
     sql: ${TABLE}.ISO_MONTH_LABEL
@@ -202,10 +204,11 @@
     hidden: true
 
   - dimension: iso_ptd_label
+    label: 'ISO Period-to-Date'
     group_label: 'ISO'
     type: string
     sql: ${TABLE}.ISO_PTD_LABEL
-    hidden: true
+    hidden: false
 
   - dimension: iso_quarter_day_no
     group_label: 'ISO'
@@ -243,18 +246,21 @@
     hidden: true
 
   - dimension: iso_year_day_no
+    label: 'ISO Year Day No'
     group_label: 'ISO'
     type: number
     value_format: '0'
     sql: ${TABLE}.ISO_YEAR_DAY_NO
 
   - dimension: iso_year_month_no
+    label: 'ISO Year Month No'
     group_label: 'ISO'
     type: number
     value_format: '0'
     sql: ${TABLE}.ISO_YEAR_MONTH_NO
 
   - dimension: iso_year_no
+    label: 'ISO Year No'
     group_label: 'ISO'
     type: number
     value_format: '0'
@@ -267,6 +273,7 @@
     hidden: true
 
   - dimension: iso_year_quarter_no
+    label: 'ISO Year Quarter No'
     group_label: 'ISO'
     type: number
     value_format: '0'
@@ -279,6 +286,7 @@
     hidden: true
 
   - dimension: iso_year_week_no
+    label: 'ISO Year Week No'
     group_label: 'ISO'
     type: number
     value_format: '0'
