@@ -10,6 +10,12 @@
   view_label: '1) Measures'
   persist_for: 12 hours
   joins:
+    - join: system_dm
+      view_label: 'System'
+      sql_on: ${system_dm.system_sid} = ${order_line_f.system_sid}
+      type: inner
+      relationship: many_to_one
+
     - join: order_date_dm
       from: date_dm
       view_label: '2) Date Ordered'

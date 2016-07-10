@@ -164,3 +164,8 @@
     type: string
     sql: ${TABLE}.SHIP_DATE_SID
     hidden: true
+
+  - dimension: system_sid
+    type: string
+    sql: ${TABLE}.SYSTEM_SID
+    hidden: true
