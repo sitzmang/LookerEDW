@@ -1,4 +1,4 @@
-- view: billing_state_dm
+- view: state_dm
   sql_table_name: MAIN.STATE_DM
   fields:
 
@@ -25,9 +25,24 @@
     sql: ${TABLE}.ISO_STATE_CD
     hidden: true
 
+  - dimension: latitude
+    type: string
+    sql: ${TABLE}.LATITUDE
+    hidden: true
+
+  - dimension: longitude
+    type: string
+    sql: ${TABLE}.LONGITUDE
+    hidden: true
+
   - dimension: state_cd
     type: string
     sql: ${TABLE}.STATE_CD
+
+  - dimension: state_location
+    type: location
+    sql_latitude:  ${latitude}
+    sql_longitude: ${longitude}
 
   - dimension: state_name
     type: string
