@@ -6,6 +6,7 @@
 
   - measure: customer_cnt
     label: 'Customers'
+    description: 'Unique count of customers.'
     type: count_distinct
     value_format_name: decimal_0
     sql: ${TABLE}.customer_shk
@@ -27,6 +28,7 @@
   
   - measure: order_cnt
     label: 'Orders'
+    description: 'Unique count of orders.'
     type: count_distinct
     value_format_name: decimal_0
     sql: ${TABLE}.order_shk
@@ -39,6 +41,7 @@
 
   - measure: sku_cnt
     label: 'SKUs'
+    description: 'Unique count of SKUs.'
     type: count_distinct
     value_format_name: decimal_0
     sql: ${TABLE}.product_shk
@@ -84,6 +87,7 @@
 
   - measure: avg_order_amt
     label: 'AOV'
+    description: 'Avg Order Value'
     type: number
     value_format_name: usd
     sql: ${product_sales_amt} / nullif( ${order_cnt}, 0 )
@@ -91,6 +95,7 @@
     
   - measure: avg_order_unit_cnt
     label: 'AOU'
+    description: 'Avg Order Units'
     type: number
     value_format_name: decimal_1
     sql: ${unit_cnt} / nullif( ${order_cnt}, 0 )
