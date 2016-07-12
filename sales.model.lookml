@@ -53,7 +53,7 @@
 
     - join: billing_state_dm
       from: state_dm
-      view_label: 'Billing State'
+      view_label: 'State Billing'
       sql_on: ${billing_state_dm.state_cd_shk} = ${order_line_f.billing_state_shk}
       type: inner
       relationship: many_to_one
