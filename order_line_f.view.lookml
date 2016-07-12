@@ -50,7 +50,7 @@
   - measure: product_sales_amt
     label: 'Product Sales Amt'
     type: sum
-    value_format_name: usd_0
+    value_format_name: usd
     sql: ${TABLE}.PRODUCT_SALES_AMT
 
   - measure: product_sales_amt_prev
