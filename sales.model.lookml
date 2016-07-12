@@ -16,7 +16,7 @@
     - join: system_dm
       view_label: 'System'
       sql_on: ${system_dm.system_sid} = ${order_line_f.system_sid}
-      type: inner
+      type: left_outer
       relationship: many_to_one
 
     - join: order_date_dm
@@ -36,7 +36,7 @@
     - join: sales_channel_dm
       view_label: '4) Sales Channel'
       sql_on: ${sales_channel_dm.sales_channel_shk} = ${order_line_f.sales_channel_shk}
-      type: left_outer
+      type: inner
       relationship: many_to_one
 
     - join: product_dm

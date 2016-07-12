@@ -19,6 +19,7 @@
   - dimension: order_prefix
     type: string
     sql: ${TABLE}.ORDER_PREFIX
+    hidden: true
 
   - dimension: order_source_cd
     type: string
