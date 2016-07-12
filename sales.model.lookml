@@ -51,10 +51,10 @@
       type: inner
       relationship: many_to_one
 
-    - join: billing_state_dm
-      from: state_dm
-      view_label: 'State Billing'
-      sql_on: ${billing_state_dm.state_cd_shk} = ${order_line_f.billing_state_shk}
+    - join: billing_location_dm
+      from: location_dm
+      view_label: 'Location Billing'
+      sql_on: ${billing_location_dm.state_cd_shk} = ${order_line_f.billing_state_shk}
       type: inner
       relationship: many_to_one
 

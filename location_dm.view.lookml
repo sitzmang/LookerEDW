@@ -1,4 +1,4 @@
-- view: state_dm
+- view: location_dm
   sql_table_name: MAIN.STATE_DM
   fields:
 
@@ -14,10 +14,12 @@
 
   - dimension: country_cd
     type: string
+    map_layer: countries
     sql: ${TABLE}.COUNTRY_CD
 
   - dimension: country_name
     type: string
+    map_layer: countries
     sql: ${TABLE}.COUNTRY_NAME
 
   - dimension: iso_state_cd
@@ -37,6 +39,7 @@
 
   - dimension: state_cd
     type: string
+    map_layer: us_states
     sql: ${TABLE}.STATE_CD
 
   - dimension: state_location
@@ -46,4 +49,5 @@
 
   - dimension: state_name
     type: string
+    map_layer: us_states
     sql: ${TABLE}.STATE_NAME

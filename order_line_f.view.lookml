@@ -11,6 +11,20 @@
     sql: ${TABLE}.customer_shk
     description: 'Distinct Customer Count'
 
+  - measure: customer_cnt_prev
+    label: 'Customers'
+    view_label: '1b) % Prev'
+    type: percent_of_previous
+    value_format: '0.0\%'
+    sql: ${customer_cnt}
+
+  - measure: customer_cnt_pttl
+    label: 'Customers'
+    view_label: '1c) % Total'
+    type: percent_of_total
+    value_format: '0.0\%'
+    sql: ${customer_cnt}
+  
   - measure: order_cnt
     label: 'Orders'
     type: count_distinct
@@ -36,6 +50,20 @@
     value_format_name: usd_0
     sql: ${TABLE}.PRODUCT_SALES_AMT
 
+  - measure: product_sales_amt_prev
+    label: 'Product Sales Amt'
+    view_label: '1b) % Prev'
+    type: percent_of_previous
+    value_format: '0.0\%'
+    sql: ${product_sales_amt}
+
+  - measure: product_sales_amt_pttl
+    label: 'Product Sales Amt'
+    view_label: '1c) % Total'
+    type: percent_of_total
+    value_format: '0.0\%'
+    sql: ${product_sales_amt}
+  
   - measure: shipping_sales_amt
     label: 'Shipping Sales Amt'
     type: sum
