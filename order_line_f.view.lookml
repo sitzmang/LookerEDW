@@ -73,6 +73,41 @@
     value_format_name: usd_0
     sql: ${TABLE}.SHIPPING_SALES_AMT
 
+  - measure: shipping_sales_amt_prev
+    label: 'Shipping Sales Amt'
+    view_label: '1b) % Prev'
+    type: percent_of_previous
+    value_format: '0.0\%'
+    sql: ${shipping_sales_amt}
+
+  - measure: shipping_sales_amt_pttl
+    label: 'Shipping Sales Amt'
+    view_label: '1c) % Total'
+    type: percent_of_total
+    value_format: '0.0\%'
+    sql: ${shipping_sales_amt}
+  
+  - measure: sales_amt
+    label: 'Sales Amt'
+    type: sum
+    value_format_name: usd
+    sql: ${TABLE}.SALES_AMT
+    description: 'Product Sales + Shipping Sales'
+
+  - measure: sales_amt_prev
+    label: 'Sales Amt'
+    view_label: '1b) % Prev'
+    type: percent_of_previous
+    value_format: '0.0\%'
+    sql: ${sales_amt}
+
+  - measure: sales_amt_pttl
+    label: 'Sales Amt'
+    view_label: '1c) % Total'
+    type: percent_of_total
+    value_format: '0.0\%'
+    sql: ${sales_amt}
+  
   - measure: sales_tax_amt
     label: 'Sales Tax Amt'
     type: sum
@@ -86,23 +121,21 @@
     sql: ${TABLE}.UNIT_CNT
 
   - measure: avg_order_amt
-    label: 'AOV'
-    description: 'Avg Order Value'
+    label: 'AOV Product $'
     type: number
     value_format_name: usd
     sql: ${product_sales_amt} / nullif( ${order_cnt}, 0 )
-    description: 'Avg Order Value'
+    description: 'Avg Order Product $'
     
   - measure: avg_order_unit_cnt
     label: 'AOU'
-    description: 'Avg Order Units'
     type: number
     value_format_name: decimal_1
     sql: ${unit_cnt} / nullif( ${order_cnt}, 0 )
     description: 'Avg Order Units'
     
   - measure: avg_customer_amt
-    label: 'Avg Customer $'
+    label: 'Avg Customer Product $'
     type: number
     value_format_name: usd
     sql: ${product_sales_amt} / nullif( ${customer_cnt}, 0 )
@@ -114,7 +147,7 @@
     sql: ${unit_cnt} / nullif( ${customer_cnt}, 0 )
     
   - measure: avg_sku_amt
-    label: 'Avg SKU $'
+    label: 'Avg SKU Product $'
     type: number
     value_format_name: usd
     sql: ${product_sales_amt} / nullif( ${sku_cnt}, 0 )
@@ -126,12 +159,12 @@
     sql: ${unit_cnt} / nullif( ${sku_cnt}, 0 )
     
   - measure: avg_unit_amt
-    label: 'Avg Unit $'
+    label: 'Avg Unit Product $'
     type: number
     value_format_name: usd
     sql: ${product_sales_amt} / nullif( ${unit_cnt}, 0 )
     
-#-- fk
+#-- other
 
   - dimension: billing_state_shk
     type: string
@@ -181,11 +214,6 @@
   - dimension: product_shk
     type: string
     sql: ${TABLE}.PRODUCT_SHK
-    hidden: true
-
-  - dimension: sales_amt
-    type: string
-    sql: ${TABLE}.SALES_AMT
     hidden: true
 
   - dimension: sales_channel_shk
