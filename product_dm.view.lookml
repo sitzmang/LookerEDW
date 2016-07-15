@@ -83,25 +83,29 @@
     sql: ${TABLE}.PRODUCT_GROUP_NAME
 
   - dimension: community_name
-    label: 'Community Name'
+    label: '   Community Name'
+    group_label: 'Community'
     type: string
     sql: ${TABLE}.COMMUNITY_NAME
-    drill_fields: [brand_name, profit_centre_name]
+    drill_fields: [brand_name, profit_centre_name, profit_centre_cd]
 
   - dimension: brand_name
-    label: 'Brand Name'
+    label: '  Brand Name'
+    group_label: 'Community'
     type: string
     sql: ${TABLE}.BRAND_NAME
-    drill_fields: [profit_centre_name]
+    drill_fields: [profit_centre_name, profit_centre_cd]
 
   - dimension: profit_centre_cd
-    label: 'Profit Center Cd'
+    label: ' Profit Center Cd'
+    group_label: 'Community'
     type: string
     sql: ${TABLE}.PROFIT_CENTRE_CD
     hidden: false
 
   - dimension: profit_centre_name
-    label: 'Profit Center Name'
+    label: ' Profit Center Name'
+    group_label: 'Community'
     type: string
     sql: ${TABLE}.PROFIT_CENTRE_NAME
 

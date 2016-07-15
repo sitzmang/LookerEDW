@@ -18,7 +18,7 @@
     hidden: true
 
   - dimension: company_name
-    label: "Company Name"
+    label: "    Company Name"
     type: string
     sql: ${TABLE}.company_name
     drill_fields: [general_mgr_name,sales_channel_rollup_name,sales_channel_name]
@@ -30,7 +30,7 @@
     hidden: true
 
   - dimension: general_mgr_name
-    label: "GM Name"
+    label: "   GM Name"
     type: string
     sql: ${TABLE}.general_mgr_name
     drill_fields: [sales_channel_rollup_name,sales_channel_name]
@@ -42,7 +42,7 @@
     hidden: true
 
   - dimension: sales_channel_rollup_name
-    label: "Sales Channel Rollup Name"
+    label: "  Sales Channel Rollup Name"
     type: string
     sql: ${TABLE}.SALES_CHANNEL_ROLLUP_NAME
     drill_fields: [sales_channel_name]
@@ -51,10 +51,10 @@
     label: "Sales Channel Cd"
     type: string
     sql: ${TABLE}.SALES_CHANNEL_CD
-    hidden: false
+    hidden: true
 
   - dimension: sales_channel_name
-    label: "Sales Channel Name"
+    label: " Sales Channel Name"
     type: string
     sql: ${TABLE}.SALES_CHANNEL_NAME
     drill_fields: [product_dm.profit_centre_name]
