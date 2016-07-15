@@ -28,7 +28,6 @@
   
   - measure: order_cnt
     label: 'Orders'
-    description: 'Unique count of orders.'
     type: count_distinct
     value_format_name: decimal_0
     sql: ${TABLE}.order_shk
@@ -52,6 +51,7 @@
     type: sum
     value_format_name: usd
     sql: ${TABLE}.PRODUCT_SALES_AMT
+    description: 'Price paid for product after discounts.'
 
   - measure: product_sales_amt_prev
     label: 'Product Sales Amt'
@@ -72,6 +72,7 @@
     type: sum
     value_format_name: usd_0
     sql: ${TABLE}.SHIPPING_SALES_AMT
+    description: 'Price paid for shipping after discounts.'
 
   - measure: shipping_sales_amt_prev
     label: 'Shipping Sales Amt'
@@ -125,44 +126,49 @@
     type: number
     value_format_name: usd
     sql: ${product_sales_amt} / nullif( ${order_cnt}, 0 )
-    description: 'Avg Order Product $'
+    description: 'Product Sales / Orders'
     
   - measure: avg_order_unit_cnt
     label: 'AOU'
     type: number
     value_format_name: decimal_1
     sql: ${unit_cnt} / nullif( ${order_cnt}, 0 )
-    description: 'Avg Order Units'
+    description: 'Units / Orders'
     
   - measure: avg_customer_amt
     label: 'Avg Customer Product $'
     type: number
     value_format_name: usd
     sql: ${product_sales_amt} / nullif( ${customer_cnt}, 0 )
+    description: 'Product Sales / Customers'
     
   - measure: avg_customer_unit_cnt
     label: 'Avg Customer Units'
     type: number
     value_format_name: decimal_1
     sql: ${unit_cnt} / nullif( ${customer_cnt}, 0 )
+    description: 'Units / Customers'
     
   - measure: avg_sku_amt
     label: 'Avg SKU Product $'
     type: number
     value_format_name: usd
     sql: ${product_sales_amt} / nullif( ${sku_cnt}, 0 )
+    description: 'Product Sales / SKUs'
     
   - measure: avg_sku_unit_cnt
     label: 'Avg SKU Units'
     type: number
     value_format_name: decimal_1
     sql: ${unit_cnt} / nullif( ${sku_cnt}, 0 )
+    description: 'Units / SKUs'
     
   - measure: avg_unit_amt
     label: 'Avg Unit Product $'
     type: number
     value_format_name: usd
     sql: ${product_sales_amt} / nullif( ${unit_cnt}, 0 )
+    description: 'Product Sales / Units'
     
 #-- other
 

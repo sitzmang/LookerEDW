@@ -82,6 +82,18 @@
     type: string
     sql: ${TABLE}.PRODUCT_GROUP_NAME
 
+  - dimension: community_name
+    label: 'Community Name'
+    type: string
+    sql: ${TABLE}.COMMUNITY_NAME
+    drill_fields: [brand_name, profit_centre_name]
+
+  - dimension: brand_name
+    label: 'Brand Name'
+    type: string
+    sql: ${TABLE}.BRAND_NAME
+    drill_fields: [profit_centre_name]
+
   - dimension: profit_centre_cd
     label: 'Profit Center Cd'
     type: string
