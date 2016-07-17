@@ -9,7 +9,6 @@
 
   - dimension: cal_dt
     label: 'Cal Date'
-    group_label: 'Calendar'
     type: date_date
     sql: ${TABLE}.CAL_DT
 
@@ -285,11 +284,12 @@
     sql: ${TABLE}.ISO_YEAR_QUARTER_NO
     drill_fields: [iso_year_month_no,iso_year_week_no,iso_year_day_no,cal_dt]
 
-  - dimension: iso_year_week_label
+  - dimension: iso_week_label
+    label: 'ISO Week Label'
     group_label: 'ISO'
     type: string
-    sql: ${TABLE}.ISO_YEAR_WEEK_LABEL
-    hidden: true
+    sql: ${TABLE}.ISO_WEEK_LABEL
+    hidden: false
 
   - dimension: iso_year_week_no
     label: 'ISO Year Week No'
