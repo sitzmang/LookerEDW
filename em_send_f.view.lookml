@@ -4,9 +4,9 @@
 
 #-- fk
 
-  - dimension: send_date_sid
+  - dimension: sent_date_sid
     type: string
-    sql: ${TABLE}.SEND_DATE_SID
+    sql: ${TABLE}.SENT_DATE_SID
     hidden: true
 
   - dimension: client_id

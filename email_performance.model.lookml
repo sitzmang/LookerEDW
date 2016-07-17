@@ -13,7 +13,7 @@
     - join: send_date_dm
       from: date_dm
       view_label: '2) Date Sent'
-      sql_on: ${send_date_dm.date_sid} = ${em_send_f.send_date_sid}
+      sql_on: ${send_date_dm.date_sid} = ${em_send_f.sent_date_sid}
       type: left_outer
       relationship: many_to_one
  
