@@ -1,4 +1,4 @@
-- label:      'Sales (Under Development)'
+- label:      'Sales (validation)'
 - connection: edwrpt
 
 - include: '*.view.lookml'       # include all the views
