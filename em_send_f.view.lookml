@@ -10,18 +10,23 @@
     hidden: true
 
   - dimension: client_id
-    type: string
+    type: number
     sql: ${TABLE}.CLIENT_ID
     hidden: true
 
   - dimension: subscriber_id
-    type: string
+    type: number
     sql: ${TABLE}.SUBSCRIBER_ID
     hidden: true
 
   - dimension: send_id
-    type: string
+    type: number
     sql: ${TABLE}.SEND_ID
+    hidden: true
+
+  - dimension: list_id
+    type: number
+    sql: ${TABLE}.LIST_ID
     hidden: true
 
   - dimension: sent_dt
@@ -80,48 +85,48 @@
   - measure: email_open_cnt
     label: 'Opens'
     type: sum
-    sql: ${open_bt}
+    sql: cast( ${open_bt} as decimal( 10,2 ) )
     
   - measure: email_click_cnt
     label: 'Clicks'
     type: sum
-    sql: ${click_bt}
+    sql: cast( ${click_bt} as decimal( 12,2 ) )
     
   - measure: email_complaint_cnt
     label: 'Complaints'
     type: sum
-    sql: ${complaint_bt}
+    sql: cast( ${complaint_bt} as decimal( 10,2 ) )
     
   - measure: email_unsub_cnt
     label: 'Unsubscribes'
     type: sum
-    sql: ${unsub_bt}
+    sql: cast( ${unsub_bt} as decimal( 10,2 ) )
     
   - measure: open_rate_pct
     label: 'Open Rate'
     type: number
-    sql: 1.0 * ${email_open_cnt}/NULLIF(${email_send_cnt},0)
+    sql: ${email_open_cnt}/NULLIF(${email_send_cnt},0)
     value_format: '0.00%'
     description: 'Opens / Sends'
     
   - measure: click_rate_pct
     label: 'Click Rate'
     type: number
-    sql: 1.0 * ${email_click_cnt}/NULLIF(${email_send_cnt},0)
+    sql: ${email_click_cnt}/NULLIF(${email_send_cnt},0)
     value_format: '0.00%'
     description: 'Clicks / Sends'
     
   - measure: complaint_rate_pct
     label: 'Complaint Rate'
     type: number
-    sql: 1.0 * ${email_complaint_cnt}/NULLIF(${email_send_cnt},0)
+    sql: ${email_complaint_cnt}/NULLIF(${email_send_cnt},0)
     value_format: '0.00%'
     description: 'Complaints / Sends'
     
   - measure: unsubs_rate_pct
     label: 'Unsubscribe Rate'
     type: number
-    sql: 1.0 * ${email_unsub_cnt}/NULLIF(${email_send_cnt},0)
+    sql: ${email_unsub_cnt}/NULLIF(${email_send_cnt},0)
     value_format: '0.00%'
     description: 'Unsubscribers / Sends'
 

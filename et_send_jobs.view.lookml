@@ -37,6 +37,11 @@
     type: string
     sql: ${TABLE}.subject
     
+  - dimension: subject_line_len
+    label: 'Subject Line Length'
+    type: number
+    sql: length( ${TABLE}.subject )
+    
   - dimension: sent_time
     label: 'Sent Date'
     type: date_date
@@ -45,6 +50,7 @@
   - dimension: email_type
     label: 'Email Type'
     type: string
+    drill_fields: [email_name]
     sql: 
       CASE WHEN ${TABLE}.client_id = 1082723 AND ${TABLE}.email_name LIKE ('ABS%') THEN 'Editorial'
             WHEN ${TABLE}.client_id = 1082723 AND ${TABLE}.email_name LIKE ('CRE%') THEN 'Editorial'

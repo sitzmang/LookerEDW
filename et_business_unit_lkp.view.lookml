@@ -5,9 +5,10 @@
 #-- fk
 
   - dimension: client_id
+    label: 'Client ID'
     type: number
     sql: ${TABLE}.client_id
-    hidden: true
+    hidden: false
 
 #-- dimensions
 
@@ -15,3 +16,4 @@
     label: 'BU Name'
     type: string
     sql: ${TABLE}.business_unit_name
+    drill_fields: [et_send_jobs.email_type]
