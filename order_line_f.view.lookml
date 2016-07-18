@@ -1,5 +1,5 @@
 - view: order_line_f
-  sql_table_name: MAIN.GS2_ORDER_LINE_F
+  sql_table_name: MAIN.ORDER_LINE_F
   fields:
 
 #-- measures
