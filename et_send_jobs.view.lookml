@@ -46,6 +46,7 @@
     label: 'Sent Date'
     type: date_date
     sql: ${TABLE}.sent_time
+    hidden: true
     
   - dimension: email_type
     label: 'Email Type'
