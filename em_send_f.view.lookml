@@ -86,21 +86,25 @@
     label: 'Opens'
     type: sum
     sql: cast( ${open_bt} as decimal( 10,2 ) )
+    description: 'Count of sent that opened.'
     
   - measure: email_click_cnt
     label: 'Clicks'
     type: sum
     sql: cast( ${click_bt} as decimal( 12,2 ) )
+    description: 'Count of sent that clicked through.'
     
   - measure: email_complaint_cnt
     label: 'Complaints'
     type: sum
     sql: cast( ${complaint_bt} as decimal( 10,2 ) )
+    description: 'Count of sent with a complaint.'
     
   - measure: email_unsub_cnt
     label: 'Unsubscribes'
     type: sum
     sql: cast( ${unsub_bt} as decimal( 10,2 ) )
+    description: 'Count of sent that unsubscribed.'
     
   - measure: open_rate_pct
     label: 'Open Rate'
@@ -110,7 +114,14 @@
     description: 'Opens / Sends'
     
   - measure: click_rate_pct
-    label: 'Click Rate'
+    label: 'Click Rate (Opens)'
+    type: number
+    sql: ${email_click_cnt}/NULLIF(${email_open_cnt},0)
+    value_format: '0.00%'
+    description: 'Clicks / Opens'
+    
+  - measure: click_rate_send_pct
+    label: 'Click Rate (Sends)'
     type: number
     sql: ${email_click_cnt}/NULLIF(${email_send_cnt},0)
     value_format: '0.00%'
