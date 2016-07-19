@@ -201,10 +201,10 @@
 
   - dimension: iso_ptd_bt
     group_label: 'ISO'
-    type: string
+    type: number
     sql: ${TABLE}.ISO_PTD_BT
     hidden: true
-
+    
   - dimension: iso_ptd_label
     label: 'ISO Period-to-Date'
     group_label: 'ISO'
