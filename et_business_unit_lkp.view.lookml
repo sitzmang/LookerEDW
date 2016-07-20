@@ -16,4 +16,4 @@
     label: 'BU Name'
     type: string
     sql: ${TABLE}.business_unit_name
-    drill_fields: [et_send_jobs.email_type]
+    drill_fields: [et_send_jobs.email_type,et_subscribers.email_domain]
