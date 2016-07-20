@@ -203,6 +203,7 @@
             WHEN ${TABLE}.client_id = 1303168 AND ${TABLE}.email_name LIKE ('GDR%') THEN 'Editorial'
             WHEN ${TABLE}.client_id = 1303168 AND ${TABLE}.email_name LIKE ('GDS%') THEN 'Shop'
             WHEN ${TABLE}.client_id = 1303168 AND ${TABLE}.email_name LIKE ('GDSP%') THEN 'DEB'
+            WHEN ${TABLE}.client_id = 1303168 AND ${TABLE}.email_name LIKE ('GDT%') THEN 'Trig'
             WHEN ${TABLE}.client_id = 1303171 AND ${TABLE}.email_name LIKE ('GHS%') THEN 'Shop'
             WHEN ${TABLE}.client_id = 1303171 AND ${TABLE}.email_name LIKE ('HCC%') THEN 'Circ'
             WHEN ${TABLE}.client_id = 1303171 AND ${TABLE}.email_name LIKE ('HCSP%') THEN 'DEB'
