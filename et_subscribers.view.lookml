@@ -35,7 +35,7 @@
   - dimension: status
     label: 'Subscriber Status'
     type: string
-    sql: ${TABLE}.status
+    sql: lower( case when lower( ${TABLE}.status ) = 'unsub' then 'unsubscribed' else ${TABLE}.status end )
     
   - dimension: date_created
     label: 'Created'
