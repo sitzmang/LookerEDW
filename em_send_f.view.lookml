@@ -76,7 +76,14 @@
     sql: cast( ${email_open_cnt} as float)/NULLIF(${email_send_cnt},0)
     value_format: '0.00%'
     description: 'Opens / Sends'
-    
+
+  - measure: open_rate_pct_prev
+    label: 'Open Rate'
+    view_label: '1b) % Prev'
+    type: percent_of_previous
+    value_format: '0.0\%'
+    sql: ${open_rate_pct}
+
   - measure: email_click_cnt
     label: 'Clicks'
     group_label: 'Emails'
