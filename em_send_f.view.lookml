@@ -54,10 +54,72 @@
     sql: ${TABLE}.unsub_bt
     hidden: true
     
-#-- measures
+#-- measures email
+
+  - measure: email_send_cnt
+    label: 'Sends'
+    group_label: 'Emails'
+    type: count
+    description: 'Count of subscriber emails sent.'
+    
+  - measure: email_open_cnt
+    label: 'Opens'
+    group_label: 'Emails'
+    type: sum
+    sql: ${open_bt}
+    description: 'Count of sent that opened.'
+    
+  - measure: open_rate_pct
+    label: 'Open Rate'
+    group_label: 'Emails'
+    type: number
+    sql: cast( ${email_open_cnt} as float)/NULLIF(${email_send_cnt},0)
+    value_format: '0.00%'
+    description: 'Opens / Sends'
+    
+  - measure: email_click_cnt
+    label: 'Clicks'
+    group_label: 'Emails'
+    type: sum
+    sql: ${click_bt}
+    description: 'Count of sent that clicked through.'
+    
+  - measure: click_rate_pct
+    label: 'Click Rate (Opens)'
+    group_label: 'Emails'
+    type: number
+    sql: cast( ${email_click_cnt} as float )/NULLIF(${email_open_cnt},0)
+    value_format: '0.00%'
+    description: 'Clicks / Opens'
+    
+  - measure: click_rate_send_pct
+    label: 'Click Rate (Sends)'
+    group_label: 'Emails'
+    type: number
+    sql: cast( ${email_click_cnt} as float )/NULLIF(${email_send_cnt},0)
+    value_format: '0.00%'
+    description: 'Clicks / Sends'
+    
+  - measure: email_complaint_cnt
+    label: 'Complaints'
+    group_label: 'Emails'
+    type: sum
+    sql: ${complaint_bt}
+    description: 'Count of sent with a complaint.'
+    
+  - measure: complaint_rate_pct
+    label: 'Complaint Rate'
+    group_label: 'Emails'
+    type: number
+    sql: cast( ${email_complaint_cnt} as float )/NULLIF(${email_send_cnt},0)
+    value_format: '0.00%'
+    description: 'Complaints / Sends'
+    
+#-- measures file
 
   - measure: subscriber_cnt
     label: 'Subscribers'
+    group_label: 'Subscribers'
     type: count_distinct
     value_format_name: decimal_0
     sql: ${subscriber_id}
@@ -65,84 +127,54 @@
 
   - measure: subscriber_opened_cnt
     label: 'Subscribers Opened'
+    group_label: 'Subscribers'
     type: count_distinct
     value_format_name: decimal_0
     sql: nullif( ${subscriber_id} * ${open_bt}, 0 ) 
     description: 'Distinct Subscribers Who Opened'
 
+  - measure: subscriber_open_rate_pct
+    label: 'Subscriber Open Rate'
+    group_label: 'Subscribers'
+    type: number
+    sql: cast( ${subscriber_opened_cnt} as float)/NULLIF(${subscriber_cnt},0)
+    value_format: '0.00%'
+    description: 'Subscribers Opened / Subscribers'
+    
   - measure: subscriber_clicked_cnt
     label: 'Subscribers Clicked'
+    group_label: 'Subscribers'
     type: count_distinct
     value_format_name: decimal_0
     sql: nullif( ${subscriber_id} * ${click_bt}, 0 ) 
     description: 'Distinct Subscribers Who Clicked'
 
-  - measure: email_send_cnt
-    label: 'Sends'
-    type: count
-    description: 'Count of subscriber emails sent.'
-    
-  - measure: email_open_cnt
-    label: 'Opens'
-    type: sum
-    sql: cast( ${open_bt} as decimal( 10,2 ) )
-    description: 'Count of sent that opened.'
-    
-  - measure: email_click_cnt
-    label: 'Clicks'
-    type: sum
-    sql: cast( ${click_bt} as decimal( 12,2 ) )
-    description: 'Count of sent that clicked through.'
-    
-  - measure: email_complaint_cnt
-    label: 'Complaints'
-    type: sum
-    sql: cast( ${complaint_bt} as decimal( 10,2 ) )
-    description: 'Count of sent with a complaint.'
-    
-  - measure: email_unsub_cnt
-    label: 'Unsubscribes'
-    type: sum
-    sql: cast( ${unsub_bt} as decimal( 10,2 ) )
-    description: 'Count of sent that unsubscribed.'
-    
-  - measure: open_rate_pct
-    label: 'Open Rate'
+  - measure: subscriber_click_rate_pct
+    label: 'Subscriber Click Rate'
+    group_label: 'Subscribers'
     type: number
-    sql: ${email_open_cnt}/NULLIF(${email_send_cnt},0)
+    sql: cast( ${subscriber_clicked_cnt} as float)/NULLIF(${subscriber_cnt},0)
     value_format: '0.00%'
-    description: 'Opens / Sends'
+    description: 'Subscribers Clicked / Subscribers'
     
-  - measure: click_rate_pct
-    label: 'Click Rate (Opens)'
-    type: number
-    sql: ${email_click_cnt}/NULLIF(${email_open_cnt},0)
-    value_format: '0.00%'
-    description: 'Clicks / Opens'
+  - measure: subscriber_unsub_cnt
+    label: 'Subscribers Unsubed'
+    group_label: 'Subscribers'
+    type: count_distinct
+    sql: nullif( ${subscriber_id} * ${unsub_bt}, 0 )
+    description: 'Distinct Subscribers Who Unsubed.'
     
-  - measure: click_rate_send_pct
-    label: 'Click Rate (Sends)'
+  - measure: subscriber_unsub_rate_pct
+    label: 'Subscribers Unsub Rate'
+    group_label: 'Subscribers'
     type: number
-    sql: ${email_click_cnt}/NULLIF(${email_send_cnt},0)
+    sql: cast( ${subscriber_unsub_cnt} as float )/NULLIF(${subscriber_cnt},0)
     value_format: '0.00%'
-    description: 'Clicks / Sends'
-    
-  - measure: complaint_rate_pct
-    label: 'Complaint Rate'
-    type: number
-    sql: ${email_complaint_cnt}/NULLIF(${email_send_cnt},0)
-    value_format: '0.00%'
-    description: 'Complaints / Sends'
-    
-  - measure: unsubs_rate_pct
-    label: 'Unsubscribe Rate'
-    type: number
-    sql: ${email_unsub_cnt}/NULLIF(${email_send_cnt},0)
-    value_format: '0.00%'
-    description: 'Unsubscribers / Sends'
+    description: 'Subscribers Unsubed / Subscribers'
 
   - measure: avg_subscriber_sends
     label: 'Avg Subscriber Sends'
+    group_label: 'Subscribers'
     type: number
     value_format_name: decimal_1
     sql: ${email_send_cnt} / nullif( ${subscriber_cnt}, 0 )
@@ -150,6 +182,7 @@
     
   - measure: avg_subscriber_opens
     label: 'Avg Subscriber Opens'
+    group_label: 'Subscribers'
     type: number
     value_format_name: decimal_1
     sql: ${email_open_cnt} / nullif( ${subscriber_cnt}, 0 )
@@ -157,6 +190,7 @@
     
   - measure: avg_subscriber_clicks
     label: 'Avg Subscriber Clicks'
+    group_label: 'Subscribers'
     type: number
     value_format_name: decimal_1
     sql: ${email_open_cnt} / nullif( ${subscriber_cnt}, 0 )
