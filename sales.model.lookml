@@ -8,7 +8,7 @@
 - explore: order_line_f
   label: 'Order Line Sales'
   view_label: '1) Measures'
-  persist_for: 4 hours
+  persist_for: 1 hours
   always_join: [order_line_status_dm]
   always_filter:
     order_line_status_dm.master_line_status_name: 'Demand'
@@ -23,20 +23,20 @@
       from: date_dm
       view_label: '2) Date Ordered'
       sql_on: ${order_date_dm.date_sid} = ${order_line_f.order_date_sid}
-      type: left_outer
+      type: inner
       relationship: many_to_one
 
     - join: ship_date_dm
       from: date_dm
       view_label: '3) Date Shipped'
       sql_on: ${ship_date_dm.date_sid} = ${order_line_f.ship_date_sid}
-      type: left_outer
+      type: inner
       relationship: many_to_one
 
     - join: sales_channel_dm
       view_label: '4) Sales Channel'
       sql_on: ${sales_channel_dm.sales_channel_shk} = ${order_line_f.sales_channel_shk}
-      type: left_outer
+      type: inner
       relationship: many_to_one
 
     - join: product_dm
