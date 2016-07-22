@@ -1,4 +1,4 @@
-- label:      'Email Performance (validation)'
+- label:      'Email Performance'
 - connection: edwrpt
 
 - include: '*.view.lookml'       # include all the views
