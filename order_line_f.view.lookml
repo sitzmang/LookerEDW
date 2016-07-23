@@ -47,18 +47,18 @@
     description: 'Distinct SKU Count'
 
   - measure: product_cost_amt
-    label: 'Product Cost Amt'
+    label: 'Product Cost $'
     type: sum
     value_format_name: usd
     sql: ${TABLE}.PRODUCT_COST_AMT
-    description: 'Product cost amount.'
+    description: 'Product Cost Amount.'
 
   - measure: product_margin_amt
-    label: 'Product Margin Amt'
+    label: 'Product Margin $'
     type: sum
     value_format_name: usd
     sql: ${TABLE}.PRODUCT_MARGIN_AMT
-    description: 'Product margin amount.'
+    description: 'Product Margin Amount.'
 
   - measure: product_margin_pct
     label: 'Product Margin %'
@@ -68,70 +68,70 @@
     description: 'Product Margin / Product Sales.'
 
   - measure: product_sales_amt
-    label: 'Product Sales Amt'
+    label: 'Product Sales $'
     type: sum
     value_format_name: usd
     sql: ${TABLE}.PRODUCT_SALES_AMT
     description: 'Price paid for product after discounts.'
 
   - measure: product_sales_amt_prev
-    label: 'Product Sales Amt'
+    label: 'Product Sales $'
     view_label: '1b) % Prev'
     type: percent_of_previous
     value_format: '0.0\%'
     sql: ${product_sales_amt}
 
   - measure: product_sales_amt_pttl
-    label: 'Product Sales Amt'
+    label: 'Product Sales $'
     view_label: '1c) % Total'
     type: percent_of_total
     value_format: '0.0\%'
     sql: ${product_sales_amt}
   
   - measure: shipping_sales_amt
-    label: 'Shipping Sales Amt'
+    label: 'Shipping Sales $'
     type: sum
     value_format_name: usd_0
     sql: ${TABLE}.SHIPPING_SALES_AMT
     description: 'Price paid for shipping after discounts.'
 
   - measure: shipping_sales_amt_prev
-    label: 'Shipping Sales Amt'
+    label: 'Shipping Sales $'
     view_label: '1b) % Prev'
     type: percent_of_previous
     value_format: '0.0\%'
     sql: ${shipping_sales_amt}
 
   - measure: shipping_sales_amt_pttl
-    label: 'Shipping Sales Amt'
+    label: 'Shipping Sales $'
     view_label: '1c) % Total'
     type: percent_of_total
     value_format: '0.0\%'
     sql: ${shipping_sales_amt}
   
   - measure: sales_amt
-    label: 'Sales Amt'
+    label: 'Sales $'
     type: sum
     value_format_name: usd
     sql: ${TABLE}.SALES_AMT
     description: 'Product Sales + Shipping Sales'
 
   - measure: sales_amt_prev
-    label: 'Sales Amt'
+    label: 'Sales $'
     view_label: '1b) % Prev'
     type: percent_of_previous
     value_format: '0.0\%'
     sql: ${sales_amt}
 
   - measure: sales_amt_pttl
-    label: 'Sales Amt'
+    label: 'Sales $'
     view_label: '1c) % Total'
     type: percent_of_total
     value_format: '0.0\%'
     sql: ${sales_amt}
   
   - measure: sales_tax_amt
-    label: 'Sales Tax Amt'
+    label: 'Sales Tax $'
     type: sum
     value_format_name: usd_0
     sql: ${TABLE}.sales_tax_amt
