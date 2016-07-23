@@ -46,6 +46,27 @@
     sql: ${TABLE}.product_shk
     description: 'Distinct SKU Count'
 
+  - measure: product_cost_amt
+    label: 'Product Cost Amt'
+    type: sum
+    value_format_name: usd
+    sql: ${TABLE}.PRODUCT_COST_AMT
+    description: 'Product cost amount.'
+
+  - measure: product_margin_amt
+    label: 'Product Margin Amt'
+    type: sum
+    value_format_name: usd
+    sql: ${TABLE}.PRODUCT_MARGIN_AMT
+    description: 'Product margin amount.'
+
+  - measure: product_margin_pct
+    label: 'Product Margin %'
+    type: number
+    value_format_name: percent_1
+    sql: ${product_margin_amt} / nullif( ${product_sales_amt}, 0 )
+    description: 'Product Margin / Product Sales.'
+
   - measure: product_sales_amt
     label: 'Product Sales Amt'
     type: sum
@@ -205,16 +226,6 @@
   - dimension: pct_off_discount_amt
     type: string
     sql: ${TABLE}.PCT_OFF_DISCOUNT_AMT
-    hidden: true
-
-  - dimension: product_cost_amt
-    type: string
-    sql: ${TABLE}.PRODUCT_COST_AMT
-    hidden: true
-
-  - dimension: product_margin_amt
-    type: string
-    sql: ${TABLE}.PRODUCT_MARGIN_AMT
     hidden: true
 
   - dimension: product_shk
