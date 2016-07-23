@@ -156,6 +156,13 @@
     sql: ${unit_cnt} / nullif( ${order_cnt}, 0 )
     description: 'Units / Orders'
     
+  - measure: avg_customer_product_margin_amt
+    label: 'Avg Customer Product Margin $'
+    type: number
+    value_format_name: usd
+    sql: ${product_margin_amt} / nullif( ${customer_cnt}, 0 )
+    description: 'Product Margin / Customers'
+    
   - measure: avg_customer_amt
     label: 'Avg Customer Product $'
     type: number
