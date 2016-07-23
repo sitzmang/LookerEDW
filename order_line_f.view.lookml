@@ -163,8 +163,15 @@
     sql: ${product_margin_amt} / nullif( ${customer_cnt}, 0 )
     description: 'Product Margin / Customers'
     
+  - measure: avg_customer_sales_amt
+    label: 'Avg Customer Sales $'
+    type: number
+    value_format_name: usd
+    sql: ${sales_amt} / nullif( ${customer_cnt}, 0 )
+    description: 'Sales / Customers'
+    
   - measure: avg_customer_amt
-    label: 'Avg Customer Product $'
+    label: 'Avg Customer Product Sales $'
     type: number
     value_format_name: usd
     sql: ${product_sales_amt} / nullif( ${customer_cnt}, 0 )
@@ -178,7 +185,7 @@
     description: 'Units / Customers'
     
   - measure: avg_sku_amt
-    label: 'Avg SKU Product $'
+    label: 'Avg SKU Product Sales $'
     type: number
     value_format_name: usd
     sql: ${product_sales_amt} / nullif( ${sku_cnt}, 0 )
@@ -192,7 +199,7 @@
     description: 'Units / SKUs'
     
   - measure: avg_unit_amt
-    label: 'Avg Unit Product $'
+    label: 'Avg Unit Product Sales $'
     type: number
     value_format_name: usd
     sql: ${product_sales_amt} / nullif( ${unit_cnt}, 0 )
