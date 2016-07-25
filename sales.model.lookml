@@ -8,7 +8,7 @@
 - explore: order_line_f
   label: 'Order Line Sales'
   view_label: '1) Measures'
-  persist_for: 1 hours
+  persist_for: 4 hours
   always_join: [order_line_status_dm]
   always_filter:
     order_line_status_dm.master_line_status_name: 'Demand'

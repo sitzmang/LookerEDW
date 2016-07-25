@@ -8,7 +8,7 @@
 - explore: em_send_f
   label: 'Email Sends'
   view_label: '1) Measures'
-  persist_for: 1 hours
+  persist_for: 4 hours
   always_join: [et_send_jobs]
   joins:
     - join: send_date_dm
