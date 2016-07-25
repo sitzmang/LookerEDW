@@ -1,5 +1,5 @@
 - view: em_send_f
-  sql_table_name: RPT.MAIN.EM_SEND_F
+  sql_table_name: RPT.MAIN.GS_EM_SEND_F
   fields:
 
 #-- fk
