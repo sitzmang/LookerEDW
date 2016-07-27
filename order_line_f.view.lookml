@@ -42,7 +42,7 @@
     label: 'SKUs'
     description: 'Unique count of SKUs.'
     type: count_distinct
-    value_format_name: decimal_0
+    value_format_name: decimal_2
     sql: ${TABLE}.product_shk
     description: 'Distinct SKU Count'
 
@@ -139,7 +139,7 @@
   - measure: unit_cnt
     label: 'Units'
     type: sum
-    value_format_name: decimal_0
+    value_format_name: decimal_2
     sql: ${TABLE}.UNIT_CNT
 
   - measure: avg_order_amt

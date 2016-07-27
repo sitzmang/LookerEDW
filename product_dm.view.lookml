@@ -20,6 +20,7 @@
     label: 'Author'
     type: string
     sql: ${TABLE}.AUTHOR_CD
+    drill_fields: [sku]
 
   - dimension: category_cd
     type: string
@@ -30,6 +31,7 @@
     label: 'Category Name'
     type: string
     sql: ${TABLE}.CATEGORY_NAME
+    drill_fields: [sku]
 
   - dimension: div_subject_cd
     type: string
@@ -40,17 +42,20 @@
     label: 'Div Subject Name'
     type: string
     sql: ${TABLE}.DIV_SUBJECT_NAME
+    drill_fields: [sku]
 
   - dimension: division_cd
     label: 'Division Cd'
     type: string
     sql: ${TABLE}.DIVISION_CD
+    drill_fields: [sku]
     hidden: false
 
   - dimension: division_name
     label: 'Division Name'
     type: string
     sql: ${TABLE}.DIVISION_NAME
+    drill_fields: [sku]
 
   - dimension: imprint_cd
     type: string
@@ -61,6 +66,7 @@
     label: 'Imprint Name'
     type: string
     sql: ${TABLE}.IMPRINT_NAME
+    drill_fields: [sku]
 
   - dimension: medium_cd
     type: string
@@ -71,6 +77,7 @@
     label: 'Medium Name'
     type: string
     sql: ${TABLE}.MEDIUM_NAME
+    drill_fields: [sku]
 
   - dimension: product_group_cd
     type: string
@@ -81,6 +88,7 @@
     label: 'Product Group Name'
     type: string
     sql: ${TABLE}.PRODUCT_GROUP_NAME
+    drill_fields: [sku]
 
   - dimension: community_name
     label: '   Community Name'
@@ -94,13 +102,14 @@
     group_label: 'Community'
     type: string
     sql: ${TABLE}.BRAND_NAME
-    drill_fields: [profit_centre_name, profit_centre_cd]
+    drill_fields: [sku,profit_centre_name, profit_centre_cd]
 
   - dimension: profit_centre_cd
     label: ' Profit Center Cd'
     group_label: 'Community'
     type: string
     sql: ${TABLE}.PROFIT_CENTRE_CD
+    drill_fields: [sku]
     hidden: false
 
   - dimension: profit_centre_name
@@ -108,6 +117,7 @@
     group_label: 'Community'
     type: string
     sql: ${TABLE}.PROFIT_CENTRE_NAME
+    drill_fields: [sku]
 
   - dimension: sku
     label: 'SKU'
@@ -128,6 +138,7 @@
     label: 'Subject1 Name'
     type: string
     sql: ${TABLE}.SUBJECT_1_NAME
+    drill_fields: [sku]
 
 
   # ----- Sets of fields for drilling ------
