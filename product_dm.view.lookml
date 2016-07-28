@@ -4,11 +4,6 @@
 
 #-- pk
 
-  - dimension: src_product_id
-    type: string
-    sql: ${TABLE}.SRC_PRODUCT_ID
-    hidden: true
-
   - dimension: product_shk
     type: string
     sql: ${TABLE}.PRODUCT_SHK
@@ -118,6 +113,12 @@
     type: string
     sql: ${TABLE}.PROFIT_CENTRE_NAME
     drill_fields: [sku]
+
+  - dimension: src_product_id
+    label: 'SBN'
+    type: string
+    sql: ${TABLE}.SRC_PRODUCT_ID
+    hidden: false
 
   - dimension: sku
     label: 'SKU'
