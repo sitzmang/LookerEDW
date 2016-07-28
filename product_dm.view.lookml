@@ -92,21 +92,21 @@
 
   - dimension: community_name
     label: '   Community Name'
-    group_label: 'Community'
+    group_label: 'Community Hierarchy'
     type: string
     sql: ${TABLE}.COMMUNITY_NAME
     drill_fields: [brand_name, profit_centre_name, profit_centre_cd]
 
   - dimension: brand_name
     label: '  Brand Name'
-    group_label: 'Community'
+    group_label: 'Community Hierarchy'
     type: string
     sql: ${TABLE}.BRAND_NAME
     drill_fields: [sku,profit_centre_name, profit_centre_cd]
 
   - dimension: profit_centre_cd
     label: ' Profit Center Cd'
-    group_label: 'Community'
+    group_label: 'Community Hierarchy'
     type: string
     sql: ${TABLE}.PROFIT_CENTRE_CD
     drill_fields: [sku]
@@ -114,7 +114,7 @@
 
   - dimension: profit_centre_name
     label: ' Profit Center Name'
-    group_label: 'Community'
+    group_label: 'Community Hierarchy'
     type: string
     sql: ${TABLE}.PROFIT_CENTRE_NAME
     drill_fields: [sku]
