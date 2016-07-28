@@ -11,10 +11,10 @@
 
 #-- dimensions
 
-  - dimension: mage_order_no
+  - dimension: web_order_no
     label: 'Web Order No'
     type: string
-    sql: ${TABLE}.MAGE_ORDER_NO
+    sql: ${TABLE}.WEB_ORDER_NO
 
   - dimension: order_prefix
     type: string
