@@ -198,7 +198,14 @@
     sql: ${unit_cnt} / nullif( ${sku_cnt}, 0 )
     description: 'Units / SKUs'
     
-  - measure: avg_unit_amt
+  - measure: avg_unit_product_cost_amt
+    label: 'Avg Unit Product Cost $'
+    type: number
+    value_format_name: usd
+    sql: ${product_cost_amt} / nullif( ${unit_cnt}, 0 )
+    description: 'Product Cost / Units'
+    
+  - measure: avg_unit_productg_sales_amt
     label: 'Avg Unit Product Sales $'
     type: number
     value_format_name: usd
