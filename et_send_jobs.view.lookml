@@ -1,5 +1,5 @@
 - view: et_send_jobs
-  sql_table_name: exacttarget.main.et_send_jobs
+  sql_table_name: rpt.main.et_send_jobs
   fields:
 
 #-- fk
