@@ -28,6 +28,21 @@
     sql: ${TABLE}.CATEGORY_NAME
     drill_fields: [sku]
 
+  - dimension: current_product_cost_amt
+    label: 'Current Product Cost $'
+    type: number
+    value_format_name: usd
+    sql: ${TABLE}.CURR_PRODUCT_COST_AMT
+    description: 'Current Product Cost Amount.'
+
+  - dimension: current_product_cost_amt_tier
+    label: 'Current Product Cost $ Tier'
+    type: tier
+    tiers: [0,1,10,20,30,40,50,75,100,200,300]
+    style: integer
+    sql: ${current_product_cost_amt}
+    value_format: '$#,##0'
+
   - dimension: div_subject_cd
     type: string
     sql: ${TABLE}.DIV_SUBJECT_CD
@@ -113,6 +128,11 @@
     type: string
     sql: ${TABLE}.PROFIT_CENTRE_NAME
     drill_fields: [sku]
+
+  - dimension: intro_dt
+    label: 'Published Date'
+    type: date_date
+    sql: ${TABLE}.PUB_DATE
 
   - dimension: src_product_id
     label: 'SBN'
