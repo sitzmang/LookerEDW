@@ -23,7 +23,8 @@
 
   - dimension: date_joined
     label: 'Joined Date'
-    type: date_date
+    type: time
+    timeframes: [hour_of_day, day_of_week, date, week, month, year]
     sql: ${TABLE}.date_joined
     
   - dimension: join_type
