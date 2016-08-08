@@ -67,6 +67,19 @@
     sql: ${TABLE}.DIVISION_NAME
     drill_fields: [sku]
 
+  - dimension: edition_type_cd
+    label: 'Edition Type Cd'
+    type: string
+    sql: ${TABLE}.edition_type_cd
+    drill_fields: [sku]
+    hidden: true
+
+  - dimension: edition_type_name
+    label: 'Edition Type Name'
+    type: string
+    sql: ${TABLE}.edition_type_name
+    drill_fields: [sku]
+
   - dimension: imprint_cd
     type: string
     sql: ${TABLE}.IMPRINT_CD
@@ -87,7 +100,7 @@
     label: 'Medium Name'
     type: string
     sql: ${TABLE}.MEDIUM_NAME
-    drill_fields: [sku]
+    drill_fields: [edition_type_name, sku]
 
   - dimension: product_group_cd
     type: string
