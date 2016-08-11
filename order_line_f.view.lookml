@@ -42,7 +42,7 @@
     label: 'SKUs'
     description: 'Unique count of SKUs.'
     type: count_distinct
-    value_format_name: decimal_2
+    value_format_name: decimal_0
     sql: ${TABLE}.product_shk
     description: 'Distinct SKU Count'
 
