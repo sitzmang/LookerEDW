@@ -40,11 +40,24 @@
 
   - measure: sku_cnt
     label: 'SKUs'
-    description: 'Unique count of SKUs.'
     type: count_distinct
     value_format_name: decimal_0
     sql: ${TABLE}.product_shk
     description: 'Distinct SKU Count'
+
+  - measure: order_date_cnt
+    label: 'Days-Order Dates'
+    type: count_distinct
+    value_format_name: decimal_0
+    sql: ${TABLE}.order_date_sid
+    description: 'Distinct Order Date Count'
+
+  - measure: ship_date_cnt
+    label: 'Days-Ship Dates'
+    type: count_distinct
+    value_format_name: decimal_0
+    sql: ${TABLE}.ship_date_sid
+    description: 'Distinct Ship Date Count'
 
   - measure: product_cost_amt
     label: 'Product Cost $'

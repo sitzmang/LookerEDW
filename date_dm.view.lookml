@@ -179,11 +179,11 @@
     hidden: true
 
   - dimension: iso_month_dt
+    label: 'ISO Month Date'
     group_label: 'ISO'
-    type: time
-    convert_tz: false
+    type: date_date
     sql: ${TABLE}.ISO_MONTH_DT
-    hidden: true
+    hidden: false
 
   - dimension: iso_month_label
     label: 'ISO Month Label'
@@ -210,6 +210,13 @@
     group_label: 'ISO'
     type: string
     sql: ${TABLE}.ISO_PTD_LABEL
+    hidden: false
+
+  - dimension: iso_quarter_dt
+    label: 'ISO Quarter Date'
+    group_label: 'ISO'
+    type: date_date
+    sql: ${TABLE}.ISO_QUARTER_DT
     hidden: false
 
   - dimension: iso_quarter_day_no
@@ -241,11 +248,18 @@
     hidden: true
 
   - dimension: iso_week_dt
+    label: 'ISO Week Date'
     group_label: 'ISO'
-    type: time
-    convert_tz: false
-    sql: ${TABLE}.ISO_WEEK_ENDING_DT
-    hidden: true
+    type: date_date
+    sql: ${TABLE}.ISO_WEEK_DT
+    hidden: false
+
+  - dimension: iso_year_dt
+    label: 'ISO Year Date'
+    group_label: 'ISO'
+    type: date_date
+    sql: ${TABLE}.ISO_YEAR_DT
+    hidden: false
 
   - dimension: iso_year_day_no
     label: 'ISO Year Day No'
