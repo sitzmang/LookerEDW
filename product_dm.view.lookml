@@ -154,13 +154,25 @@
     sql: ${TABLE}.SRC_PRODUCT_ID
     hidden: false
 
+  - dimension: isbn_10_no
+    label: 'ISBN 10'
+    type: string
+    sql: ${TABLE}.ISBN_10_NO
+    hidden: false
+
+  - dimension: isbn_13_no
+    label: 'ISBN 13'
+    type: string
+    sql: ${TABLE}.ISBN_13_NO
+    hidden: false
+
   - dimension: sku
     label: 'SKU'
     type: string
     sql: ${TABLE}.SKU
 
   - dimension: product_name
-    label: 'SKU Name'
+    label: 'SKU Name/Title'
     type: string
     sql: ${TABLE}.PRODUCT_NAME
 
