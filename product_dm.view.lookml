@@ -143,7 +143,7 @@
     drill_fields: [sku]
 
   - dimension: intro_dt
-    label: 'Published Date'
+    label: 'Published'
     type: time
     timeframes: [day_of_week, date, week, month, month_name, month_num, year]
     sql: ${TABLE}.PUB_DATE
