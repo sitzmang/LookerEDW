@@ -145,7 +145,7 @@
   - dimension: intro_dt
     label: 'Published Date'
     type: time
-    timeframes: [day_of_week, date, week, month, year]
+    timeframes: [day_of_week, date, week, month, month_name, month_num, year]
     sql: ${TABLE}.PUB_DATE
 
   - dimension: src_product_id

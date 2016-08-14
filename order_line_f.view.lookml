@@ -225,6 +225,13 @@
     sql: ${product_sales_amt} / nullif( ${unit_cnt}, 0 )
     description: 'Product Sales / Units'
     
+  - measure: avg_unit_product_sales_amt_prev
+    label: 'Avg Unit Product Sales $'
+    view_label: '1b) % Prev'
+    type: percent_of_previous
+    value_format: '0.0\%'
+    sql: ${avg_unit_productg_sales_amt}
+
 #-- other
 
   - dimension: billing_state_shk
