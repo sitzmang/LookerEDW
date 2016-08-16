@@ -45,15 +45,39 @@
     sql: ${TABLE}.product_shk
     description: 'Distinct SKU Count'
 
+  - measure: first_order_dt
+    label: 'Order Date:First'
+    type: date
+    sql: min( ${order_date_dm.cal_dt} )
+    description: 'Earliest Order Date'
+
+  - measure: last_order_dt
+    label: 'Order Date:Last'
+    type: date
+    sql: max( ${order_date_dm.cal_dt} )
+    description: 'Latest Order Date'
+
   - measure: order_date_cnt
-    label: 'Days-Order Dates'
+    label: 'Order Date:Days'
     type: count_distinct
     value_format_name: decimal_0
     sql: ${TABLE}.order_date_sid
     description: 'Distinct Order Date Count'
 
+  - measure: first_ship_dt
+    label: 'Ship Date:First'
+    type: date
+    sql: min( ${ship_date_dm.cal_dt} )
+    description: 'Earliest Ship Date'
+
+  - measure: last_ship_dt
+    label: 'Ship Date:Last'
+    type: date
+    sql: max( ${ship_date_dm.cal_dt} )
+    description: 'Latest Ship Date'
+
   - measure: ship_date_cnt
-    label: 'Days-Ship Dates'
+    label: 'Ship Date:Days'
     type: count_distinct
     value_format_name: decimal_0
     sql: ${TABLE}.ship_date_sid
@@ -155,15 +179,22 @@
     value_format_name: decimal_2
     sql: ${TABLE}.UNIT_CNT
 
-  - measure: avg_order_amt
-    label: 'AOV Product $'
+  - measure: avg_order_product_sales_amt
+    label: 'AOV Product Sales $'
     type: number
     value_format_name: usd
     sql: ${product_sales_amt} / nullif( ${order_cnt}, 0 )
     description: 'Product Sales / Orders'
     
+  - measure: avg_order_sales_amt
+    label: 'AOV Sales $'
+    type: number
+    value_format_name: usd
+    sql: ${sales_amt} / nullif( ${order_cnt}, 0 )
+    description: 'Sales / Orders'
+    
   - measure: avg_order_unit_cnt
-    label: 'AOU'
+    label: 'Avg Order Units'
     type: number
     value_format_name: decimal_1
     sql: ${unit_cnt} / nullif( ${order_cnt}, 0 )
@@ -262,6 +293,11 @@
   - dimension: order_shk
     type: string
     sql: ${TABLE}.ORDER_SHK
+    hidden: true
+
+  - dimension: order_line_shk
+    type: string
+    sql: ${TABLE}.ORDER_LINE_SHK
     hidden: true
 
   - dimension: pct_off_discount_amt
