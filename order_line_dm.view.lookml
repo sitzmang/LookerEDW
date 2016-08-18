@@ -1,5 +1,5 @@
 - view: order_line_dm
-  sql_table_name: MAIN.ORDER_LINE_DM
+  sql_table_name: RPT.MAIN.ORDER_LINE_DM
   fields:
 
 #-- pk

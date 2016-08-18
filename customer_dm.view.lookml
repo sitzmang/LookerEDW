@@ -1,5 +1,5 @@
 - view: customer_dm
-  sql_table_name: MAIN.CUSTOMER_DM
+  sql_table_name: RPT.MAIN.CUSTOMER_DM
   fields:
 
 #-- fk

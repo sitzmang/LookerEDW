@@ -1,5 +1,5 @@
 - view: tyly_dm
-  sql_table_name: MAIN.TYLY_DM
+  sql_table_name: RPT.MAIN.TYLY_DM
   fields:
 
   - dimension: tyly_cd

@@ -1,5 +1,5 @@
 - view: product_dm
-  sql_table_name: MAIN.PRODUCT_DM
+  sql_table_name: RPT.MAIN.PRODUCT_DM
   fields:
 
 #-- pk

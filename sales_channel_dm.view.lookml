@@ -1,5 +1,5 @@
 - view: sales_channel_dm
-  sql_table_name: MAIN.SALES_CHANNEL_DM
+  sql_table_name: RPT.MAIN.SALES_CHANNEL_DM
   fields:
 
 #-- pk

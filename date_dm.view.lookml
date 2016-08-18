@@ -1,5 +1,5 @@
 - view: date_dm
-  sql_table_name: MAIN.DATE_DM
+  sql_table_name: RPT.MAIN.DATE_DM
   fields:
 
   - dimension: cal_date_label
@@ -105,6 +105,12 @@
     value_format: '0'
     sql: ${TABLE}.CAL_YEAR_DAY_NO
 
+  - dimension: cal_year_month_dt
+    label: 'Cal Year Month Date'
+    group_label: 'Calendar'
+    type: date_date
+    sql: ${TABLE}.CAL_YEAR_MONTH_DT
+
   - dimension: cal_year_month_no
     group_label: 'Calendar'
     type: number
@@ -118,6 +124,12 @@
     value_format: '0'
     sql: ${TABLE}.CAL_YEAR_NO
     drill_fields: [cal_year_quarter_no,cal_year_month_no,cal_year_day_no,cal_dt]
+
+  - dimension: cal_year_quarter_dt
+    label: 'Cal Year Quarter Date'
+    group_label: 'Calendar'
+    type: date_date
+    sql: ${TABLE}.CAL_YEAR_QUARTER_DT
 
   - dimension: cal_year_quarter_label
     group_label: 'Calendar'
@@ -273,7 +285,8 @@
     group_label: 'ISO'
     type: date_date
     sql: ${TABLE}.iso_year_month_dt
-
+    
+  
   - dimension: iso_year_month_no
     label: 'ISO Year Month No'
     group_label: 'ISO'

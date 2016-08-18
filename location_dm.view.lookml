@@ -1,5 +1,5 @@
 - view: location_dm
-  sql_table_name: MAIN.STATE_DM
+  sql_table_name: RPT.MAIN.STATE_DM
   fields:
 
 

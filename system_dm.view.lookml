@@ -1,5 +1,5 @@
 - view: system_dm
-  sql_table_name: MAIN.SYSTEM_DM
+  sql_table_name: RPT.MAIN.SYSTEM_DM
   fields:
 
 #-- pk
