@@ -10,7 +10,7 @@
   - dimension: cal_dt
     label: 'Cal Date'
     type: date_date
-    sql: ${TABLE}.CAL_DT
+    sql: ${TABLE}.cal_dt
 
   - dimension: cal_itd_day_no
     group_label: 'Calendar'
@@ -46,9 +46,8 @@
 
   - dimension: cal_month_dt
     group_label: 'Calendar'
-    type: time
-    convert_tz: false
-    sql: ${TABLE}.CAL_MONTH_DT
+    type: date_date
+    sql: ${TABLE}.cal_month_dt
     hidden: true
 
   - dimension: cal_month_label
@@ -109,7 +108,7 @@
     label: 'Cal Year Month Date'
     group_label: 'Calendar'
     type: date_date
-    sql: ${TABLE}.CAL_YEAR_MONTH_DT
+    sql: ${TABLE}.cal_year_month_dt
 
   - dimension: cal_year_month_no
     group_label: 'Calendar'
@@ -129,7 +128,7 @@
     label: 'Cal Year Quarter Date'
     group_label: 'Calendar'
     type: date_date
-    sql: ${TABLE}.CAL_YEAR_QUARTER_DT
+    sql: ${TABLE}.cal_year_quarter_dt
 
   - dimension: cal_year_quarter_label
     group_label: 'Calendar'
