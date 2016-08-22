@@ -17,6 +17,29 @@
     sql: ${TABLE}.AUTHOR_CD
     drill_fields: [sku]
 
+  - dimension: in_warehouse_unit_cnt
+    label: 'Inv:In-Warehouse Units'
+    type: number
+    value_format_name: decimal_0
+    sql: ${TABLE}.in_warehouse_unit_cnt
+    description: 'Total Units Available to Ship'
+    hidden: true
+
+  - dimension: reserved_unit_cnt
+    label: 'Inv:Reserved Units'
+    type: number
+    value_format_name: decimal_0
+    sql: ${TABLE}.reserved_unit_cnt
+    description: 'Units Reserved for Open Orders'
+    hidden: true
+
+  - dimension: available_to_sell_unit_cnt
+    label: 'Inv:Avail. to Sell Units'
+    type: number
+    value_format_name: decimal_0
+    sql: ${TABLE}.available_to_sell_unit_cnt
+    description: 'In-warehouse Units - Reserved Units'
+
   - dimension: category_cd
     type: string
     sql: ${TABLE}.CATEGORY_CD

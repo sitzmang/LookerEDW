@@ -26,6 +26,11 @@
     type: string
     sql: ${TABLE}.first_name
 
+  - dimension: full_name
+    label: 'Full Name'
+    type: string
+    sql: ${TABLE}.full_name
+
   - dimension: last_name
     label: 'Last Name'
     type: string
