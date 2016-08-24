@@ -40,6 +40,22 @@
     sql: ${TABLE}.available_to_sell_unit_cnt
     description: 'In-warehouse Units - Reserved Units'
 
+  - dimension: book_type_cd
+    type: string
+    sql: ${TABLE}.book_type_cd
+    hidden: true
+
+  - dimension: book_type_name
+    type: string
+    sql: ${TABLE}.book_type_name
+    hidden: true
+
+  - dimension: physical_product_fl
+    label: 'Physical Product'
+    type: yesno
+    sql: case when ${book_type_cd} in ( '1','4','5' ) then 1 else 0 end = 1
+    description: 'Physical Product to Ship'
+
   - dimension: category_cd
     type: string
     sql: ${TABLE}.CATEGORY_CD
@@ -198,6 +214,21 @@
     label: 'SKU Name/Title'
     type: string
     sql: ${TABLE}.PRODUCT_NAME
+
+  - dimension: sku_weight_no
+    label: 'SKU Weight(lbs)'
+    type: number
+    value_format_name: decimal_3
+    sql: ${TABLE}.sku_weight_no
+    description: 'Actual SKU Weight in Pounds'
+
+  - dimension: sku_weight_no_tier
+    label: 'SKU Weight(lbs) Tier'
+    type: tier
+    tiers: [0,1,2,3,4,5,10,15,20,25,30,35]
+    style: integer
+    sql: ceil( ${sku_weight_no} )
+    value_format: '#,##0'
 
   - dimension: subject_1_cd
     type: string
