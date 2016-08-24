@@ -98,6 +98,12 @@
     sql: ${TABLE}.CAL_WEEKEND_FL
     hidden: true
 
+  - dimension: cal_year_dt
+    label: 'Cal Year Date'
+    group_label: 'Calendar'
+    type: date_date
+    sql: date_trunc( 'year', ${TABLE}.cal_dt )
+
   - dimension: cal_year_day_no
     group_label: 'Calendar'
     type: number
