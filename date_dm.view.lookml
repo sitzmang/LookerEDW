@@ -6,6 +6,7 @@
     group_label: 'Calendar'
     type: string
     sql: ${TABLE}.CAL_DATE_LABEL
+    can_filter: false
 
   - dimension: cal_dt
     label: 'Cal Date'
@@ -54,6 +55,7 @@
     group_label: 'Calendar'
     type: string
     sql: ${TABLE}.CAL_MONTH_LABEL
+    can_filter: false
 
   - dimension: cal_ptd_bt
     group_label: 'Calendar'
@@ -67,6 +69,7 @@
     type: string
     sql: ${TABLE}.CAL_PTD_LABEL
     hidden: false
+    can_filter: false
 
   - dimension: cal_quarter_day_no
     group_label: 'Calendar'
@@ -208,6 +211,7 @@
     type: string
     sql: ${TABLE}.ISO_MONTH_LABEL
     hidden: false
+    can_filter: false
 
   - dimension: iso_month_week_no
     group_label: 'ISO'
@@ -340,6 +344,7 @@
     type: string
     sql: ${TABLE}.ISO_WEEK_LABEL
     hidden: false
+    can_filter: false
 
   - dimension: iso_year_week_no
     label: 'ISO Year Week No'
