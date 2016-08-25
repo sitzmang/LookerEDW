@@ -69,7 +69,6 @@
     type: string
     sql: ${TABLE}.CAL_PTD_LABEL
     hidden: false
-    can_filter: false
 
   - dimension: cal_quarter_day_no
     group_label: 'Calendar'
