@@ -249,6 +249,13 @@
     sql: ${product_cost_amt} / nullif( ${unit_cnt}, 0 )
     description: 'Product Cost / Units'
     
+  - measure: avg_unit_product_margin_amt
+    label: 'Avg Unit Product Margin $'
+    type: number
+    value_format_name: usd
+    sql: ${product_margin_amt} / nullif( ${unit_cnt}, 0 )
+    description: 'Product Margin / Units'
+    
   - measure: avg_unit_productg_sales_amt
     label: 'Avg Unit Product Sales $'
     type: number
