@@ -83,6 +83,13 @@
     sql: ${TABLE}.ship_date_sid
     description: 'Distinct Ship Date Count'
 
+  - measure: avg_order_to_ship_day_cnt
+    label: 'Ship Date:Avg Order to Ship Days'
+    type: avg
+    value_format_name: decimal_0
+    sql: datediff( day, ${order_date_dm.cal_dt}, ${ship_date_dm.cal_dt} )
+    description: 'Avg Days from Order to Ship Date'
+
   - measure: product_cost_amt
     label: 'Product Cost $'
     type: sum
