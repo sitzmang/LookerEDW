@@ -62,6 +62,21 @@
     type: count
     description: 'Count of subscriber emails sent.'
     
+  - measure: email_unsub_cnt
+    label: 'Send Unsubs'
+    group_label: 'Emails'
+    type: sum
+    sql: ${unsub_bt}
+    description: 'Count of unsubs within an email send.'
+    
+  - measure: email_unsub_rate_pct
+    label: 'Send Unsub Rate'
+    group_label: 'Emails'
+    type: number
+    sql: cast( ${email_unsub_cnt} as float )/NULLIF(${email_send_cnt},0)
+    value_format: '0.00%'
+    description: 'Send Unsubs / Sends'
+
   - measure: email_open_cnt
     label: 'Opens'
     group_label: 'Emails'
