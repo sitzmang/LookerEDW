@@ -33,6 +33,20 @@
     sql: ${TABLE}.order_shk
     description: 'Distinct Order Count'
 
+  - measure: order_cnt_prev
+    label: 'Orders'
+    view_label: '1b) % Prev'
+    type: percent_of_previous
+    value_format: '0.0\%'
+    sql: ${order_cnt}
+
+  - measure: order_cnt_pttl
+    label: 'Orders'
+    view_label: '1c) % Total'
+    type: percent_of_total
+    value_format: '0.0\%'
+    sql: ${order_cnt}
+  
   - measure: order_line_cnt
     label: 'Order Lines'
     type: count
