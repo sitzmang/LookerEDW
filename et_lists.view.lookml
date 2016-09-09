@@ -1,5 +1,5 @@
 - view: et_lists
-  sql_table_name: exacttarget.main.et_lists
+  sql_table_name: exacttarget.main.v_et_lists
   fields:
 
 #-- fk
