@@ -53,8 +53,10 @@
     label: 'Email Type'
     type: string
     drill_fields: [email_name]
-    sql: 
-      CASE WHEN ${TABLE}.client_id = 1082723 AND ${TABLE}.email_name LIKE ('ABS%') THEN 'Editorial'
+    sql: |
+      CASE
+            WHEN lower( ${TABLE}.email_name ) LIKE ('%welcome%') THEN 'Welcome Email'
+            WHEN ${TABLE}.client_id = 1082723 AND ${TABLE}.email_name LIKE ('ABS%') THEN 'Editorial'
             WHEN ${TABLE}.client_id = 1082723 AND ${TABLE}.email_name LIKE ('CRE%') THEN 'Editorial'
             WHEN ${TABLE}.client_id = 1302102 AND ${TABLE}.email_name LIKE ('AC%') THEN 'Competition'
             WHEN ${TABLE}.client_id = 1302102 AND ${TABLE}.email_name LIKE ('Acrylic Artist 2016 Reader Survey%') THEN 'Survey'
@@ -448,6 +450,4 @@
             WHEN ${TABLE}.email_name LIKE ('Call for Submissions%') THEN 'Call for Subs'
             WHEN ${TABLE}.email_name LIKE ('Retailer%') THEN 'Retailer'
             WHEN ${TABLE}.email_name LIKE ('Survey Reminder%') THEN 'Survey'
-            WHEN ${TABLE}.email_name LIKE ('Welcome Email%') THEN 'Welcome Email'
-            WHEN ${TABLE}.email_name LIKE ('Welcome Emails%') THEN 'Welcome Email'
             ELSE NULL END
