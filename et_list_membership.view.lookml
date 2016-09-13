@@ -26,7 +26,13 @@
     type: time
     timeframes: [hour_of_day, day_of_week, date, week, month, year]
     sql: ${TABLE}.date_joined
-    
+
+  - dimension: first_send_fl
+    label: 'First Send'
+    type: yesno
+    sql: case when ${date_joined_date} = ${send_date_dm.cal_dt} then 1 else 0 end = 1
+    description: 'Send Date = Joined Date'
+
   - dimension: join_type
     label: 'Joined Type'
     type: string
