@@ -10,6 +10,7 @@
   label: 'Email Sends'
   view_label: '1) Measures'
   persist_for: 8 hours
+  always_join: [em_email_dm]
   joins:
     - join: send_date_dm
       from: date_dm
@@ -31,6 +32,14 @@
       type: left_outer
       relationship: many_to_one
 
+    - join: em_email_dm
+      view_label: 'Email'
+      sql_on: ${em_email_dm.em_email_shk} = ${em_event_f.em_email_shk}
+             and lower( ${em_email_dm.subject_line} ) not like 'test send%'
+             and lower( ${em_email_dm.subject_line} ) not like '[test send%'
+      type: left_outer
+      relationship: many_to_one
+ 
     - join: em_event_type_dm
       view_label: 'Email Event'
       sql_on: ${em_event_type_dm.em_event_type_sid} = ${em_event_f.em_event_type_sid}

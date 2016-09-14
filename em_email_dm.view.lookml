@@ -31,6 +31,7 @@
     label: 'Email Type Cd'
     type: string
     sql: ${TABLE}.email_type_cd
+    hidden: true
 
   - dimension: email_type_name
     label: 'Email Type Name'
