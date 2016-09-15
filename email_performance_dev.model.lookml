@@ -27,6 +27,7 @@
       relationship: many_to_one
 
     - join: sales_channel_dm
+      from: sales_channel_dm_new
       view_label: '4) Sales Channel'
       sql_on: ${sales_channel_dm.sales_channel_shk} = ${em_event_f.sales_channel_shk}
       type: left_outer
