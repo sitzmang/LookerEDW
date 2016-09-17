@@ -9,6 +9,11 @@
     sql: ${TABLE}.sales_channel_shk
     hidden: true
 
+  - dimension: em_bu_shk
+    type: number
+    sql: ${TABLE}.em_bu_shk
+    hidden: true
+
   - dimension: send_date_sid
     type: number
     sql: ${TABLE}.send_date_sid

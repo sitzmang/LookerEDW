@@ -70,3 +70,9 @@
       sql_on: ${em_list_membership_dm.em_list_membership_shk} = ${em_event_f.em_list_membership_shk}
       type: left_outer
       relationship: many_to_one
+
+    - join: em_bu_dm
+      view_label: 'Business Unit'
+      sql_on: ${em_bu_dm.em_bu_shk} = ${em_event_f.em_bu_shk}
+      type: left_outer
+      relationship: many_to_one
