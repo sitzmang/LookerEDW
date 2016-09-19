@@ -62,6 +62,13 @@
     type: count
     description: 'Count of subscriber emails sent.'
     
+  - measure: email_send_cnt_prev
+    label: 'Sends'
+    view_label: '1b) % Prev'
+    type: percent_of_previous
+    value_format: '0.0\%'
+    sql: ${email_send_cnt}
+
   - measure: email_unsub_cnt
     label: 'Send Unsubs'
     group_label: 'Emails'
@@ -147,6 +154,13 @@
     sql: ${subscriber_id}
     description: 'Distinct Subscriber Count'
 
+  - measure: subscriber_cnt_prev
+    label: 'Subscribers'
+    view_label: '1b) % Prev'
+    type: percent_of_previous
+    value_format: '0.0\%'
+    sql: ${subscriber_cnt}
+
   - measure: subscriber_opened_cnt
     label: 'Subscribers Opened'
     group_label: 'Subscribers'
@@ -202,6 +216,13 @@
     sql: ${email_send_cnt} / nullif( ${subscriber_cnt}, 0 )
     description: 'Sends / Subscribers'
     
+  - measure: avg_subscriber_sends_prev
+    label: 'Avg Subscriber Sends'
+    view_label: '1b) % Prev'
+    type: percent_of_previous
+    value_format: '0.0\%'
+    sql: ${avg_subscriber_sends}
+
   - measure: avg_subscriber_opens
     label: 'Avg Subscriber Opens'
     group_label: 'Subscribers'
