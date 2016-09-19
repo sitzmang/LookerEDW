@@ -45,7 +45,7 @@
       view_label: 'List'
       sql_on:    ${et_lists.client_id} = ${em_send_f.client_id}
              and ${et_lists.list_id}   = ${em_send_f.list_id}
-      type: inner
+      type: left_outer
       relationship: many_to_one
 
     - join: et_list_membership
