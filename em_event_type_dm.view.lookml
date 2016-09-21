@@ -17,7 +17,7 @@
     hidden: true
     
   - dimension: event_type_name
-    label: 'Email Type Name'
+    label: 'Email Event Type Name'
     type: string
     sql: ${TABLE}.event_type_name
 
