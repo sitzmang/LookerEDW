@@ -208,7 +208,7 @@
     type: number
     value_format: '$0.0000'
     sql: ${sales_amt} / nullif( ${subscriber_sent_cnt}, 0 )
-    description: 'Sales / Subscribers'
+    description: 'Sales / Subscribers Sent'
     
   - measure: product_margin_amt
     label: 'Product Margin $'
