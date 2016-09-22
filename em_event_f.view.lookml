@@ -4,9 +4,14 @@
 
 #-- fk
 
-  - dimension: sales_channel_shk
+  - dimension: email_sales_channel_shk
     type: number
-    sql: ${TABLE}.sales_channel_shk
+    sql: ${TABLE}.email_sales_channel_shk
+    hidden: true
+
+  - dimension: order_sales_channel_shk
+    type: number
+    sql: ${TABLE}.order_sales_channel_shk
     hidden: true
 
   - dimension: em_bu_shk
@@ -179,7 +184,8 @@
     value_format: '0.00%'
     description: 'Complaints / Sends'
   
-    
+#-- measures file
+
   - measure: sales_amt
     label: 'Sales $'
     group_label: 'Sales'
@@ -188,6 +194,22 @@
     sql: ${TABLE}.SALES_AMT
     description: 'Product Sales + Shipping Sales'
 
+  - measure: rpm_amt
+    label: 'RPM $'
+    group_label: 'Sales'
+    type: number
+    sql: cast( ${sales_amt} as float )/NULLIF(${email_send_cnt},0)
+    value_format: '$0.0000'
+    description: 'Sales / Sends / 1000 = Revenue per 1000 Sent'
+  
+  - measure: avg_subscriber_sales_amt
+    label: 'Avg Subscriber Sales $'
+    group_label: 'Sales'
+    type: number
+    value_format: '$0.0000'
+    sql: ${sales_amt} / nullif( ${subscriber_sent_cnt}, 0 )
+    description: 'Sales / Subscribers'
+    
   - measure: product_margin_amt
     label: 'Product Margin $'
     group_label: 'Sales'

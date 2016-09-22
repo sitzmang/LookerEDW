@@ -21,15 +21,22 @@
 
     - join: event_date_dm
       from: date_dm
-      view_label: '3) Date Event'
+      view_label: '3) Date of Event'
       sql_on: ${event_date_dm.date_sid} = ${em_event_f.event_date_sid}
       type: inner
       relationship: many_to_one
 
-    - join: sales_channel_dm
+    - join: email_sales_channel_dm
       from: sales_channel_dm_new
-      view_label: '4) Sales Channel'
-      sql_on: ${sales_channel_dm.sales_channel_shk} = ${em_event_f.sales_channel_shk}
+      view_label: '4) Sales Channel Email'
+      sql_on: ${email_sales_channel_dm.sales_channel_shk} = ${em_event_f.email_sales_channel_shk}
+      type: left_outer
+      relationship: many_to_one
+
+    - join: order_sales_channel_dm
+      from: sales_channel_dm_new
+      view_label: '5) Sales Channel Orders'
+      sql_on: ${order_sales_channel_dm.sales_channel_shk} = ${em_event_f.order_sales_channel_shk}
       type: left_outer
       relationship: many_to_one
 
