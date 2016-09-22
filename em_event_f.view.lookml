@@ -198,9 +198,9 @@
     label: 'RPM $'
     group_label: 'Sales'
     type: number
-    sql: cast( ${sales_amt} as float )/NULLIF(${email_send_cnt},0)
+    sql: ( cast( ${sales_amt} as float ) / NULLIF(${email_send_cnt},0) ) * 1000
     value_format: '$0.0000'
-    description: 'Sales / Sends / 1000 = Revenue per 1000 Sent'
+    description: '(Sales / Sends) * 1000 = Revenue per 1000 Sent'
   
   - measure: avg_subscriber_sales_amt
     label: 'Avg Subscriber Sales $'
