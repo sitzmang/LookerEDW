@@ -31,14 +31,14 @@
              and ${et_send_jobs.send_id}   = ${em_send_f.send_id}
              and lower( ${et_send_jobs.subject} ) not like 'test send%'
              and lower( ${et_send_jobs.subject} ) not like '[test send%'
-      type: inner
+      type: left_outer
       relationship: many_to_one
 
     - join: et_subscribers
       view_label: 'Subscriber'
       sql_on:    ${et_subscribers.client_id}     = ${em_send_f.client_id}
              and ${et_subscribers.subscriber_id} = ${em_send_f.subscriber_id}
-      type: inner
+      type: left_outer
       relationship: many_to_one
 
     - join: et_lists

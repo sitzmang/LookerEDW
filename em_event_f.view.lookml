@@ -54,16 +54,23 @@
     sql: ${TABLE}.em_list_membership_shk
     hidden: true
 
+  - dimension: elapsed_day_sid
+    type: number
+    sql: ${TABLE}.elapsed_day_sid
+    hidden: true
+    
   - dimension: em_attribution_type_sid
     type: number
     sql: ${TABLE}.em_attribution_type_sid
     hidden: true
 
-  - dimension: elapsed_day_sid
-    type: number
-    sql: ${TABLE}.elapsed_day_sid
-    hidden: true
+#-- keys for distinct events    
 
+  - dimension: subscriber_event_str
+    type: string
+    hidden: true
+    sql: ${em_subscriber_shk}||'x'||${send_date_sid}||'x'||${em_email_shk}
+    
 
 #-- measures email
 
@@ -93,13 +100,13 @@
     type: sum
     sql: ${em_event_type_dm.sent_bt}
     description: 'Count of subscriber emails sent.'
-    
+
   - measure: email_open_cnt
     label: 'Opens'
     group_label: 'Emails'
     type: sum
+    value_format_name: decimal_0
     sql: ${em_event_type_dm.open_bt}
-    description: 'Count of sent that opened.'
     
   - measure: open_rate_pct
     label: 'Open Rate'
@@ -157,8 +164,8 @@
   - measure: email_bounce_cnt
     label: 'Bounces'
     group_label: 'Emails'
-    type: sum
-    sql: ${em_event_type_dm.bounce_bt}
+    type: count_distinct
+    sql: ${subscriber_event_str} || nullif( ${em_event_type_dm.bounce_bt}, 0 )
     description: 'Count of sent with a bounce.'
     
   - measure: bounce_rate_pct
@@ -172,8 +179,8 @@
   - measure: email_complaint_cnt
     label: 'Complaints'
     group_label: 'Emails'
-    type: sum
-    sql: ${em_event_type_dm.complaint_bt}
+    type: count_distinct
+    sql: ${subscriber_event_str} || nullif( ${em_event_type_dm.complaint_bt}, 0 )
     description: 'Count of sent with a complaint.'
     
   - measure: complaint_rate_pct
