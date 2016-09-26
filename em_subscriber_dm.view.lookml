@@ -9,6 +9,11 @@
     sql: ${TABLE}.em_subscriber_shk
     hidden: true
 
+  - dimension: em_bu_shk
+    type: number
+    sql: ${TABLE}.em_bu_shk
+    hidden: true
+
   - dimension: src_client_id
     type: number
     sql: ${TABLE}.src_client_id

@@ -43,8 +43,8 @@
     - join: em_email_dm
       view_label: 'Email'
       sql_on: ${em_email_dm.em_email_shk} = ${em_event_f.em_email_shk}
-             and lower( ${em_email_dm.subject_line} ) not like 'test send%'
-             and lower( ${em_email_dm.subject_line} ) not like '[test send%'
+          and lower( ${em_email_dm.subject_line} ) not like 'test send%'
+          and lower( ${em_email_dm.subject_line} ) not like '[test send%'
       type: left_outer
       relationship: many_to_one
  
@@ -63,6 +63,7 @@
     - join: em_subscriber_dm
       view_label: 'Subscriber'
       sql_on: ${em_subscriber_dm.em_subscriber_shk} = ${em_event_f.em_subscriber_shk}
+          and ${em_subscriber_dm.em_bu_shk} = ${em_event_f.em_bu_shk}
       type: left_outer
       relationship: many_to_one
  

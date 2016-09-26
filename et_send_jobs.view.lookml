@@ -423,7 +423,7 @@
             WHEN ${TABLE}.client_id = 1303174 AND ${TABLE}.email_name LIKE ('PWT%') THEN 'Editorial'
             WHEN ${TABLE}.client_id = 1303174 AND ${TABLE}.email_name LIKE ('PWU%') THEN 'University'
             WHEN ${TABLE}.client_id = 1303174 AND ${TABLE}.email_name LIKE ('PWV%') THEN 'Video'
-            WHEN ${TABLE}.client_id = 1303174 AND ${TABLE}.email_name LIKE ('WIA%') THEN 'Editorial'
+            WHEN ${TABLE}.client_id = 1303174 AND ${TABLE}.email_name LIKE ('WIA%') THEN 'Events'
             WHEN ${TABLE}.client_id = 1303283 AND ${TABLE}.email_name LIKE ('SMN%') THEN 'Editorial'
             WHEN ${TABLE}.client_id = 1303283 AND ${TABLE}.email_name LIKE ('SMSP%') THEN 'DEB'
             WHEN ${TABLE}.client_id = 1303283 AND ${TABLE}.email_name LIKE ('SU%') THEN 'University'
