@@ -87,18 +87,30 @@
     sql: ${TABLE}.em_event_cnt
     description: 'Sum of events.'
     
+  - measure: first_event_bt
+    type: number
+    sql: ${TABLE}.first_event_bt
+    hidden: true
+    
+  - measure: first_event_cnt
+    label: 'First Events'
+    group_label: 'Emails'
+    type: sum
+    sql: ${first_event_bt}
+    description: 'Sum of first events only.'
+    
   - measure: email_signup_cnt
     label: 'Signups'
     group_label: 'Emails'
     type: sum
-    sql: ${em_event_type_dm.signup_bt}
+    sql: ${first_event_bt} * ${em_event_type_dm.signup_bt}
     description: 'Count of subscriber list signups.'
     
   - measure: email_send_cnt
     label: 'Sends'
     group_label: 'Emails'
     type: sum
-    sql: ${em_event_type_dm.sent_bt}
+    sql: ${first_event_bt} * ${em_event_type_dm.sent_bt}
     description: 'Count of subscriber emails sent.'
 
   - measure: email_open_cnt
@@ -106,7 +118,8 @@
     group_label: 'Emails'
     type: sum
     value_format_name: decimal_0
-    sql: ${em_event_type_dm.open_bt}
+    sql: ${first_event_bt} * ${em_event_type_dm.open_bt}
+    description: 'Count of sent that opened.'
     
   - measure: open_rate_pct
     label: 'Open Rate'
@@ -127,7 +140,7 @@
     label: 'Clicks'
     group_label: 'Emails'
     type: sum
-    sql: ${em_event_type_dm.click_bt}
+    sql: ${first_event_bt} * ${em_event_type_dm.click_bt}
     description: 'Count of sent that clicked through.'
     
   - measure: click_rate_pct
@@ -150,7 +163,7 @@
     label: 'Unsubs'
     group_label: 'Emails'
     type: sum
-    sql: ${em_event_type_dm.unsub_bt}
+    sql: ${first_event_bt} * ${em_event_type_dm.unsub_bt}
     description: 'Count of unsubs within an email send.'
     
   - measure: email_unsub_rate_pct
@@ -164,8 +177,8 @@
   - measure: email_bounce_cnt
     label: 'Bounces'
     group_label: 'Emails'
-    type: count_distinct
-    sql: ${subscriber_event_str} || nullif( ${em_event_type_dm.bounce_bt}, 0 )
+    type: sum
+    sql: ${first_event_bt} * ${em_event_type_dm.bounce_bt}
     description: 'Count of sent with a bounce.'
     
   - measure: bounce_rate_pct
@@ -179,8 +192,8 @@
   - measure: email_complaint_cnt
     label: 'Complaints'
     group_label: 'Emails'
-    type: count_distinct
-    sql: ${subscriber_event_str} || nullif( ${em_event_type_dm.complaint_bt}, 0 )
+    type: sum
+    sql: ${first_event_bt} * ${em_event_type_dm.complaint_bt}
     description: 'Count of sent with a complaint.'
     
   - measure: complaint_rate_pct
@@ -259,6 +272,22 @@
     value_format: '0.00%'
     description: 'Subscribers Opened / Subscribers'
     
+  - measure: subscriber_bounce_cnt
+    label: 'Subscribers Bounced'
+    group_label: 'Subscribers'
+    type: count_distinct
+    value_format_name: decimal_0
+    sql: nullif( ${em_subscriber_shk} * ${em_event_type_dm.bounce_bt}, 0 ) 
+    description: 'Distinct Subscribers Who Bounced'
+
+  - measure: subscriber_bounce_rate_pct
+    label: 'Subscribers Bounce Rate'
+    group_label: 'Subscribers'
+    type: number
+    sql: cast( ${subscriber_bounce_cnt} as float)/NULLIF(${subscriber_sent_cnt},0)
+    value_format: '0.00%'
+    description: 'Subscribers Bounced / Subscribers'
+    
   - measure: subscriber_clicked_cnt
     label: 'Subscribers Clicked'
     group_label: 'Subscribers'
@@ -275,6 +304,21 @@
     value_format: '0.00%'
     description: 'Subscribers Clicked / Subscribers'
     
+  - measure: subscriber_complaint_cnt
+    label: 'Subscribers Complained'
+    group_label: 'Subscribers'
+    type: count_distinct
+    sql: nullif( ${em_subscriber_shk} * ${em_event_type_dm.complaint_bt}, 0 )
+    description: 'Distinct Subscribers Who Complained.'
+    
+  - measure: subscriber_complaint_rate_pct
+    label: 'Subscribers Complaint Rate'
+    group_label: 'Subscribers'
+    type: number
+    sql: cast( ${subscriber_complaint_cnt} as float )/NULLIF(${subscriber_sent_cnt},0)
+    value_format: '0.00%'
+    description: 'Subscribers Complained / Subscribers'
+
   - measure: subscriber_unsub_cnt
     label: 'Subscribers Unsubed'
     group_label: 'Subscribers'
