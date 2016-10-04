@@ -51,7 +51,7 @@
     - join: em_event_type_dm
       view_label: 'Email Event'
       sql_on: ${em_event_type_dm.em_event_type_sid} = ${em_event_f.em_event_type_sid}
-      type: left_outer
+      type: inner
       relationship: many_to_one
  
     - join: em_list_dm
