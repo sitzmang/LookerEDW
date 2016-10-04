@@ -45,7 +45,7 @@
       sql_on: ${em_email_dm.em_email_shk} = ${em_event_f.em_email_shk}
           and lower( ${em_email_dm.subject_line} ) not like 'test send%'
           and lower( ${em_email_dm.subject_line} ) not like '[test send%'
-      type: left_outer
+      type: inner
       relationship: many_to_one
  
     - join: em_event_type_dm
