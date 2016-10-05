@@ -22,7 +22,7 @@
 #-- dimensions
 
   - dimension: date_joined
-    label: 'Joined Date'
+    label: 'Joined'
     type: time
     timeframes: [hour_of_day, day_of_week, date, week, month, year]
     sql: ${TABLE}.date_joined
