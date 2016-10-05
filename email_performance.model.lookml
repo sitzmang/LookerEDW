@@ -49,8 +49,8 @@
 
     - join: et_list_membership
       view_label: 'List Subscriber'
-      sql_on:    ${et_list_membership.client_id}     = ${em_send_f.client_id}
-             and ${et_list_membership.list_id}       = ${em_send_f.list_id}
+      sql_on:    ${et_list_membership.client_id}     = ${et_lists.client_id}
+             and ${et_list_membership.list_id}       = ${et_lists.actual_list_id}
              and ${et_list_membership.subscriber_id} = ${em_send_f.subscriber_id}
       type: left_outer
       relationship: many_to_one

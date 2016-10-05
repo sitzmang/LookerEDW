@@ -14,6 +14,11 @@
     sql: ${TABLE}.list_id
     hidden: true
 
+  - dimension: actual_list_id
+    type: number
+    sql: ${TABLE}.actual_list_id
+    hidden: true
+
 #-- dimensions
 
   - dimension: list_name
