@@ -350,6 +350,22 @@
     value_format: '0.00%'
     description: 'Subscribers Unsubed / Subscribers'
 
+  - measure: subscriber_order_cnt
+    label: 'Subscribers Ordered'
+    group_label: 'Subscribers'
+    type: count_distinct
+    value_format_name: decimal_0
+    sql: nullif( ${em_subscriber_shk} * ${em_event_type_dm.order_bt}, 0 ) 
+    description: 'Distinct Subscribers Who Ordered'
+
+  - measure: subscriber_order_rate_pct
+    label: 'Subscribers Order Rate'
+    group_label: 'Subscribers'
+    type: number
+    sql: cast( ${subscriber_order_cnt} as float )/NULLIF(${subscriber_sent_cnt},0)
+    value_format: '0.00%'
+    description: 'Subscribers Ordered / Subscribers'
+
   - measure: avg_subscriber_sends
     label: 'Avg Subscriber Sends'
     group_label: 'Subscribers'

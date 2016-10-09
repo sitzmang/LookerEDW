@@ -57,3 +57,8 @@
     type: number
     sql: ${TABLE}.complaint_bt
     hidden: true
+
+  - measure: order_bt
+    type: number
+    sql: ${TABLE}.order_bt
+    hidden: true
