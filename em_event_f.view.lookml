@@ -110,7 +110,7 @@
     label: 'Sends'
     group_label: 'Emails'
     type: sum
-    sql: ${first_event_bt} * ${em_event_type_dm.sent_bt}
+    sql: ${em_event_type_dm.sent_bt}
     description: 'Count of subscriber emails sent.'
 
   - measure: email_open_cnt
@@ -204,7 +204,7 @@
     value_format: '0.00%'
     description: 'Complaints / Sends'
   
-#-- measures file
+#-- sales
 
   - measure: sales_amt
     label: 'Sales $'
@@ -214,22 +214,6 @@
     sql: ${TABLE}.SALES_AMT
     description: 'Product Sales + Shipping Sales'
 
-  - measure: rpm_amt
-    label: 'RPM $'
-    group_label: 'Sales'
-    type: number
-    sql: ( cast( ${sales_amt} as float ) / NULLIF(${email_send_cnt},0) ) * 1000
-    value_format: '$0.0000'
-    description: '(Sales / Sends) * 1000 = Revenue per 1000 Sent'
-  
-  - measure: avg_subscriber_sales_amt
-    label: 'Avg Subscriber Sales $'
-    group_label: 'Sales'
-    type: number
-    value_format: '$0.0000'
-    sql: ${sales_amt} / nullif( ${subscriber_sent_cnt}, 0 )
-    description: 'Sales / Subscribers Sent'
-    
   - measure: product_margin_amt
     label: 'Product Margin $'
     group_label: 'Sales'
@@ -238,7 +222,39 @@
     sql: ${TABLE}.product_margin_amt
     description: 'Product Margin Amount.'
     
-#-- measures file
+  - measure: sales_amt_pm
+    label: 'RPM $'
+    group_label: 'Sales'
+    type: number
+    value_format: '$0.0000'
+    sql: ( cast( ${sales_amt} as float ) / NULLIF(${email_send_cnt},0) ) * 1000
+    description: '(Sales / Sends) * 1000 = Revenue per 1000 Sent'
+  
+  - measure: product_margin_amt_pm
+    label: 'Product Margin/1000 Sent'
+    group_label: 'Sales'
+    type: number
+    value_format: '$0.0000'
+    sql: ( cast( ${product_margin_amt} as float ) / NULLIF(${email_send_cnt},0) ) * 1000
+    description: '(Product Margin $ / Sends) * 1000'
+  
+  - measure: avg_subscriber_sales_amt_pm
+    label: 'Sales/1000 Subscribers'
+    group_label: 'Sales'
+    type: number
+    value_format: '$0.0000'
+    sql: ( cast( ${sales_amt} as float ) / NULLIF(${subscriber_sent_cnt},0) ) * 1000
+    description: '(Sales / Subscribers Sent) * 1000'
+    
+  - measure: avg_subscriber_product_margin_amt_pm
+    label: 'Product Margin/1000 Subscribers'
+    group_label: 'Sales'
+    type: number
+    value_format: '$0.0000'
+    sql: ( cast( ${product_margin_amt} as float ) / NULLIF(${subscriber_sent_cnt},0) ) * 1000
+    description: '(Product Margin / Subscribers Sent) * 1000'
+    
+#-- subscribers
 
   - measure: subscriber_signup_cnt
     label: 'Subscribers Signed Up'
