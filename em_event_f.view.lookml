@@ -206,6 +206,13 @@
   
 #-- sales
 
+  - measure: order_cnt
+    label: 'Orders'
+    group_label: 'Sales'
+    type: sum
+    sql: ${first_event_bt} * ${em_event_type_dm.order_bt}
+    description: 'Count of orders.'
+    
   - measure: sales_amt
     label: 'Sales $'
     group_label: 'Sales'
@@ -214,6 +221,14 @@
     sql: ${TABLE}.SALES_AMT
     description: 'Product Sales + Shipping Sales'
 
+  - measure: avg_order_sales_amt
+    label: 'AOV Sales $'
+    group_label: 'Sales'
+    type: number
+    value_format_name: usd
+    sql: ${sales_amt} / nullif( ${order_cnt}, 0 )
+    description: 'Sales / Orders'
+    
   - measure: product_margin_amt
     label: 'Product Margin $'
     group_label: 'Sales'
@@ -238,6 +253,14 @@
     sql: ( cast( ${product_margin_amt} as float ) / NULLIF(${email_send_cnt},0) ) * 1000
     description: '(Product Margin $ / Sends) * 1000'
   
+  - measure: click_order_rate_pct
+    label: 'Order Rate (Clicks)'
+    group_label: 'Sales'
+    type: number
+    sql: cast( ${order_cnt} as float )/NULLIF(${email_click_cnt},0)
+    value_format: '0.00%'
+    description: 'Orders / Clicks'
+    
   - measure: avg_subscriber_sales_amt_pm
     label: 'Sales/1000 Subscribers'
     group_label: 'Sales'
@@ -254,6 +277,22 @@
     sql: ( cast( ${product_margin_amt} as float ) / NULLIF(${subscriber_sent_cnt},0) ) * 1000
     description: '(Product Margin / Subscribers Sent) * 1000'
     
+  - measure: subscriber_order_cnt
+    label: 'Subscribers Ordered'
+    group_label: 'Sales'
+    type: count_distinct
+    value_format_name: decimal_0
+    sql: nullif( ${em_subscriber_shk} * ${em_event_type_dm.order_bt}, 0 ) 
+    description: 'Distinct Subscribers Who Ordered'
+
+  - measure: subscriber_order_rate_pct
+    label: 'Subscribers Order Rate (Clicked)'
+    group_label: 'Sales'
+    type: number
+    sql: cast( ${subscriber_order_cnt} as float )/NULLIF(${subscriber_clicked_cnt},0)
+    value_format: '0.00%'
+    description: 'Subscribers Ordered / Subscribers Clicked'
+
 #-- subscribers
 
   - measure: subscriber_signup_cnt
@@ -286,7 +325,7 @@
     type: number
     sql: cast( ${subscriber_opened_cnt} as float)/NULLIF(${subscriber_sent_cnt},0)
     value_format: '0.00%'
-    description: 'Subscribers Opened / Subscribers'
+    description: 'Subscribers Opened / Subscribers Sent'
     
   - measure: subscriber_bounce_cnt
     label: 'Subscribers Bounced'
@@ -302,7 +341,7 @@
     type: number
     sql: cast( ${subscriber_bounce_cnt} as float)/NULLIF(${subscriber_sent_cnt},0)
     value_format: '0.00%'
-    description: 'Subscribers Bounced / Subscribers'
+    description: 'Subscribers Bounced / Subscribers Sent'
     
   - measure: subscriber_clicked_cnt
     label: 'Subscribers Clicked'
@@ -318,7 +357,7 @@
     type: number
     sql: cast( ${subscriber_clicked_cnt} as float)/NULLIF(${subscriber_sent_cnt},0)
     value_format: '0.00%'
-    description: 'Subscribers Clicked / Subscribers'
+    description: 'Subscribers Clicked / Subscribers Sent'
     
   - measure: subscriber_complaint_cnt
     label: 'Subscribers Complained'
@@ -333,7 +372,7 @@
     type: number
     sql: cast( ${subscriber_complaint_cnt} as float )/NULLIF(${subscriber_sent_cnt},0)
     value_format: '0.00%'
-    description: 'Subscribers Complained / Subscribers'
+    description: 'Subscribers Complained / Subscribers Sent'
 
   - measure: subscriber_unsub_cnt
     label: 'Subscribers Unsubed'
@@ -350,29 +389,13 @@
     value_format: '0.00%'
     description: 'Subscribers Unsubed / Subscribers'
 
-  - measure: subscriber_order_cnt
-    label: 'Subscribers Ordered'
-    group_label: 'Subscribers'
-    type: count_distinct
-    value_format_name: decimal_0
-    sql: nullif( ${em_subscriber_shk} * ${em_event_type_dm.order_bt}, 0 ) 
-    description: 'Distinct Subscribers Who Ordered'
-
-  - measure: subscriber_order_rate_pct
-    label: 'Subscribers Order Rate'
-    group_label: 'Subscribers'
-    type: number
-    sql: cast( ${subscriber_order_cnt} as float )/NULLIF(${subscriber_sent_cnt},0)
-    value_format: '0.00%'
-    description: 'Subscribers Ordered / Subscribers'
-
   - measure: avg_subscriber_sends
     label: 'Avg Subscriber Sends'
     group_label: 'Subscribers'
     type: number
     value_format_name: decimal_1
     sql: ${email_send_cnt} / nullif( ${subscriber_sent_cnt}, 0 )
-    description: 'Sends / Subscribers'
+    description: 'Sends / Subscribers Sent'
     
   - measure: avg_subscriber_opens
     label: 'Avg Subscriber Opens'
@@ -380,7 +403,7 @@
     type: number
     value_format_name: decimal_1
     sql: ${email_open_cnt} / nullif( ${subscriber_sent_cnt}, 0 )
-    description: 'Opens / Subscribers'
+    description: 'Opens / Subscribers Sent'
     
   - measure: avg_subscriber_clicks
     label: 'Avg Subscriber Clicks'
@@ -388,4 +411,4 @@
     type: number
     value_format_name: decimal_1
     sql: ${email_open_cnt} / nullif( ${subscriber_sent_cnt}, 0 )
-    description: 'Clicks / Subscribers'
+    description: 'Clicks / Subscribers Sent'
