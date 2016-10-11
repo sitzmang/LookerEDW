@@ -1,4 +1,4 @@
-- label:      'Email Performance(new)'
+- label:      'Email Performance(sales)'
 - connection: edwrpt
 - case_sensitive: false
 
