@@ -210,7 +210,7 @@
     label: 'Orders'
     group_label: 'Sales'
     type: sum
-    sql: ${first_event_bt} * ${em_event_type_dm.order_bt}
+    sql: ${em_event_type_dm.order_bt}
     description: 'Count of orders.'
     
   - measure: sales_amt
