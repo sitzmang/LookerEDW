@@ -23,4 +23,5 @@
     style: integer
     sql: ${elapsed_day_no}
     value_format: '00'
+    hidden: true
     

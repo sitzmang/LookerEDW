@@ -79,6 +79,7 @@
     group_label: 'Emails'
     type: count
     description: 'Count of events.'
+    hidden: true
     
   - measure: em_event_cnt_ttl
     label: 'Events Total'
@@ -86,6 +87,7 @@
     type: sum
     sql: ${TABLE}.em_event_cnt
     description: 'Sum of events.'
+    hidden: true
     
   - measure: first_event_bt
     type: number
@@ -98,6 +100,7 @@
     type: sum
     sql: ${first_event_bt}
     description: 'Sum of first events only.'
+    hidden: true
     
   - measure: email_signup_cnt
     label: 'Signups'
@@ -105,6 +108,7 @@
     type: sum
     sql: ${first_event_bt} * ${em_event_type_dm.signup_bt}
     description: 'Count of subscriber list signups.'
+    hidden: true
     
   - measure: email_send_cnt
     label: 'Sends'
@@ -302,6 +306,7 @@
     value_format_name: decimal_0
     sql: nullif( ${em_subscriber_shk} * ${em_event_type_dm.signup_bt}, 0 ) 
     description: 'Distinct Subscribers Who Signed Up'
+    hidden: true
 
   - measure: subscriber_sent_cnt
     label: 'Subscribers Sent'

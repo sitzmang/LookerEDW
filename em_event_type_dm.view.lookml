@@ -20,6 +20,7 @@
     label: 'Email Event Type Name'
     type: string
     sql: ${TABLE}.event_type_name
+    hidden: true
 
 #-- other
 
