@@ -40,6 +40,12 @@
       type: left_outer
       relationship: many_to_one
 
+    - join: em_attribution_type_dm
+      view_label: 'Sales Attribution Type'
+      sql_on: ${em_attribution_type_dm.em_attribution_type_sid} = ${em_event_f.em_attribution_type_sid}
+      type: inner
+      relationship: many_to_one
+ 
     - join: em_email_dm
       view_label: 'Email'
       sql_on: ${em_email_dm.em_email_shk} = ${em_event_f.em_email_shk}
