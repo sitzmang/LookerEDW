@@ -42,7 +42,7 @@
     hidden: true
 
   - dimension: sales_channel_rollup_name
-    label: "  Sales Channel Rollup Name"
+    label: "  Rollup Name"
     type: string
     sql: ${TABLE}.SALES_CHANNEL_ROLLUP_NAME
     drill_fields: [sales_channel_name]
@@ -54,7 +54,7 @@
     hidden: true
 
   - dimension: sales_channel_name
-    label: " Sales Channel Name"
+    label: " Name"
     type: string
     sql: ${TABLE}.SALES_CHANNEL_NAME
     drill_fields: [product_dm.profit_centre_name]

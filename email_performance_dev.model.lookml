@@ -28,14 +28,14 @@
 
     - join: email_sales_channel_dm
       from: sales_channel_dm_new
-      view_label: '4) Sales Channel Email'
+      view_label: '4) Sales Channel(Email)'
       sql_on: ${email_sales_channel_dm.sales_channel_shk} = ${em_event_f.email_sales_channel_shk}
       type: left_outer
       relationship: many_to_one
 
     - join: order_sales_channel_dm
       from: sales_channel_dm_new
-      view_label: '5) Sales Channel Orders'
+      view_label: '5) Sales Channel(Orders)'
       sql_on: ${order_sales_channel_dm.sales_channel_shk} = ${em_event_f.order_sales_channel_shk}
       type: left_outer
       relationship: many_to_one
