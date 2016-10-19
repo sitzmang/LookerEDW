@@ -72,23 +72,41 @@
     sql: ${em_subscriber_shk}||'x'||${send_date_sid}||'x'||${em_email_shk}
     
 
-#-- measures email
+#-- measures email (all)
 
   - measure: email_event_cnt
     label: 'Events'
-    group_label: 'Emails'
+    group_label: 'Emails(Total)'
     type: count
     description: 'Count of events.'
     hidden: true
     
   - measure: em_event_cnt_ttl
     label: 'Events Total'
-    group_label: 'Emails'
+    group_label: 'Emails(Total)'
     type: sum
     sql: ${TABLE}.em_event_cnt
     description: 'Sum of events.'
     hidden: true
     
+  - measure: email_open_cnt_ttl
+    label: 'Opens Total '
+    group_label: 'Emails(Total)'
+    type: sum
+    value_format_name: decimal_0
+    sql: ${em_event_type_dm.open_bt}
+    description: 'Total occurrences of sent that opened.'
+    
+  - measure: email_click_cnt_ttl
+    label: 'Clicks Total '
+    group_label: 'Emails(Total)'
+    type: sum
+    value_format_name: decimal_0
+    sql: ${em_event_type_dm.click_bt}
+    description: 'Total occurrences of sent that clicked.'
+    
+#-- measures email (distinct)
+
   - measure: first_event_bt
     type: number
     sql: ${TABLE}.first_event_bt
@@ -96,7 +114,7 @@
     
   - measure: first_event_cnt
     label: 'First Events'
-    group_label: 'Emails'
+    group_label: 'Emails(Distinct)'
     type: sum
     sql: ${first_event_bt}
     description: 'Sum of first events only.'
@@ -104,7 +122,7 @@
     
   - measure: email_signup_cnt
     label: 'Signups'
-    group_label: 'Emails'
+    group_label: 'Emails(Distinct)'
     type: sum
     sql: ${first_event_bt} * ${em_event_type_dm.signup_bt}
     description: 'Count of subscriber list signups.'
@@ -112,14 +130,14 @@
     
   - measure: email_send_cnt
     label: 'Sends'
-    group_label: 'Emails'
+    group_label: 'Emails(Distinct)'
     type: sum
     sql: ${em_event_type_dm.sent_bt}
     description: 'Count of subscriber emails sent.'
 
   - measure: email_open_cnt
     label: 'Opens'
-    group_label: 'Emails'
+    group_label: 'Emails(Distinct)'
     type: sum
     value_format_name: decimal_0
     sql: ${first_event_bt} * ${em_event_type_dm.open_bt}
@@ -127,7 +145,7 @@
     
   - measure: open_rate_pct
     label: 'Open Rate'
-    group_label: 'Emails'
+    group_label: 'Emails(Distinct)'
     type: number
     sql: cast( ${email_open_cnt} as float)/NULLIF(${email_send_cnt},0)
     value_format: '0.00%'
@@ -142,14 +160,14 @@
 
   - measure: email_click_cnt
     label: 'Clicks'
-    group_label: 'Emails'
+    group_label: 'Emails(Distinct)'
     type: sum
     sql: ${first_event_bt} * ${em_event_type_dm.click_bt}
     description: 'Count of sent that clicked through.'
     
   - measure: click_rate_pct
     label: 'Click Rate (Opens)'
-    group_label: 'Emails'
+    group_label: 'Emails(Distinct)'
     type: number
     sql: cast( ${email_click_cnt} as float )/NULLIF(${email_open_cnt},0)
     value_format: '0.00%'
@@ -157,7 +175,7 @@
     
   - measure: click_rate_send_pct
     label: 'Click Rate (Sends)'
-    group_label: 'Emails'
+    group_label: 'Emails(Distinct)'
     type: number
     sql: cast( ${email_click_cnt} as float )/NULLIF(${email_send_cnt},0)
     value_format: '0.00%'
@@ -165,14 +183,14 @@
     
   - measure: email_unsub_cnt
     label: 'Unsubs'
-    group_label: 'Emails'
+    group_label: 'Emails(Distinct)'
     type: sum
     sql: ${first_event_bt} * ${em_event_type_dm.unsub_bt}
     description: 'Count of unsubs within an email send.'
     
   - measure: email_unsub_rate_pct
     label: 'Unsub Rate'
-    group_label: 'Emails'
+    group_label: 'Emails(Distinct)'
     type: number
     sql: cast( ${email_unsub_cnt} as float )/NULLIF(${email_send_cnt},0)
     value_format: '0.00%'
@@ -180,14 +198,14 @@
 
   - measure: email_bounce_cnt
     label: 'Bounces'
-    group_label: 'Emails'
+    group_label: 'Emails(Distinct)'
     type: sum
     sql: ${first_event_bt} * ${em_event_type_dm.bounce_bt}
     description: 'Count of sent with a bounce.'
     
   - measure: bounce_rate_pct
     label: 'Bounce Rate'
-    group_label: 'Emails'
+    group_label: 'Emails(Distinct)'
     type: number
     sql: cast( ${email_bounce_cnt} as float )/NULLIF(${email_send_cnt},0)
     value_format: '0.00%'
@@ -195,14 +213,14 @@
     
   - measure: email_complaint_cnt
     label: 'Complaints'
-    group_label: 'Emails'
+    group_label: 'Emails(Distinct)'
     type: sum
     sql: ${first_event_bt} * ${em_event_type_dm.complaint_bt}
     description: 'Count of sent with a complaint.'
     
   - measure: complaint_rate_pct
     label: 'Complaint Rate'
-    group_label: 'Emails'
+    group_label: 'Emails(Distinct)'
     type: number
     sql: cast( ${email_complaint_cnt} as float )/NULLIF(${email_send_cnt},0)
     value_format: '0.00%'
