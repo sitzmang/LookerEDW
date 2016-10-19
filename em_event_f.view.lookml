@@ -126,7 +126,7 @@
     type: sum
     sql: ${first_event_bt} * ${em_event_type_dm.signup_bt}
     description: 'Count of subscriber list signups.'
-    hidden: true
+    hidden: false
     
   - measure: email_send_cnt
     label: 'Sends'
