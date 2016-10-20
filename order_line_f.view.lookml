@@ -214,6 +214,13 @@
     sql: ${sales_amt} / nullif( ${order_cnt}, 0 )
     description: 'Sales / Orders'
     
+  - measure: avg_order_sales_amt_prev
+    label: 'AOV Sales $'
+    view_label: '1b) % Prev'
+    type: percent_of_previous
+    value_format: '0.0\%'
+    sql: ${avg_order_sales_amt}
+
   - measure: avg_order_unit_cnt
     label: 'Avg Order Units'
     type: number
