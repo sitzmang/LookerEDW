@@ -35,6 +35,20 @@
 
 #-- dimension
 
+  - dimension: last_event_day_cnt
+    view_label: Days Since Last Event
+    label: 'Days Since Last Event'
+    type: number
+    sql: ${TABLE}.last_event_day_cnt
+
+
+  - dimension: engagement_cd
+    view_label: Engagement Flag
+    label: 'Engagement Flag'
+    type: string
+    sql: ${TABLE}.engagement_cd
+
+
   - dimension: date_joined
     view_label: List Subscriber
     label: 'Joined'
