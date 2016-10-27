@@ -19,6 +19,20 @@
     sql: ${TABLE}.subscriber_id
     hidden: true
 
+#-- measures
+
+  - measure: list_subscriber_cnt
+    label: 'List Subscribers'
+    type: count
+    description: 'Count of list subscriber occurrences.'  
+    
+  - measure: subscriber_cnt
+    label: 'Subscribers'
+    type: count_distinct
+    value_format_name: decimal_0
+    sql: ${subscriber_id}
+    description: 'Distinct Subscriber Count'
+
 #-- dimensions
 
   - dimension: date_joined
@@ -43,17 +57,4 @@
     type: yesno
     sql: ${date_unsubscribed} is not null
 
-#-- measures
-
-  - measure: list_subscriber_cnt
-    label: 'List Subscribers'
-    type: count
-    description: 'Count of list subscriber occurrences.'  
-    
-  - measure: subscriber_cnt
-    label: 'Subscribers'
-    type: count_distinct
-    value_format_name: decimal_0
-    sql: ${subscriber_id}
-    description: 'Distinct Subscriber Count'
 
