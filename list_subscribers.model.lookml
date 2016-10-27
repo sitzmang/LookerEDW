@@ -12,9 +12,15 @@
   persist_for: 8 hours
   joins:
     - join: et_business_unit_lkp
-      view_label: '3) Business Unit'
+      view_label: 'Business Unit'
       sql_on: ${et_business_unit_lkp.client_id} = ${em_list_subscriber_rpt.client_id}
       type: inner
+      relationship: many_to_one
+      
+    - join: et_lists
+      view_label: 'List'
+      sql_on:    ${et_lists.list_id}   = ${em_list_subscriber_rpt.list_id}
+      type: left_outer
       relationship: many_to_one
 
     - join: et_subscribers
@@ -24,10 +30,6 @@
       type: left_outer
       relationship: many_to_one
 
-    - join: et_lists
-      view_label: 'List'
-      sql_on:    ${et_lists.list_id}   = ${em_list_subscriber_rpt.list_id}
-      type: left_outer
-      relationship: many_to_one
+ 
 
 

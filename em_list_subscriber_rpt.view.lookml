@@ -33,9 +33,10 @@
     sql: ${subscriber_id}
     description: 'Distinct Subscriber Count'
 
-#-- dimensions
+#-- dimension
 
   - dimension: date_joined
+    view_label: List Subscriber
     label: 'Joined'
     type: time
     timeframes: [hour_of_day, day_of_week, date, week, month, year]
@@ -43,16 +44,19 @@
 
 
   - dimension: join_type
+    view_label: List Subscriber
     label: 'Joined Type'
     type: string
     sql: ${TABLE}.add_method
     
   - dimension: date_unsubscribed
+    view_label: List Subscriber
     label: 'Unsubscribed Date'
     type: date_date
     sql: ${TABLE}.unsub_dt
     
   - dimension: unsubscribed_fl
+    view_label: List Subscriber
     label: 'Unsubscribed'
     type: yesno
     sql: ${date_unsubscribed} is not null
