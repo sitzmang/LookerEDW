@@ -48,6 +48,7 @@
     label: 'Unsubscribed Flag'
     type: string
     sql: ${TABLE}.unsubscribed_fl
+    hidden: true
     
   - dimension: unsubscribed_yesno
     label: 'Unsubscribed'

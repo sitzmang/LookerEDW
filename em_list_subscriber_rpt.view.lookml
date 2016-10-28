@@ -37,22 +37,24 @@
 
   - dimension: last_event_day_cnt
     view_label: 'List Subscriber'
-    label: 'Days Since Last Event'
+    label: 'Last Event Days'
     type: number
     sql: ${TABLE}.last_event_day_cnt
+    description: 'Count of days since subscriber''s last event.'
 
   - dimension: last_event_dt
     view_label: 'List Subscriber'
     label: 'Last Event Date'
     type: date
     sql: ${TABLE}.last_event_dt
+    description: 'Subscriber''s last event date.'
 
   - dimension: engagement_cd
     view_label: 'List Subscriber'
     label: 'Engagement Status'
     type: string
     sql: ${TABLE}.engagement_cd
-
+    description: 'Subscriber engaged/unengaged designation.'
 
 
 

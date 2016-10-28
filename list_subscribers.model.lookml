@@ -1,4 +1,4 @@
-- label:      'List Size'
+- label:      'List Subscribers'
 - connection: edwrpt
 - case_sensitive: false
 
@@ -7,7 +7,7 @@
 
 
 - explore: em_list_subscriber_rpt
-  label: 'List Size'
+  label: 'List Subscribers'
   view_label: '1) Measures'
   persist_for: 8 hours
   joins:
