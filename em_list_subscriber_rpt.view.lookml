@@ -36,14 +36,19 @@
 #-- dimension
 
   - dimension: last_event_day_cnt
-    view_label: Engagement Recency
+    view_label: 'List Subscriber'
     label: 'Days Since Last Event'
     type: number
     sql: ${TABLE}.last_event_day_cnt
 
+  - dimension: last_event_dt
+    view_label: 'List Subscriber'
+    label: 'Last Event Date'
+    type: date
+    sql: ${TABLE}.last_event_dt
 
   - dimension: engagement_cd
-    view_label: Engagement Status
+    view_label: 'List Subscriber'
     label: 'Engagement Status'
     type: string
     sql: ${TABLE}.engagement_cd

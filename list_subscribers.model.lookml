@@ -19,7 +19,9 @@
       
     - join: em_list_membership_dm
       view_label: 'List Subscriber'
-      sql_on:    ${em_list_membership_dm.src_list_id}   = ${em_list_subscriber_rpt.list_id}
+      sql_on: ${em_list_membership_dm.src_client_id}     = ${em_list_subscriber_rpt.client_id}
+        and   ${em_list_membership_dm.src_list_id}       = ${em_list_subscriber_rpt.list_id}
+        and   ${em_list_membership_dm.src_subscriber_id} = ${em_list_subscriber_rpt.subscriber_id}
       type: left_outer
       relationship: many_to_one
 
