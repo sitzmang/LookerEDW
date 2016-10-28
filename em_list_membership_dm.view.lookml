@@ -38,6 +38,11 @@
     type: string
     sql: ${TABLE}.join_type_cd
     
+  - dimension: status
+    label: 'Status'
+    type: string
+    sql: ${TABLE}.status
+    
   - dimension: unsubscribed_dt
     label: 'Unsubscribed'
     type: time
