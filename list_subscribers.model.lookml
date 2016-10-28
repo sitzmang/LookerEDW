@@ -1,4 +1,4 @@
-- label:      'List Subscribers'
+- label:      'List Size'
 - connection: edwrpt
 - case_sensitive: false
 
@@ -7,28 +7,35 @@
 
 
 - explore: em_list_subscriber_rpt
-  label: 'List Subscribers'
+  label: 'List Size'
   view_label: '1) Measures'
   persist_for: 8 hours
   joins:
-    - join: et_business_unit_lkp
+    - join: em_bu_dm
       view_label: 'Business Unit'
-      sql_on: ${et_business_unit_lkp.client_id} = ${em_list_subscriber_rpt.client_id}
-      type: inner
+      sql_on: ${em_bu_dm.src_client_id} = ${em_list_subscriber_rpt.client_id}
+      type: left_outer
       relationship: many_to_one
       
-    - join: et_lists
-      view_label: 'List'
-      sql_on:    ${et_lists.list_id}   = ${em_list_subscriber_rpt.list_id}
+    - join: em_list_membership_dm
+      view_label: 'List Subscriber'
+      sql_on:    ${em_list_membership_dm.src_list_id}   = ${em_list_subscriber_rpt.list_id}
       type: left_outer
       relationship: many_to_one
 
-    - join: et_subscribers
+    - join: em_subscriber_dm
       view_label: 'Subscriber'
-      sql_on:    ${et_subscribers.client_id}     = ${em_list_subscriber_rpt.client_id}
-             and ${et_subscribers.subscriber_id} = ${em_list_subscriber_rpt.subscriber_id}
+      sql_on: ${em_subscriber_dm.src_subscriber_id} = ${em_list_subscriber_rpt.subscriber_id}
+          and ${em_subscriber_dm.src_client_id} = ${em_list_subscriber_rpt.client_id}
       type: left_outer
       relationship: many_to_one
+
+    - join: em_list_dm
+      view_label: 'List'
+      sql_on: ${em_list_dm.src_list_id} = ${em_list_subscriber_rpt.list_id}
+      type: left_outer
+      relationship: many_to_one
+
 
  
 

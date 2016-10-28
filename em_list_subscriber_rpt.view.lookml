@@ -36,43 +36,18 @@
 #-- dimension
 
   - dimension: last_event_day_cnt
-    view_label: Days Since Last Event
+    view_label: Engagement Recency
     label: 'Days Since Last Event'
     type: number
     sql: ${TABLE}.last_event_day_cnt
 
 
   - dimension: engagement_cd
-    view_label: Engagement Flag
-    label: 'Engagement Flag'
+    view_label: Engagement Status
+    label: 'Engagement Status'
     type: string
     sql: ${TABLE}.engagement_cd
 
 
-  - dimension: date_joined
-    view_label: List Subscriber
-    label: 'Joined'
-    type: time
-    timeframes: [hour_of_day, day_of_week, date, week, month, year]
-    sql: ${TABLE}.sub_dt
-
-
-  - dimension: join_type
-    view_label: List Subscriber
-    label: 'Joined Type'
-    type: string
-    sql: ${TABLE}.add_method
-    
-  - dimension: date_unsubscribed
-    view_label: List Subscriber
-    label: 'Unsubscribed Date'
-    type: date_date
-    sql: ${TABLE}.unsub_dt
-    
-  - dimension: unsubscribed_fl
-    view_label: List Subscriber
-    label: 'Unsubscribed'
-    type: yesno
-    sql: ${date_unsubscribed} is not null
 
 
