@@ -32,6 +32,21 @@
     value_format_name: decimal_0
     sql: ${subscriber_id}
     description: 'Distinct Subscriber Count'
+    
+  - measure: subscriber_cnt_pttl
+    label: 'Subscribers'
+    view_label: '1c) % Total'
+    type: percent_of_total
+    value_format: '0.00\%'
+    sql: ${subscriber_cnt}
+
+  - measure: list_subscriber_cnt_pttl
+    label: 'List Subscribers'
+    view_label: '1c) % Total'
+    type: percent_of_total
+    value_format: '0.00\%' 
+    sql: ${list_subscriber_cnt}
+
 
 #-- dimension
 
