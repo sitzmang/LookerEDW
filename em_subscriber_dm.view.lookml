@@ -44,7 +44,7 @@
     hidden: true
     
   - dimension: status
-    label: 'Subscriber Status'
+    label: 'Status'
     type: string
     sql: ${TABLE}.status
     
