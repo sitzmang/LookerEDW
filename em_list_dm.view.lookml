@@ -24,6 +24,12 @@
     sql: ${TABLE}.src_list_id
     hidden: true
 
+  - dimension: deb_list_bt
+    type: number
+    sql: ${TABLE}.deb_list_bt
+    hidden: true
+
+
 #-- dimensions
 
   - dimension: list_name
@@ -50,4 +56,11 @@
     label: 'Created Date'
     type: date_date
     sql: ${TABLE}.created_dt
+    
+  - dimension: deb_list_fl
+    label: 'DEB List'
+    type: yesno
+    sql: ${deb_list_bt} = 1
+    description: 'List is used for DEB sends'
+    
     
