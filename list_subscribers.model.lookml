@@ -10,6 +10,8 @@
   label: 'List Subscribers'
   view_label: '1) Measures'
   persist_for: 8 hours
+  always_filter:
+    engagement_cd: 'Engaged'
   joins:
     - join: em_bu_dm
       view_label: 'Business Unit'
