@@ -28,3 +28,9 @@
     type: string
     sql: ${TABLE}.business_unit_name
     drill_fields: [em_email_dm.email_type_name,em_subscribers.email_domain]
+
+  - dimension: general_mgr_name
+    label: "   GM Name"
+    type: string
+    sql: ${TABLE}.general_mgr_name
+    drill_fields: [business_unit_name]
