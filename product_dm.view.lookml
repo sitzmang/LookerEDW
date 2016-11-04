@@ -241,6 +241,12 @@
     sql: ${TABLE}.SUBJECT_1_NAME
     drill_fields: [sku]
 
+  - dimension: general_mgr_name
+    label: "GM Name"
+    type: string
+    sql: ${TABLE}.general_mgr_name
+    
+
 
   # ----- Sets of fields for drilling ------
   sets:
