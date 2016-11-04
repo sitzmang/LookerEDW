@@ -47,6 +47,14 @@
     value_format: '0.00\%' 
     sql: ${list_subscriber_cnt}
 
+  - measure: avg_subscriber_lists
+    label: 'Avg Subscriber Lists'
+    type: number
+    value_format_name: decimal_1
+    sql: ${list_subscriber_cnt} / nullif( ${subscriber_cnt}, 0 )
+    description: 'Average Number of Lists Subscriber is on'
+
+
 
 #-- dimension
 
