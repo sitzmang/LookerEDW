@@ -242,7 +242,8 @@
     drill_fields: [sku]
 
   - dimension: general_mgr_name
-    label: "GM Name"
+    label: '    GM Name'
+    group_label: 'Community Hierarchy'
     type: string
     sql: ${TABLE}.general_mgr_name
     
