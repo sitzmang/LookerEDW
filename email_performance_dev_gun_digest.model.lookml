@@ -6,7 +6,7 @@
 - include: '*.dashboard.lookml'  # include all the dashboards
 
 - explore: em_event_f
-  label: 'Email Sends'
+  label: 'Email Sends - Gun Digest'
   view_label: '1) Measures'
   persist_for: 8 hours
   always_join: [em_email_dm]
@@ -91,7 +91,7 @@
       relationship: many_to_one
       
 - explore: em_list_subscriber_rpt
-  label: 'List Subscribers'
+  label: 'List Subscribers - Gun Digest'
   view_label: '1) Measures'
   persist_for: 8 hours
   always_filter:
