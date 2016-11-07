@@ -99,9 +99,7 @@
   joins:
     - join: em_bu_dm
       view_label: 'Business Unit'
-      sql_on: ${em_bu_dm.src_client_id} = ${em_list_subscriber_rpt.client_id}
-        where ${em_bu_dm.src_client_id} = '1303168'
-      type: left_outer
+      sql_on: ${em_bu_dm.src_client_id} = '1303168'
       relationship: many_to_one
       
     - join: em_list_membership_dm
