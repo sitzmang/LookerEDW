@@ -1,8 +1,3 @@
-- connection: edwrpt
-
-- include: "*.view.lookml"       # include all views in this project
-- include: "*.dashboard.lookml"  # include all dashboards in this project
-
 - label:      'Email Performance(sales)'
 - connection: edwrpt
 - case_sensitive: false
