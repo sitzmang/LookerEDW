@@ -1,4 +1,4 @@
-- label:      'Email Performance'
+- label:      'Email Performance(old)'
 - connection: edwrpt
 - case_sensitive: false
 
