@@ -67,10 +67,19 @@
 
   - dimension: last_event_dt
     view_label: 'List Subscriber'
-    label: 'Last Event Date'
-    type: date
+    label: 'Last Event'
+    type: time
+    timeframes: [hour_of_day, day_of_week, date, week, month, year]
     sql: ${TABLE}.last_event_dt
-    description: 'Subscriber''s last event date.'
+    description: 'Subscriber''s last subscribe/open/click date.'
+
+  - dimension: last_openclick_dt
+    view_label: 'List Subscriber'
+    label: 'Last Open/Click'
+    type: time
+    timeframes: [hour_of_day, day_of_week, date, week, month, year]
+    sql: ${TABLE}.last_openclick_dt
+    description: 'Subscriber''s last open/click date.'
 
   - dimension: engagement_cd
     view_label: 'List Subscriber'
