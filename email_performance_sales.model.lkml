@@ -1,4 +1,4 @@
-label: "Email Performance"
+label: "Email Performance(sales)"
 
 connection: "edwrpt"
 
