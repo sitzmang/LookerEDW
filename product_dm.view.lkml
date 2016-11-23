@@ -14,6 +14,7 @@ view: product_dm {
     label: "Author"
     type: string
     sql: ${TABLE}.AUTHOR_CD ;;
+    description: "Writer or originator of the content."
     drill_fields: [sku]
   }
 
@@ -22,7 +23,7 @@ view: product_dm {
     type: number
     value_format_name: decimal_0
     sql: ${TABLE}.in_warehouse_unit_cnt ;;
-    description: "Total Units Available to Ship"
+    description: "Total units available to ship."
     hidden: yes
   }
 
@@ -31,7 +32,7 @@ view: product_dm {
     type: number
     value_format_name: decimal_0
     sql: ${TABLE}.reserved_unit_cnt ;;
-    description: "Units Reserved for Open Orders"
+    description: "Units reserved for open orders."
     hidden: yes
   }
 
@@ -40,7 +41,7 @@ view: product_dm {
     type: number
     value_format_name: decimal_0
     sql: ${TABLE}.available_to_sell_unit_cnt ;;
-    description: "In-warehouse Units - Reserved Units"
+    description: "In-warehouse units - reserved units."
   }
 
   dimension: book_type_cd {
@@ -59,7 +60,7 @@ view: product_dm {
     label: "Physical Product"
     type: yesno
     sql: case when ${book_type_cd} in ( '1','4','5' ) then 1 else 0 end = 1 ;;
-    description: "Physical Product to Ship"
+    description: "Physical product to ship."
   }
 
   dimension: category_cd {
@@ -72,6 +73,7 @@ view: product_dm {
     label: "Category Name"
     type: string
     sql: ${TABLE}.CATEGORY_NAME ;;
+    description: "High level subject matter description for the content."
     drill_fields: [sku]
   }
 
@@ -80,7 +82,7 @@ view: product_dm {
     type: number
     value_format_name: usd
     sql: ${TABLE}.CURR_PRODUCT_COST_AMT ;;
-    description: "Current Product Cost Amount."
+    description: "Current product cost amount."
   }
 
   dimension: current_product_cost_amt_tier {
@@ -89,6 +91,7 @@ view: product_dm {
     tiers: [0, 1, 10, 20, 30, 40, 50, 75, 100, 200, 300]
     style: integer
     sql: ${current_product_cost_amt} ;;
+    description: "Product cost placement within a hierarchy."
     value_format: "$#,##0"
   }
 
@@ -102,6 +105,7 @@ view: product_dm {
     label: "Div Subject Name"
     type: string
     sql: ${TABLE}.DIV_SUBJECT_NAME ;;
+    description: "Community designation for the content."
     drill_fields: [sku]
   }
 
@@ -109,6 +113,7 @@ view: product_dm {
     label: "Division Cd"
     type: string
     sql: ${TABLE}.DIVISION_CD ;;
+    description: "Division code designation for the content."
     drill_fields: [sku]
     hidden: no
   }
@@ -117,6 +122,7 @@ view: product_dm {
     label: "Division Name"
     type: string
     sql: ${TABLE}.DIVISION_NAME ;;
+    description: "Division name designation for the content."
     drill_fields: [sku]
   }
 
@@ -132,6 +138,7 @@ view: product_dm {
     label: "Edition Type Name"
     type: string
     sql: ${TABLE}.edition_type_name ;;
+    description: "Identifies the particular form for the content (e.g. hardback, paperback, download, or DVD)."
     drill_fields: [sku]
   }
 
@@ -145,6 +152,7 @@ view: product_dm {
     label: "Imprint Name"
     type: string
     sql: ${TABLE}.IMPRINT_NAME ;;
+    description: "Brand associated with product (printed on spine for books)."
     drill_fields: [sku]
   }
 
@@ -158,6 +166,7 @@ view: product_dm {
     label: "Medium Name"
     type: string
     sql: ${TABLE}.MEDIUM_NAME ;;
+    description: "Generally a subset of Edition Type Name that further defines the form of the content."
     drill_fields: [edition_type_name, sku]
   }
 
@@ -171,6 +180,7 @@ view: product_dm {
     label: "Product Group Name"
     type: string
     sql: ${TABLE}.PRODUCT_GROUP_NAME ;;
+    description: "Identifies source of content (in house vs. purchased vs. digital vs. drop ship)."
     drill_fields: [sku]
   }
 
@@ -225,6 +235,7 @@ view: product_dm {
     label: "ISBN-10"
     type: string
     sql: ${TABLE}.ISBN_10_NO ;;
+    description: "International Standard Book Number product identifier."
     hidden: no
   }
 
@@ -232,6 +243,7 @@ view: product_dm {
     label: "ISBN-13"
     type: string
     sql: ${TABLE}.ISBN_13_NO ;;
+    description: "International Standard Book Number product identifier (replaces ISBN-10)."
     hidden: no
   }
 
@@ -239,12 +251,14 @@ view: product_dm {
     label: "SKU"
     type: string
     sql: ${TABLE}.SKU ;;
+    description: "Stock Keeping Unit designation for product."
   }
 
   dimension: product_name {
     label: "SKU Name/Title"
     type: string
     sql: ${TABLE}.PRODUCT_NAME ;;
+    description: "Customer facing product name corresponding to SKU designation."
   }
 
   dimension: sku_weight_no {
@@ -252,7 +266,7 @@ view: product_dm {
     type: number
     value_format_name: decimal_3
     sql: ${TABLE}.sku_weight_no ;;
-    description: "Actual SKU Weight in Pounds"
+    description: "Actual SKU weight in pounds."
   }
 
   dimension: sku_weight_no_tier {
@@ -261,6 +275,7 @@ view: product_dm {
     tiers: [0, 1, 2, 3, 4, 5, 10, 15, 20, 25, 30, 35]
     style: integer
     sql: ceil( ${sku_weight_no} ) ;;
+    description: "SKU weight placement within a hierarchy."
     value_format: "#,##0"
   }
 
@@ -274,6 +289,7 @@ view: product_dm {
     label: "Subject1 Name"
     type: string
     sql: ${TABLE}.SUBJECT_1_NAME ;;
+    description: "Detailed subject matter description for the content."
     drill_fields: [sku]
   }
 
