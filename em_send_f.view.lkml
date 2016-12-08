@@ -38,25 +38,25 @@ view: em_send_f {
     hidden: yes
   }
 
-  measure: open_bt {
+  dimension: open_bt {
     type: number
     sql: ${TABLE}.open_bt ;;
     hidden: yes
   }
 
-  measure: click_bt {
+  dimension: click_bt {
     type: number
     sql: ${TABLE}.click_bt ;;
     hidden: yes
   }
 
-  measure: complaint_bt {
+  dimension: complaint_bt {
     type: number
     sql: ${TABLE}.complaint_bt ;;
     hidden: yes
   }
 
-  measure: unsub_bt {
+  dimension: unsub_bt {
     type: number
     sql: ${TABLE}.unsub_bt ;;
     hidden: yes

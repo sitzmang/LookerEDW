@@ -121,7 +121,7 @@ view: em_event_f {
 
   #-- measures email (distinct)
 
-  measure: first_event_bt {
+  dimension: first_event_bt {
     type: number
     sql: ${TABLE}.first_event_bt ;;
     hidden: yes

@@ -25,49 +25,49 @@ view: em_event_type_dm {
 
   #-- other
 
-  measure: signup_bt {
+  dimension: signup_bt {
     type: number
     sql: ${TABLE}.signup_bt ;;
     hidden: yes
   }
 
-  measure: sent_bt {
+  dimension: sent_bt {
     type: number
     sql: ${TABLE}.sent_bt ;;
     hidden: yes
   }
 
-  measure: open_bt {
+  dimension: open_bt {
     type: number
     sql: ${TABLE}.open_bt ;;
     hidden: yes
   }
 
-  measure: click_bt {
+  dimension: click_bt {
     type: number
     sql: ${TABLE}.click_bt ;;
     hidden: yes
   }
 
-  measure: bounce_bt {
+  dimension: bounce_bt {
     type: number
     sql: ${TABLE}.bounce_bt ;;
     hidden: yes
   }
 
-  measure: unsub_bt {
+  dimension: unsub_bt {
     type: number
     sql: ${TABLE}.unsub_bt ;;
     hidden: yes
   }
 
-  measure: complaint_bt {
+  dimension: complaint_bt {
     type: number
     sql: ${TABLE}.complaint_bt ;;
     hidden: yes
   }
 
-  measure: order_bt {
+  dimension: order_bt {
     type: number
     sql: ${TABLE}.order_bt ;;
     hidden: yes
