@@ -161,6 +161,7 @@ view: product_dm {
     type: yesno
     sql: ${TABLE}.magazine_bt = '1' ;;
     description: "Products associated with a Magazine Profit Center"
+    hidden: yes
   }
 
   dimension: medium_cd {
