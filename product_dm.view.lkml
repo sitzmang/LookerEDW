@@ -156,6 +156,13 @@ view: product_dm {
     drill_fields: [sku]
   }
 
+  dimension: magazine_yesno {
+    label: "Magazine"
+    type: yesno
+    sql: ${TABLE}.{magazine_bt} = 'Y' ;;
+    description: "Products associated with a Magazine Profit Center"
+  }
+
   dimension: medium_cd {
     type: string
     sql: ${TABLE}.MEDIUM_CD ;;
