@@ -159,7 +159,7 @@ view: product_dm {
   dimension: magazine_yesno {
     label: "Magazine"
     type: yesno
-    sql: ${TABLE}.{magazine_bt} = '1' ;;
+    sql: ${TABLE}.magazine_bt = '1' ;;
     description: "Products associated with a Magazine Profit Center"
   }
 
