@@ -160,8 +160,8 @@ view: product_dm {
     label: "Magazine"
     type: yesno
     sql: ${TABLE}.magazine_bt = '1' ;;
-    description: "Products associated with a Magazine Profit Center"
-    hidden: yes
+    description: "Products associated with a Magazine Subscription Purchase"
+    hidden: no
   }
 
   dimension: medium_cd {
