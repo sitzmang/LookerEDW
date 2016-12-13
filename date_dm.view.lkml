@@ -383,6 +383,7 @@ view: date_dm {
     label: "ISO Year Week Date"
     group_label: "ISO"
     type: date
+    allow_fill: no
     sql: ${TABLE}.iso_year_week_dt ;;
   }
 
