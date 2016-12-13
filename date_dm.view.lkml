@@ -11,6 +11,7 @@ view: date_dm {
   dimension: cal_dt {
     label: "Cal Date"
     type: date
+    allow_fill: no
     sql: ${TABLE}.cal_dt ;;
   }
 
@@ -61,7 +62,7 @@ view: date_dm {
   dimension: cal_month_label {
     group_label: "Calendar"
     type: string
-    sql: ${TABLE}.CAL_MONTH_LABEL ;;
+        sql: ${TABLE}.CAL_MONTH_LABEL ;;
     can_filter: no
   }
 
@@ -119,6 +120,7 @@ view: date_dm {
     label: "Cal Year Date"
     group_label: "Calendar"
     type: date
+    allow_fill: no
     sql: date_trunc( 'year', ${TABLE}.cal_dt ) ;;
   }
 
@@ -133,6 +135,7 @@ view: date_dm {
     label: "Cal Year Month Date"
     group_label: "Calendar"
     type: date
+    allow_fill: no
     sql: ${TABLE}.cal_year_month_dt ;;
   }
 
@@ -155,6 +158,7 @@ view: date_dm {
   dimension: cal_year_quarter_dt {
     label: "Cal Year Quarter Date"
     group_label: "Calendar"
+    allow_fill: no
     type: date
     sql: ${TABLE}.cal_year_quarter_dt ;;
   }
@@ -169,7 +173,7 @@ view: date_dm {
   dimension: cal_year_quarter_no {
     group_label: "Calendar"
     type: number
-    value_format: "0"
+        value_format: "0"
     sql: ${TABLE}.CAL_YEAR_QUARTER_NO ;;
     drill_fields: [cal_year_month_no, cal_year_day_no, cal_dt]
   }
@@ -231,6 +235,7 @@ view: date_dm {
     label: "ISO Month Date"
     group_label: "ISO"
     type: date
+    allow_fill: no
     sql: ${TABLE}.ISO_MONTH_DT ;;
     hidden: no
   }
@@ -271,6 +276,7 @@ view: date_dm {
     label: "ISO Quarter Date"
     group_label: "ISO"
     type: date
+    allow_fill: no
     sql: ${TABLE}.ISO_QUARTER_DT ;;
     hidden: no
   }
@@ -311,6 +317,7 @@ view: date_dm {
     label: "ISO Week Date"
     group_label: "ISO"
     type: date
+    allow_fill: no
     sql: ${TABLE}.ISO_WEEK_DT ;;
     hidden: no
   }
@@ -319,6 +326,7 @@ view: date_dm {
     label: "ISO Year Date"
     group_label: "ISO"
     type: date
+    allow_fill: no
     sql: ${TABLE}.ISO_YEAR_DT ;;
     hidden: no
   }
@@ -335,6 +343,7 @@ view: date_dm {
     label: "ISO Year Month Date"
     group_label: "ISO"
     type: date
+    allow_fill: no
     sql: ${TABLE}.iso_year_month_dt ;;
   }
 
@@ -360,6 +369,7 @@ view: date_dm {
     label: "ISO Year Quarter Date"
     group_label: "ISO"
     type: date
+    allow_fill: no
     sql: ${TABLE}.iso_year_quarter_dt ;;
   }
 
