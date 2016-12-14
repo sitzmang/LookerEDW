@@ -11,7 +11,7 @@ view: date_dm {
   dimension: cal_dt {
     label: "Cal Date"
     type: date
-    allow_fill: no
+    allow_fill: yes
     sql: ${TABLE}.cal_dt ;;
   }
 
