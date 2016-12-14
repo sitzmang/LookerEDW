@@ -365,7 +365,7 @@ view: em_event_f {
     value_format_name: decimal_0
     sql: nullif( ${em_subscriber_shk} * ${em_event_type_dm.signup_bt}, 0 ) ;;
     description: "Distinct Subscribers Who Signed Up"
-    hidden: yes
+    hidden: no
   }
 
   measure: subscriber_sent_cnt {
