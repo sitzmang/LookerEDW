@@ -243,9 +243,9 @@ view: em_event_f {
     label: "Delivery Rate"
     group_label: "Emails(Distinct)"
     type: number
-    sql: (email_send_cnt - cast( ${email_bounce_cnt} as float ))/NULLIF(${email_send_cnt},0) ;;
+    sql: (${email_send_cnt} - cast( ${email_bounce_cnt} as float ))/NULLIF(${email_send_cnt},0) ;;
     value_format: "0.00%"
-    description: "(Sends - Bounces / Sends)"
+    description: "(Sends - Bounces) / Sends"
   }
 
   measure: email_complaint_cnt {
