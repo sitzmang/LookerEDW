@@ -153,6 +153,14 @@ view: em_event_f {
     description: "Count of subscriber emails sent."
   }
 
+  measure: email_net_send_cnt {
+    label: "Sends Net"
+    group_label: "Emails(Distinct)"
+    type: number
+    sql: ${email_send_cnt} - cast( ${email_bounce_cnt} as float );;
+    description: "Net emails sent (sends - bounces)."
+  }
+
   measure: email_open_cnt {
     label: "Opens"
     group_label: "Emails(Distinct)"
