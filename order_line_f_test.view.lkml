@@ -367,7 +367,7 @@ view: order_line_f_test {
   dimension: order_date_hour {
     type: date_hour
     label: "Date Hour"
-    description: "Date + Hour of Order"
+    description: "Date + hour of order."
     sql: ${TABLE}.order_dt ;;
   }
 
@@ -375,7 +375,14 @@ view: order_line_f_test {
     type: date_hour_of_day
     group_label: "Time"
     label: "Hour of Day"
-    description: "Integer hour of day for Order Date"
+    description: "Order date truncated to the nearest hour."
+    sql: ${TABLE}.order_dt ;;
+  }
+
+  dimension: order_date_minute {
+    type: date_minute
+    label: "Date Minute"
+    description: "Order date truncated to the nearest minute."
     sql: ${TABLE}.order_dt ;;
   }
 
