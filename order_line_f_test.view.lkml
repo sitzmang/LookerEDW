@@ -386,6 +386,13 @@ view: order_line_f_test {
     sql: ${TABLE}.order_dt ;;
   }
 
+  dimension: order_date_second {
+    type: date_second
+    label: "Date Second"
+    description: "Order date truncated to the nearest second."
+    sql: ${TABLE}.order_dt ;;
+  }
+
   dimension: order_line_status_shk {
     type: string
     sql: ${TABLE}.ORDER_LINE_STATUS_SHK ;;
