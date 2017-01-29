@@ -1,5 +1,5 @@
 view: order_line_f_test {
-  sql_table_name: rpt.main.order_line_f_mw ;;
+  sql_table_name: rpt.main.order_line_f ;;
   #-- measures
 
   measure: customer_cnt {
