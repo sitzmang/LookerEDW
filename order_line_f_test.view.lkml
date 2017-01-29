@@ -364,6 +364,13 @@ view: order_line_f_test {
     hidden: yes
   }
 
+  dimension: order_dt {
+    type: date_hour
+    group_label: "Time"
+    label: "Date Hour"
+    sql: ${TABLE}.order_dt ;;
+  }
+
   dimension: order_line_status_shk {
     type: string
     sql: ${TABLE}.ORDER_LINE_STATUS_SHK ;;
