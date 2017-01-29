@@ -364,10 +364,18 @@ view: order_line_f_test {
     hidden: yes
   }
 
-  dimension: order_dt {
+  dimension: order_date_hour {
     type: date_hour
-    group_label: "Time"
     label: "Date Hour"
+    description: "Date + Hour of Order"
+    sql: ${TABLE}.order_dt ;;
+  }
+
+  dimension: order_date_hour_of_day {
+    type: date_hour_of_day
+    group_label: "Time"
+    label: "Hour of Day"
+    description: "Integer hour of day for Order Date"
     sql: ${TABLE}.order_dt ;;
   }
 
