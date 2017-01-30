@@ -364,7 +364,7 @@ view: order_line_f_test {
     hidden: yes
   }
 
-  dimension: order_date_time_of_date {
+  dimension: order_date_time_of_day {
     type: date_time_of_day
     view_label: "2) Date Ordered"
     group_label: "Time"
@@ -376,28 +376,16 @@ view: order_line_f_test {
          );;
   }
 
-  dimension: order_date_minute {
-    type: date_minute
+  dimension: order_date_hour {
+    type: date_hour_of_day
     view_label: "2) Date Ordered"
     group_label: "Time"
-    label: "Order Date Minute"
-    description: "Order date truncated to the nearest minute."
-    sql: ${TABLE}.order_dt ;;
+    label: "Hour"
+    description: "Hour of order."
+    sql:${TABLE}.ORDER_dt  ;;
   }
 
-  dimension: order_date_minute_15 {
-    type: date_minute
-    view_label: "2) Date Ordered"
-    group_label: "Time"
-    label: "Order Date Minute 15"
-    description: "Order date truncated to the nearest quarter hour."
-    sql: dateadd( minute
-          ,floor( date_part( minute, ${TABLE}.order_dt ) / 15 ) * 15
-          ,date_trunc( hour, order_dt )
-         );;
-  }
-
-    dimension: order_line_status_shk {
+  dimension: order_line_status_shk {
     type: string
     sql: ${TABLE}.ORDER_LINE_STATUS_SHK ;;
     hidden: yes
