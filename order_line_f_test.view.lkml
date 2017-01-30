@@ -364,36 +364,21 @@ view: order_line_f_test {
     hidden: yes
   }
 
-  dimension: order_date_hour {
-    type: date_hour
-    label: "Date Hour"
-    description: "Date + hour of order."
-    sql: ${TABLE}.order_dt ;;
-  }
-
   dimension: order_date_hour_of_day {
     type: date_hour_of_day
-    group_label: "Time"
     label: "Hour of Day"
     description: "Order date truncated to the nearest hour."
     sql: ${TABLE}.order_dt ;;
   }
 
   dimension: order_date_minute {
-    type: date_minute
+    type: date_minute15
     label: "Date Minute"
-    description: "Order date truncated to the nearest minute."
+    description: "Order date truncated to the nearest 15 minute increment."
     sql: ${TABLE}.order_dt ;;
   }
 
-  dimension: order_date_second {
-    type: date_second
-    label: "Date Second"
-    description: "Order date truncated to the nearest second."
-    sql: ${TABLE}.order_dt ;;
-  }
-
-  dimension: order_line_status_shk {
+    dimension: order_line_status_shk {
     type: string
     sql: ${TABLE}.ORDER_LINE_STATUS_SHK ;;
     hidden: yes
