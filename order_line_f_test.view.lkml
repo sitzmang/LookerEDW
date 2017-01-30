@@ -364,6 +364,18 @@ view: order_line_f_test {
     hidden: yes
   }
 
+  dimension: order_date_test {
+    type: date
+    view_label: "2) Date Ordered"
+    group_label: "Time"
+    label: "Date Test"
+    description: "Date Test."
+    sql: dateadd( minute
+          ,floor( date_part( minute, ${TABLE}.order_dt ) / 15 ) * 15
+          ,date_trunc( hour, order_dt )
+         );;
+  }
+
   dimension: order_date_time_of_day {
     type: date_time_of_day
     view_label: "2) Date Ordered"
