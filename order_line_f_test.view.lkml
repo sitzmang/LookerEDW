@@ -366,7 +366,7 @@ view: order_line_f_test {
 
   dimension: order_date_hour_of_day {
     type: date_hour_of_day
-    view_label: "2)Date Ordered"
+    view_label: "2) Date Ordered"
     group_label: "Time"
     label: "Hour of Day"
     description: "Order date truncated to the nearest hour."
@@ -375,7 +375,7 @@ view: order_line_f_test {
 
   dimension: order_date_minute {
     type: date_minute15
-    view_label: "2)Date Ordered"
+    view_label: "2) Date Ordered"
     group_label: "Time"
     label: "Date Minute"
     description: "Order date to the nearest 15 minute increment."
