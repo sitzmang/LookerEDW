@@ -364,6 +364,15 @@ view: order_line_f {
     hidden: yes
   }
 
+  dimension: order_date_hour {
+    type: date_hour_of_day
+    view_label: "2) Date Ordered"
+    group_label: "Time"
+    label: "Hour of Day"
+    description: "Hour of order."
+    sql:${TABLE}.ORDER_dt  ;;
+  }
+
   dimension: order_line_status_shk {
     type: string
     sql: ${TABLE}.ORDER_LINE_STATUS_SHK ;;
