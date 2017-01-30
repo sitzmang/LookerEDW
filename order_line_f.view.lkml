@@ -373,6 +373,15 @@ view: order_line_f {
     sql:${TABLE}.ORDER_dt  ;;
   }
 
+  dimension: order_time_of_day {
+    type: date_time_of_day
+    view_label: "2) Date Ordered"
+    group_label: "Time"
+    label: "Time of Day"
+    description: "Time of day of order."
+    sql:${TABLE}.ORDER_dt  ;;
+  }
+
   dimension: order_line_status_shk {
     type: string
     sql: ${TABLE}.ORDER_LINE_STATUS_SHK ;;
