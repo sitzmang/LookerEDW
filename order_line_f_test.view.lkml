@@ -385,6 +385,18 @@ view: order_line_f_test {
     sql: ${TABLE}.order_dt ;;
   }
 
+  dimension: order_date_minute_15 {
+    type: date_minute
+    view_label: "2) Date Ordered"
+    group_label: "Time"
+    label: "Order Date Minute 15"
+    description: "Order date truncated to the nearest quarter hour."
+    sql: dateadd( minute
+          ,floor( date_part( minute, ${TABLE}.order_dt ) / 15 ) * 15
+          ,date_trunc( hour, order_dt )
+         );;
+  }
+
     dimension: order_line_status_shk {
     type: string
     sql: ${TABLE}.ORDER_LINE_STATUS_SHK ;;
