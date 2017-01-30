@@ -365,7 +365,7 @@ view: order_line_f_test {
   }
 
   dimension: order_date_test {
-    type: date
+    type: date_time_of_day
     view_label: "2) Date Ordered"
     group_label: "Time"
     label: "Date Test"
