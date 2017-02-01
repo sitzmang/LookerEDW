@@ -24,6 +24,14 @@ explore: order_line_f {
     }
   }
 
+  always_filter: {
+    filters: {
+      field: sales_channel_dm.general_mgr_name
+      value: "_user_attributes['test_gm_name_attribute']"
+    }
+  }
+
+
   join: system_dm {
     view_label: "System"
     sql_on: ${system_dm.system_sid} = ${order_line_f.system_sid} ;;
