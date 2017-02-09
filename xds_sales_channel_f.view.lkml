@@ -45,4 +45,11 @@ view: xds_sales_channel_f {
     hidden: yes
   }
 
+  dimension: visit_order_bt {
+    type: number
+    sql: ${TABLE}.visit_order_bt ;;
+    hidden: yes
+  }
+
+
 }
