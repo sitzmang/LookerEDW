@@ -100,6 +100,7 @@ explore: order_line_f {
 
 explore: xds_sales_channel_f {
   label: "Adobe"
+  view_label: "1) Measures"
   persist_for: "8 hours"
 
   join: order_date_dm {
@@ -111,7 +112,7 @@ explore: xds_sales_channel_f {
   }
 
   join: sales_channel_dm {
-    view_label: "4) Sales Channel"
+    view_label: "3) Sales Channel"
     sql_on: ${sales_channel_dm.sales_channel_shk} = ${xds_sales_channel_f.sales_channel_shk} ;;
     type: inner
     relationship: many_to_one

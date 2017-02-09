@@ -1,20 +1,13 @@
 view: xds_sales_channel_f {
   sql_table_name: rpt.main.xds_sales_channel_f ;;
 
-  measure: visit_cnt {
-    label: "Visits"
-    description: "Visit Count"
-    type: sum
-    value_format_name: decimal_0
-    sql: ${TABLE}.visit_cnt;;
-  }
 
-  measure: page_cnt {
-    label: "Page Views"
-    description: "Count of page views."
-    type: sum
-    value_format_name: decimal_0
-    sql: ${TABLE}.page_cnt ;;
+  measure: avg_visit_page_views {
+    label: "Average Visit Page Views"
+    description: "Average Page Views per Visit"
+    type: number
+    value_format_name: decimal_2
+    sql: ${page_cnt} / ${visit_cnt} ;;
   }
 
   measure: conversion_rate {
@@ -25,20 +18,28 @@ view: xds_sales_channel_f {
     sql: ${visit_order_bt} *  ${order_cnt} / ${visit_cnt} ;;
   }
 
-  measure: avg_visit_page_views {
-    label: "Average Visit Page Views"
-    description: "Average Page Views per Visit"
-    type: number
-    value_format_name: decimal_2
-    sql: ${page_cnt} / ${visit_cnt} ;;
-  }
-
   measure: order_cnt {
     label: "Orders"
     description: "Order Count"
     type: sum
     value_format_name: decimal_0
     sql: ${TABLE}.order_cnt;;
+  }
+
+  measure: page_cnt {
+    label: "Page Views"
+    description: "Count of page views."
+    type: sum
+    value_format_name: decimal_0
+    sql: ${TABLE}.page_cnt ;;
+  }
+
+  measure: visit_cnt {
+    label: "Visits"
+    description: "Visit Count"
+    type: sum
+    value_format_name: decimal_0
+    sql: ${TABLE}.visit_cnt;;
   }
 
   measure: visit_order_bt {
@@ -51,7 +52,7 @@ view: xds_sales_channel_f {
   dimension: request_date_sid {
     type: string
     sql: ${TABLE}.request_date_sid ;;
-    hidden: no
+    hidden: yes
   }
 
   dimension: sales_channel_shk {
@@ -59,6 +60,4 @@ view: xds_sales_channel_f {
     sql: ${TABLE}.SALES_CHANNEL_SHK ;;
     hidden: yes
   }
-
-
 }
