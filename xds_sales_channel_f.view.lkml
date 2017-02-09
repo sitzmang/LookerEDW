@@ -25,8 +25,8 @@ view: xds_sales_channel_f {
     sql: (${TABLE}.visit_order_bt *  ${TABLE}.order_cnt) / ${TABLE}.visit_cnt ;;
   }
 
-  measure: avg_visits_page_views {
-    label: "Average Visits Page Views"
+  measure: avg_visit_page_views {
+    label: "Average Visit Page Views"
     description: "Average Page Views per Visit"
     type: number
     value_format_name: decimal_2
