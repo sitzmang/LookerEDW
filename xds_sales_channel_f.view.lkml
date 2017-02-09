@@ -44,7 +44,7 @@ view: xds_sales_channel_f {
   measure: visit_order_bt {
     label: "Visit order"
     type: sum
-    sql: ${TABLE}.visit_order_bt} ;;
+    sql: ${TABLE}.visit_order_bt ;;
     description: "Count of days with online visit orders???"
   }
 
