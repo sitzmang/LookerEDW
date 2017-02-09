@@ -22,7 +22,7 @@ view: xds_sales_channel_f {
     description: "Orders / Visits"
     type: number
     value_format_name: decimal_4
-    sql: ($visit_order_bt *  $order_cnt) / $visit_cnt ;;
+    sql: (${TABLE}visit_order_bt *  $order_cnt) / $visit_cnt ;;
   }
 
   measure: avg_visit_page_views {
