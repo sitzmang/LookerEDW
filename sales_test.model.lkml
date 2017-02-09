@@ -104,10 +104,10 @@ explore: dds_sales_channel_f {
   view_label: "1) Measures"
   persist_for: "8 hours"
 
-  join: order_date_dm {
+  join: visit_date_dm {
     from: date_dm
     view_label: "2) Date Visited"
-    sql_on: ${order_date_dm.date_sid} = ${dds_sales_channel_f.request_date_sid} ;;
+    sql_on: ${visit_date_dm.date_sid} = ${dds_sales_channel_f.request_date_sid} ;;
     type: inner
     relationship: many_to_one
   }
