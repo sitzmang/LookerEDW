@@ -33,6 +33,15 @@ view: xds_sales_channel_f {
     sql: ${TABLE}.page_cnt / ${TABLE}.visit_cnt ;;
   }
 
+  measure: order_cnt {
+    label: "Orders"
+    description: "Order Count"
+    type: sum
+    value_format_name: decimal_0
+    sql: ${TABLE}.order_cnt;;
+  }
+
+
   dimension: request_date_sid {
     type: string
     sql: ${TABLE}.request_date_sid ;;
