@@ -33,4 +33,11 @@ view: xds_sales_channel_f {
     sql: ${TABLE}.page_cnt / ${visits_cnt} ;;
   }
 
+  dimension: request_date_sid {
+    type: string
+    sql: ${TABLE}.request_date_sid ;;
+    hidden: no
+  }
+
+
 }
