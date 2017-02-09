@@ -4,16 +4,17 @@ view: xds_sales_channel_f {
   measure: visits_cnt {
     label: "Visits"
     description: "Visit Count"
-    type: count
+    type: sum
     value_format_name: decimal_0
-
+    sql: ${TABLE}.visits_cnt;;
   }
 
   measure: page_cnt {
     label: "Page Views"
     description: "Count of page views."
-    type: count
+    type: sum
     value_format_name: decimal_0
+    sql: ${TABLE}.page_cnt ;;
   }
 
   measure: conversion_rate {
