@@ -97,3 +97,9 @@ explore: order_line_f {
     relationship: many_to_one
   }
 }
+
+explore: xds_sales_channel_f {
+  label: "Adobe"
+  persist_for: "8 hours"
+
+      }
