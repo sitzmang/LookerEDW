@@ -19,9 +19,9 @@ view: xds_sales_channel_f {
 
   measure: conversion_rate {
     label: "Conversion "
-    description: "Visit Count"
+    description: "Orders / Visits"
     type: number
-    value_format_name: decimal_2
+    value_format_name: decimal_4
     sql: (${TABLE}.visit_order_bt *  ${TABLE}.order_cnt) / ${visits_cnt} ;;
   }
 
