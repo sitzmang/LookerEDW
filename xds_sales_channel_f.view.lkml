@@ -39,5 +39,10 @@ view: xds_sales_channel_f {
     hidden: no
   }
 
+  dimension: sales_channel_shk {
+    type: string
+    sql: ${TABLE}.SALES_CHANNEL_SHK ;;
+    hidden: yes
+  }
 
 }

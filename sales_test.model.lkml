@@ -109,4 +109,11 @@ explore: xds_sales_channel_f {
     type: inner
     relationship: many_to_one
   }
+
+  join: sales_channel_dm {
+    view_label: "4) Sales Channel"
+    sql_on: ${sales_channel_dm.sales_channel_shk} = ${xds_sales_channel_f.sales_channel_shk} ;;
+    type: inner
+    relationship: many_to_one
+  }
       }
