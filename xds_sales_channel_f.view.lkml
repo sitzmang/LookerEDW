@@ -22,7 +22,7 @@ view: xds_sales_channel_f {
     description: "Orders / Visits"
     type: number
     value_format_name: decimal_4
-    sql: (${TABLE}.visit_order_bt *  $order_cnt) / $visit_cnt ;;
+    sql: ($visit_order_bt *  $order_cnt) / $visit_cnt ;;
   }
 
   measure: avg_visit_page_views {
@@ -41,6 +41,12 @@ view: xds_sales_channel_f {
     sql: ${TABLE}.order_cnt;;
   }
 
+  measure: visit_order_bt {
+    label: "Visit order"
+    type: sum
+    sql: ${TABLE}.visit_order_bt} ;;
+    description: "Count of days with online visit orders???"
+  }
 
   dimension: request_date_sid {
     type: string
@@ -51,12 +57,6 @@ view: xds_sales_channel_f {
   dimension: sales_channel_shk {
     type: string
     sql: ${TABLE}.SALES_CHANNEL_SHK ;;
-    hidden: yes
-  }
-
-  dimension: visit_order_bt {
-    type: number
-    sql: ${TABLE}.visit_order_bt ;;
     hidden: yes
   }
 
