@@ -3,15 +3,15 @@ view: xds_sales_channel_f {
 
 
   measure: avg_visit_page_views {
-    label: "Average Visit Page Views"
-    description: "Average Page Views per Visit"
+    label: "Avg Visit Page Views"
+    description: "Page Count / Visit Count"
     type: number
     value_format_name: decimal_2
     sql: ${page_cnt} / ${visit_cnt} ;;
   }
 
   measure: conversion_rate {
-    label: "Conversion "
+    label: "Order CVR"
     description: "Orders / Visits"
     type: number
     value_format_name: decimal_4
@@ -43,10 +43,10 @@ view: xds_sales_channel_f {
   }
 
   measure: visit_order_bt {
-    label: "Visit order"
     type: sum
     sql: ${TABLE}.visit_order_bt ;;
-    description: "Count of days with online visit orders???"
+    description: "Identifies if orders can be aggregated for the purpose of calculating CVR."
+    hidden: yes
   }
 
   dimension: request_date_sid {

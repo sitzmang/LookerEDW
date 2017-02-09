@@ -98,7 +98,8 @@ explore: order_line_f {
   }
 }
 
-explore: xds_sales_channel_f {
+explore: dds_sales_channel_f {
+  from: xds_sales_channel_f
   label: "Adobe"
   view_label: "1) Measures"
   persist_for: "8 hours"
@@ -106,14 +107,14 @@ explore: xds_sales_channel_f {
   join: order_date_dm {
     from: date_dm
     view_label: "2) Date Visited"
-    sql_on: ${order_date_dm.date_sid} = ${xds_sales_channel_f.request_date_sid} ;;
+    sql_on: ${order_date_dm.date_sid} = ${dds_sales_channel_f.request_date_sid} ;;
     type: inner
     relationship: many_to_one
   }
 
   join: sales_channel_dm {
     view_label: "3) Sales Channel"
-    sql_on: ${sales_channel_dm.sales_channel_shk} = ${xds_sales_channel_f.sales_channel_shk} ;;
+    sql_on: ${sales_channel_dm.sales_channel_shk} = ${dds_sales_channel_f.sales_channel_shk} ;;
     type: inner
     relationship: many_to_one
   }
