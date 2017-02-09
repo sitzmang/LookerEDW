@@ -102,4 +102,11 @@ explore: xds_sales_channel_f {
   label: "Adobe"
   persist_for: "8 hours"
 
+  join: order_date_dm {
+    from: date_dm
+    view_label: "2) Date Visited"
+    sql_on: ${order_date_dm.date_sid} = ${xds_sales_channel_f.request_date_sid} ;;
+    type: inner
+    relationship: many_to_one
+  }
       }
