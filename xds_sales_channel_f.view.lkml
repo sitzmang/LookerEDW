@@ -30,7 +30,7 @@ view: xds_sales_channel_f {
     description: "Average Page Views per Visit"
     type: number
     value_format_name: decimal_2
-    sql: ${TABLE}.page_cnt / ${TABLE}.visit_cnt ;;
+    sql: ${page_cnt} / ${visit_cnt} ;;
   }
 
   measure: order_cnt {
