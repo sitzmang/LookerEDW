@@ -14,7 +14,7 @@ view: xds_sales_channel_f {
     label: "Order CVR"
     description: "Orders / Visits"
     type: number
-    value_format_name: decimal_4
+    value_format_name: percent_2
     sql: ${visit_order_bt} *  ${order_cnt} / ${visit_cnt} ;;
   }
 
