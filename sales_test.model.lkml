@@ -99,8 +99,8 @@ explore: order_line_f {
 }
 
 explore: dds_sales_channel_f {
-  from: xds_sales_channel_f
-  label: "Adobe"
+  from: dds_sales_channel_f
+  label: "Sales Channel Daily Summary"
   view_label: "1) Measures"
   persist_for: "8 hours"
 

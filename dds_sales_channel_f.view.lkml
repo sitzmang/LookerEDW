@@ -1,5 +1,5 @@
-view: xds_sales_channel_f {
-  sql_table_name: rpt.main.xds_sales_channel_f ;;
+view: dds_sales_channel_f {
+  sql_table_name: rpt.main.dds_sales_channel_f ;;
 
 
   measure: avg_visit_page_views {
@@ -23,8 +23,8 @@ view: xds_sales_channel_f {
     description: "Order Count"
     type: sum
     value_format_name: decimal_0
-    sql: ${TABLE}.order_cnt ;;
-  }
+    sql: ${TABLE}.order_cnt;;
+}
 
   measure: page_cnt {
     label: "Page Views"
