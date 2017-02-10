@@ -23,7 +23,7 @@ view: xds_sales_channel_f {
     description: "Order Count"
     type: sum
     value_format_name: decimal_0
-    sql: ${TABLE}.order_cnt;;
+    sql: ${TABLE}.order_cnt ;;
   }
 
   measure: page_cnt {
