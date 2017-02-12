@@ -89,7 +89,7 @@ view: em_event_f {
     group_label: "Emails(Total)"
     type: count
     description: "Count of events."
-    hidden: yes
+    hidden: no
   }
 
   measure: em_event_cnt_ttl {
