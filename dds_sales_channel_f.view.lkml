@@ -63,6 +63,15 @@ view: dds_sales_channel_f {
     sql: ${TABLE}.bounce_visit_cnt;;
   }
 
+  measure: visit_bounce_rate {
+    label: "Visit Bounce Rate"
+    group_label:"Visits"
+    description: "Visits with Bounce / Visits"
+    type: number
+    value_format_name: percent_2
+    sql: cast( ${bounce_cnt} as float)/NULLIF(${visit_cnt},0) ;;
+  }
+
   dimension: visit_order_bt {
     type: number
     sql: ${TABLE}.visit_order_bt ;;
