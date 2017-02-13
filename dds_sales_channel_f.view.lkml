@@ -4,6 +4,7 @@ view: dds_sales_channel_f {
 
   measure: avg_visit_page_views {
     label: "Avg Visit Page Views"
+    view_label: "1aa) Visit Related Measures"
     description: "Page Count / Visit Count"
     type: number
     value_format_name: decimal_2
