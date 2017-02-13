@@ -13,6 +13,7 @@ view: dds_sales_channel_f {
 
   measure: order_conversion_rate {
     label: "Order CVR"
+    group_label:"Sales"
     description: "Orders / Visits"
     type: number
     value_format_name: percent_2
@@ -21,6 +22,7 @@ view: dds_sales_channel_f {
 
   measure: order_cnt {
     label: "Orders"
+    group_label:"Sales"
     description: "Order Count"
     type: sum
     value_format_name: decimal_0
@@ -61,6 +63,7 @@ view: dds_sales_channel_f {
 
   measure: product_cost_amt {
     label: "Product Cost $"
+    group_label:"Sales"
     type: sum
     value_format_name: usd
     sql: ${TABLE}.PRODUCT_COST_AMT ;;
@@ -69,6 +72,7 @@ view: dds_sales_channel_f {
 
   measure: product_margin_amt {
     label: "Product Margin $"
+    group_label:"Sales"
     type: sum
     value_format_name: usd
     sql: ${TABLE}.PRODUCT_MARGIN_AMT ;;
@@ -77,6 +81,7 @@ view: dds_sales_channel_f {
 
   measure: product_margin_pct {
     label: "Product Margin %"
+    group_label:"Sales"
     type: number
     value_format_name: percent_1
     sql: ${product_margin_amt} / nullif( ${product_sales_amt}, 0 ) ;;
@@ -85,6 +90,7 @@ view: dds_sales_channel_f {
 
   measure: product_sales_amt {
     label: "Product Sales $"
+    group_label:"Sales"
     type: sum
     value_format_name: usd
     sql: ${TABLE}.PRODUCT_SALES_AMT ;;
@@ -109,6 +115,7 @@ view: dds_sales_channel_f {
 
   measure: shipping_sales_amt {
     label: "Shipping Sales $"
+    group_label:"Sales"
     type: sum
     value_format_name: usd_0
     sql: ${TABLE}.SHIPPING_SALES_AMT ;;
@@ -133,6 +140,7 @@ view: dds_sales_channel_f {
 
   measure: sales_amt {
     label: "Sales $"
+    group_label:"Sales"
     type: sum
     value_format_name: usd
     sql: ${TABLE}.SALES_AMT ;;
@@ -157,6 +165,7 @@ view: dds_sales_channel_f {
 
   measure: unit_cnt {
     label: "Units"
+    group_label:"Sales"
     type: sum
     value_format_name: decimal_2
     sql: ${TABLE}.UNIT_CNT ;;
@@ -164,6 +173,7 @@ view: dds_sales_channel_f {
 
   measure: avg_order_product_sales_amt {
     label: "AOV Product Sales $"
+    group_label:"Sales"
     type: number
     value_format_name: usd
     sql: ${product_sales_amt} / nullif( ${order_cnt}, 0 ) ;;
@@ -172,6 +182,7 @@ view: dds_sales_channel_f {
 
   measure: avg_order_sales_amt {
     label: "AOV Sales $"
+    group_label:"Sales"
     type: number
     value_format_name: usd
     sql: ${sales_amt} / nullif( ${order_cnt}, 0 ) ;;
@@ -188,6 +199,7 @@ view: dds_sales_channel_f {
 
   measure: avg_order_unit_cnt {
     label: "Avg Order Units"
+    group_label:"Sales"
     type: number
     value_format_name: decimal_1
     sql: ${unit_cnt} / nullif( ${order_cnt}, 0 ) ;;
@@ -196,6 +208,7 @@ view: dds_sales_channel_f {
 
   measure: avg_unit_product_cost_amt {
     label: "Avg Unit Product Cost $"
+    group_label:"Sales"
     type: number
     value_format_name: usd
     sql: ${product_cost_amt} / nullif( ${unit_cnt}, 0 ) ;;
@@ -204,6 +217,7 @@ view: dds_sales_channel_f {
 
   measure: avg_unit_product_margin_amt {
     label: "Avg Unit Product Margin $"
+    group_label:"Sales"
     type: number
     value_format_name: usd
     sql: ${product_margin_amt} / nullif( ${unit_cnt}, 0 ) ;;
@@ -212,6 +226,7 @@ view: dds_sales_channel_f {
 
   measure: avg_unit_productg_sales_amt {
     label: "Avg Unit Product Sales $"
+    group_label:"Sales"
     type: number
     value_format_name: usd
     sql: ${product_sales_amt} / nullif( ${unit_cnt}, 0 ) ;;
