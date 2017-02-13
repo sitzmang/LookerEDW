@@ -7,7 +7,7 @@ view: dds_sales_channel_f {
     description: "Avg Minutes on Site  / Visit"
     type: number
     value_format_name: decimal_1
-    sql: ${onsite_second_cnt} / 60 / NULLIF(${visit_cnt},0 ;;
+    sql: ${onsite_second_cnt} / 60 / NULLIF(${visit_cnt},0) ;;
   }
 
   measure: onsite_second_cnt {
