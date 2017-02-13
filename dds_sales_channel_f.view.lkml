@@ -15,7 +15,7 @@ view: dds_sales_channel_f {
     description: "Orders / Visits"
     type: number
     value_format_name: percent_2
-    sql: cast( ${visit_order_cnt}} as float)/NULLIF(${visit_cnt},0) ;;
+    sql: cast( ${visit_order_cnt} as float)/NULLIF(${visit_cnt},0) ;;
   }
 
   measure: order_cnt {
