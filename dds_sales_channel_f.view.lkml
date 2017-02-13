@@ -10,12 +10,12 @@ view: dds_sales_channel_f {
     sql: ${page_cnt} / ${visit_cnt} ;;
   }
 
-  measure: conversion_rate {
+  measure: order_conversion_rate {
     label: "Order CVR"
     description: "Orders / Visits"
     type: number
     value_format_name: percent_2
-    sql: ${visit_order_bt} *  ${order_cnt} / ${visit_cnt} ;;
+    sql: cast( ${visit_order_cnt}} as float)/NULLIF(${visit_cnt},0) ;;
   }
 
   measure: order_cnt {
@@ -25,6 +25,13 @@ view: dds_sales_channel_f {
     value_format_name: decimal_0
     sql: ${TABLE}.order_cnt;;
 }
+
+  measure: visit_order_cnt {
+    hidden: yes
+    type: number
+    value_format_name: decimal_0
+    sql: ${visit_order_bt} * ${TABLE}.order_cnt;;
+  }
 
   measure: page_cnt {
     label: "Page Views"
