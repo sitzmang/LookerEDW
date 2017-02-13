@@ -30,7 +30,7 @@ view: dds_sales_channel_f {
     hidden: yes
     type: number
     value_format_name: decimal_0
-    sql: ${visit_order_bt} * ${TABLE}.order_cnt;;
+    sql: ${visit_order_bt} * ${order_cnt};;
   }
 
   measure: page_cnt {
