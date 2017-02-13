@@ -28,9 +28,9 @@ view: dds_sales_channel_f {
 
   measure: visit_order_cnt {
     hidden: yes
-    type: number
+    type: sum
     value_format_name: decimal_0
-    sql: ${visit_order_bt} * ${order_cnt};;
+    sql: ${visit_order_bt} * ${TABLE}.{order_cnt};;
   }
 
   measure: page_cnt {
@@ -49,8 +49,8 @@ view: dds_sales_channel_f {
     sql: ${TABLE}.visit_cnt;;
   }
 
-  measure: visit_order_bt {
-    type: sum
+  dimension: visit_order_bt {
+    type: number
     sql: ${TABLE}.visit_order_bt ;;
     description: "Identifies if orders can be aggregated for the purpose of calculating CVR."
     hidden: yes
