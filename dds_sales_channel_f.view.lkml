@@ -54,6 +54,15 @@ view: dds_sales_channel_f {
     sql: ${TABLE}.visit_cnt;;
   }
 
+  measure: bounce_cnt {
+    label: "Bounce Visit Count"
+    group_label:"Visits"
+    description: "Bounce Count"
+    type: sum
+    value_format_name: decimal_0
+    sql: ${TABLE}.bounce_visit_cnt;;
+  }
+
   dimension: visit_order_bt {
     type: number
     sql: ${TABLE}.visit_order_bt ;;
