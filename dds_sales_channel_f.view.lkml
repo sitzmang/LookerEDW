@@ -1,6 +1,21 @@
 view: dds_sales_channel_f {
   sql_table_name: rpt.main.dds_sales_channel_f ;;
 
+  measure: avg_visit_minutes {
+    label: "Avg Visit Minutes"
+    group_label:"Visits"
+    description: "Avg Minutes on Site  / Visit"
+    type: number
+    value_format_name: decimal_1
+    sql: ${onsite_second_cnt} / 60 ;;
+  }
+
+  measure: onsite_second_cnt {
+    type: sum
+    value_format_name: decimal_0
+    sql: ${TABLE}.onsite_second_cnt;;
+  }
+
 
   measure: avg_visit_page_views {
     label: "Avg Visit Page Views"
