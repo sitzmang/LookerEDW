@@ -4,7 +4,7 @@ view: dds_sales_channel_f {
 
   measure: avg_visit_page_views {
     label: "Avg Visit Page Views"
-    view_label: "1aa) Visit Related Measures"
+    group_label:"Visit"
     description: "Page Count / Visit Count"
     type: number
     value_format_name: decimal_2
@@ -36,7 +36,7 @@ view: dds_sales_channel_f {
 
   measure: page_cnt {
     label: "Page Views"
-    view_label: "1aa) Visit Related Measures"
+    group_label:"Visit"
     description: "Count of page views."
     type: sum
     value_format_name: decimal_0
@@ -45,7 +45,7 @@ view: dds_sales_channel_f {
 
   measure: visit_cnt {
     label: "Visits"
-    view_label: "1aa) Visit Related Measures"
+    group_label:"Visit"
     description: "Visit Count"
     type: sum
     value_format_name: decimal_0
