@@ -78,7 +78,7 @@ view: dds_sales_channel_f {
   }
 
   measure: bounce_cnt {
-    label: "Bounce Visit Count"
+    label: "Visit Bounces"
     group_label:"Visits"
     description: "Bounce Count"
     type: sum
