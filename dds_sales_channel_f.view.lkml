@@ -22,7 +22,7 @@ view: dds_sales_channel_f {
     description: "Page Count / Visit Count"
     type: number
     value_format_name: decimal_2
-    sql: ${page_cnt} / ${visit_cnt} ;;
+    sql: ${page_cnt} / NULLIF(${visit_cnt},0) ;;
   }
 
   measure: order_conversion_rate {
