@@ -104,6 +104,13 @@ explore: dds_sales_channel_f {
   view_label: "1) Measures"
   persist_for: "8 hours"
 
+  always_filter: {
+    filters: {
+      field: sales_channel_dm.sales_channel_name
+      value: "InterweaveStore.com"
+    }
+  }
+
   join: visit_date_dm {
     from: date_dm
     view_label: "2) Date Visited"
