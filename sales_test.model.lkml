@@ -100,7 +100,7 @@ explore: order_line_f {
 
 explore: dds_sales_channel_f {
   from: dds_sales_channel_f
-  label: "Daily Summary (w/visits)"
+  #label: "Daily Summary (w/visits)"
   description: "Daily summary of visits and sales by sales channel."
   view_label: "1) Measures"
   persist_for: "8 hours"

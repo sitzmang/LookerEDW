@@ -16,6 +16,7 @@ view: dds_sales_channel_f {
     type: sum
     value_format_name: decimal_0
     sql: ${TABLE}.onsite_second_cnt;;
+    hidden: yes
   }
 
   measure: avg_visit_page_views {
@@ -29,7 +30,7 @@ view: dds_sales_channel_f {
 
   measure: order_conversion_rate {
     label: "Order CVR"
-    group_label:"Sales"
+    group_label:"Visits"
     description: "Orders / Visits"
     type: number
     value_format_name: percent_2
