@@ -84,7 +84,7 @@ view: dds_sales_channel_f {
     group_label:"Visits"
     description: "Visits with Bounce / Visits"
     type: number
-    value_format_name: percent_2
+    value_format_name: percent_1
     sql: cast( ${bounce_cnt} as float)/NULLIF(${visit_cnt},0) ;;
   }
 
