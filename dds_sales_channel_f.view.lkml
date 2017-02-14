@@ -1,7 +1,6 @@
 view: dds_sales_channel_f {
   sql_table_name: rpt.main.dds_sales_channel_f ;;
-  label: "A view can have a label"
-  view_label: "A view can have a view_label"
+
 
   measure: avg_visit_minutes {
     label: "Avg Visit Minutes"
