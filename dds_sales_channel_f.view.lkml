@@ -52,6 +52,22 @@ view: dds_sales_channel_f {
     sql: ${TABLE}.order_cnt;;
 }
 
+  measure: order_cnt_prev {
+    label: "Orders"
+    view_label: "1b) % Prev"
+    type: percent_of_previous
+    value_format: "0.0\%"
+    sql: ${order_cnt} ;;
+  }
+
+  measure: order_cnt_pttl {
+    label: "Orders"
+    view_label: "1c) % Total"
+    type: percent_of_total
+    value_format: "0.0\%"
+    sql: ${order_cnt} ;;
+  }
+
   measure: visit_order_cnt {
     hidden: yes
     type: sum
