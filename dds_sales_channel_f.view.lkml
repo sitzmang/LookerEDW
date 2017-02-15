@@ -77,6 +77,22 @@ view: dds_sales_channel_f {
     sql: ${TABLE}.visit_cnt;;
   }
 
+  measure: visit_cnt_prev {
+    label: "Visits"
+    view_label: "1b) % Prev"
+    type: percent_of_previous
+    value_format: "0.0\%"
+    sql: ${visit_cnt} ;;
+  }
+
+  measure: visit_cnt_pttl {
+    label: "Visits"
+    view_label: "1c) % Total"
+    type: percent_of_total
+    value_format: "0.0\%"
+    sql: ${visit_cnt} ;;
+  }
+
   measure: bounce_cnt {
     label: "Visit Bounces"
     group_label:"Visits"
