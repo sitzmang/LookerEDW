@@ -46,10 +46,11 @@ view: date_dm {
 
   dimension: cal_month_day_no {
     group_label: "Calendar"
+    label: "Cal Month Day No"
     type: number
     value_format: "0"
     sql: ${TABLE}.CAL_MONTH_DAY_NO ;;
-    hidden: yes
+    hidden: no
   }
 
   dimension: cal_month_dt {
