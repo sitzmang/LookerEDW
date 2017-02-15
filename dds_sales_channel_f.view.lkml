@@ -43,6 +43,14 @@ view: dds_sales_channel_f {
     sql: cast( ${visit_order_cnt} as float)/NULLIF(${visit_cnt},0) ;;
   }
 
+  measure: order_conversion_rate_prev {
+    label: "Order CVR"
+    view_label: "1b) % Prev"
+    type: percent_of_previous
+    value_format: "0.0\%"
+    sql: ${order_conversion_rate} ;;
+  }
+
   measure: order_cnt {
     label: "Orders"
     group_label:"Sales"
