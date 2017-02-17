@@ -1,6 +1,6 @@
 dashboard: First LookML Dashboard
 title: Untitled Visualization
-type: looker_column
+layout: looker_column
 model: sales_test
 explore: dds_sales_channel_f
 dimensions: [visit_date_dm.cal_dt]
