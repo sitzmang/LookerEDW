@@ -1,4 +1,4 @@
-name: First LookML Dashboard
+dashboard: First LookML Dashboard
 title: Untitled Visualization
 type: looker_column
 model: sales_test
