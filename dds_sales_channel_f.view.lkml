@@ -251,7 +251,7 @@ view: dds_sales_channel_f {
     type: sum
     value_format_name: decimal_0
     sql: ${TABLE}.store.visit_cnt;;
-    hidden: yes
+    hidden: no
   }
 
   measure: store_visit_rate {
@@ -261,7 +261,7 @@ view: dds_sales_channel_f {
     type: number
     value_format_name: percent_1
     sql: cast( ${store_visit_cnt} as float)/NULLIF(${visit_cnt},0) ;;
-    hidden: yes
+    hidden: no
   }
 
   measure: unit_cnt {
