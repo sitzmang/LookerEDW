@@ -244,6 +244,24 @@ view: dds_sales_channel_f {
     sql: ${sales_amt} ;;
   }
 
+  measure: store_visit_cnt {
+    label: "Store Visits"
+    group_label:"Visits"
+    description: "Store Visit Count"
+    type: sum
+    value_format_name: decimal_0
+    sql: ${TABLE}.store.visit_cnt;;
+  }
+
+  measure: store_visit_rate {
+    label: "Store Visit Rate"
+    group_label:"Visits"
+    description: "Store Visit Count / Visits"
+    type: number
+    value_format_name: percent_1
+    sql: cast( ${store_visit_cnt} as float)/NULLIF(${visit_cnt},0) ;;
+  }
+
   measure: unit_cnt {
     label: "Units"
     group_label:"Sales"
