@@ -250,7 +250,7 @@ view: dds_sales_channel_f {
     description: "Store Visit Count"
     type: sum
     value_format_name: decimal_0
-    sql: ${TABLE}.store.visit_cnt;;
+    sql: ${TABLE}.store_visit_cnt;;
     hidden: no
   }
 
