@@ -350,6 +350,14 @@ view: dds_sales_channel_f {
     description: "Distinct Request Date Count"
   }
 
+  measure: avg_daily_sales_to_date {
+    label: "Avg Daily Sales To Date"
+    type: number
+    value_format_name: usd
+    sql: ${sales_amt} / ${request_date_cnt};;
+    description: "Average Daily Sales To Date for time period"
+  }
+
   dimension: request_date_sid {
     type: string
     sql: ${TABLE}.request_date_sid ;;
