@@ -357,7 +357,7 @@ view: dds_sales_channel_f {
     type: number
     value_format_name: usd
     sql: ${sales_amt} / ${date_cnt};;
-    description: "Average Daily Sales To Date for time period"
+    description: "Average Daily Sales for time period"
   }
 
   dimension: request_date_sid {
