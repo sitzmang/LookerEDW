@@ -342,19 +342,21 @@ view: dds_sales_channel_f {
     sql: ${avg_unit_productg_sales_amt} ;;
   }
 
-  measure: request_date_cnt {
-    label: "Request Date:Days"
+  measure: date_cnt {
+    label: "Date:Days"
+    group_label:"Sales"
     type: count_distinct
     value_format_name: decimal_0
     sql: ${TABLE}.request_date_sid ;;
-    description: "Distinct Request Date Count"
+    description: "Distinct Date Count"
   }
 
   measure: avg_daily_sales_to_date {
-    label: "Avg Daily Sales To Date"
+    label: "Avg Daily Sales"
+    group_label:"Sales"
     type: number
     value_format_name: usd
-    sql: ${sales_amt} / ${request_date_cnt};;
+    sql: ${sales_amt} / ${date_cnt};;
     description: "Average Daily Sales To Date for time period"
   }
 
