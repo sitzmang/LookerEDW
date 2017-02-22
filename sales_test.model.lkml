@@ -11,7 +11,7 @@ include: "*.view"
 include: "*.dashboard"
 
 explore: order_line_f {
-  from: order_line_f_test
+  from: order_line_f2
   label: "Order Line Sales"
   view_label: "1) Measures"
   persist_for: "8 hours"
@@ -47,9 +47,9 @@ explore: order_line_f {
     relationship: many_to_one
   }
 
-  join: sales_channel_dm {
+  join: sales_channel_dm2 {
     view_label: "4) Sales Channel"
-    sql_on: ${sales_channel_dm.sales_channel_shk} = ${order_line_f.sales_channel_shk} ;;
+    sql_on: ${sales_channel_dm2.sales_channel_shk} = ${order_line_f.sales_channel_shk} ;;
     type: inner
     relationship: many_to_one
   }
