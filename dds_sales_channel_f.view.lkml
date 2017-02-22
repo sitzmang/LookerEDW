@@ -342,6 +342,14 @@ view: dds_sales_channel_f {
     sql: ${avg_unit_productg_sales_amt} ;;
   }
 
+  measure: request_date_cnt {
+    label: "Request Date:Days"
+    type: count_distinct
+    value_format_name: decimal_0
+    sql: ${TABLE}.request_date_sid ;;
+    description: "Distinct Request Date Count"
+  }
+
   dimension: request_date_sid {
     type: string
     sql: ${TABLE}.request_date_sid ;;
