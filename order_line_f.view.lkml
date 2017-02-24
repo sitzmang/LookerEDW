@@ -338,6 +338,24 @@ view: order_line_f {
     sql: ${avg_unit_productg_sales_amt} ;;
   }
 
+  measure: avg_daily_sales {
+    label: "Avg Daily Sales"
+    group_label:"Sales"
+    type: number
+    value_format_name: usd
+    sql: ${sales_amt} / ${order_date_cnt};;
+    description: "Sales / Order Date:Days"
+  }
+
+  measure: avg_daily_orders {
+    label: "Avg Daily Orders"
+    group_label:"Sales"
+    type: number
+    value_format_name: decimal_0
+    sql: ${order_cnt} / ${order_date_cnt};;
+    description: "Orders / Order Date:Days"
+  }
+
   #-- other
 
   dimension: billing_state_shk {
