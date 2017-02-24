@@ -357,7 +357,7 @@ view: dds_sales_channel_f {
     type: number
     value_format_name: usd
     sql: ${sales_amt} / ${date_cnt};;
-    description: "Average Daily Sales for time period"
+    description: "Sales / Date:Days"
   }
 
   measure: avg_daily_orders_to_date {
@@ -366,7 +366,7 @@ view: dds_sales_channel_f {
     type: number
     value_format_name: usd
     sql: ${order_cnt} / ${date_cnt};;
-    description: "Average Daily Orders for time period"
+    description: "Orders / Date:Days"
   }
 
   measure: avg_daily_visits_to_date {
@@ -375,7 +375,7 @@ view: dds_sales_channel_f {
     type: number
     value_format_name: decimal_0
     sql: ${visit_cnt} / ${date_cnt};;
-    description: "Average Daily Visits for time period"
+    description: "Visits / Date:Days"
   }
 
   dimension: request_date_sid {
