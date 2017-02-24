@@ -373,7 +373,7 @@ view: dds_sales_channel_f {
     label: "Avg Daily Visits"
     group_label:"Visits"
     type: number
-    value_format_name: usd
+    value_format_name: decimal_0
     sql: ${visit_cnt} / ${date_cnt};;
     description: "Average Daily Visits for time period"
   }
