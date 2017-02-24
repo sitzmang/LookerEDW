@@ -364,7 +364,7 @@ view: dds_sales_channel_f {
     label: "Avg Daily Orders"
     group_label:"Sales"
     type: number
-    value_format_name: usd
+    value_format_name: decimal_0
     sql: ${order_cnt} / ${date_cnt};;
     description: "Orders / Date:Days"
   }
