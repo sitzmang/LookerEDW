@@ -360,6 +360,24 @@ view: dds_sales_channel_f {
     description: "Average Daily Sales for time period"
   }
 
+  measure: avg_daily_orders_to_date {
+    label: "Avg Daily Orders"
+    group_label:"Sales"
+    type: number
+    value_format_name: usd
+    sql: ${order_cnt} / ${date_cnt};;
+    description: "Average Daily Orders for time period"
+  }
+
+  measure: avg_daily_visits_to_date {
+    label: "Avg Daily Visits"
+    group_label:"Visits"
+    type: number
+    value_format_name: usd
+    sql: ${visit_cnt} / ${date_cnt};;
+    description: "Average Daily Visits for time period"
+  }
+
   dimension: request_date_sid {
     type: string
     sql: ${TABLE}.request_date_sid ;;
