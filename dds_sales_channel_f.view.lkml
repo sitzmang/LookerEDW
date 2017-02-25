@@ -35,7 +35,7 @@ view: dds_sales_channel_f {
   }
 
   measure: order_conversion_rate {
-    label: "Order CVR"
+    label: "Site CVR"
     group_label:"Visits"
     description: "Orders / Visits"
     type: number
@@ -44,11 +44,28 @@ view: dds_sales_channel_f {
   }
 
   measure: order_conversion_rate_prev {
-    label: "Order CVR"
+    label: "Site CVR"
     view_label: "1b) % Prev"
     type: percent_of_previous
     value_format: "0.0\%"
     sql: ${order_conversion_rate} ;;
+  }
+
+  measure: store_conversion_rate {
+    label: "Store CVR"
+    group_label:"Visits"
+    description: "Orders / Store Visits"
+    type: number
+    value_format_name: percent_2
+    sql: cast( ${visit_order_cnt} as float)/NULLIF(${store_visit_cnt},0) ;;
+  }
+
+  measure: store_conversion_rate_prev {
+    label: "Store CVR"
+    view_label: "1b) % Prev"
+    type: percent_of_previous
+    value_format: "0.0\%"
+    sql: ${store_conversion_rate} ;;
   }
 
   measure: order_cnt {
