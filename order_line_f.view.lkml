@@ -250,6 +250,14 @@ view: order_line_f {
     sql: ${avg_order_sales_amt} ;;
   }
 
+  measure: avg_order_sku_cnt {
+    label: "Avg Order SKUs"
+    type: number
+    value_format_name: decimal_1
+    sql: ${sku_cnt} / nullif( ${order_cnt}, 0 ) ;;
+    description: "SKUs / Orders"
+  }
+
   measure: avg_order_unit_cnt {
     label: "Avg Order Units"
     type: number
