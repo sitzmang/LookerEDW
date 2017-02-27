@@ -34,6 +34,15 @@ view: dds_sales_channel_f {
     sql: ${page_cnt} / NULLIF(${visit_cnt},0) ;;
   }
 
+  measure: avg_store_visit_page_views {
+    label: "Avg Store Visit Page Views"
+    group_label:"Visits"
+    description: "Store Page Count / Store Visit Count"
+    type: number
+    value_format_name: decimal_2
+    sql: ${store_page_cnt} / NULLIF(${store_visit_cnt},0) ;;
+  }
+
   measure: order_conversion_rate {
     label: "Site CVR"
     group_label:"Visits"
