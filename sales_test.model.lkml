@@ -50,7 +50,7 @@ explore: order_line_f {
   join: sales_channel_dm2 {
     view_label: "4) Sales Channel"
     sql_on: ${sales_channel_dm2.sales_channel_shk} = ${order_line_f.sales_channel_shk} ;;
-    type: inner
+    type: left_outer
     relationship: many_to_one
   }
 
