@@ -109,6 +109,15 @@ view: dds_sales_channel_f {
     sql: ${TABLE}.page_cnt ;;
   }
 
+  measure: store_page_cnt {
+    label: "Store Page Views"
+    group_label:"Visits"
+    description: "Count of store page views."
+    type: sum
+    value_format_name: decimal_0
+    sql: ${TABLE}.store_page_cnt ;;
+  }
+
   measure: visit_cnt {
     label: "Visits"
     group_label:"Visits"
