@@ -28,7 +28,7 @@ view: dds_sales_channel_f {
   measure: avg_visit_page_views {
     label: "Avg Visit Page Views"
     group_label:"Visits"
-    description: "Page Count / Visit Count"
+    description: "Page Views / Visits"
     type: number
     value_format_name: decimal_2
     sql: ${page_cnt} / NULLIF(${visit_cnt},0) ;;
@@ -37,7 +37,7 @@ view: dds_sales_channel_f {
   measure: avg_store_visit_page_views {
     label: "Avg Store Visit Page Views"
     group_label:"Visits"
-    description: "Store Page Count / Store Visit Count"
+    description: "Store Page Views / Store Visits"
     type: number
     value_format_name: decimal_2
     sql: ${store_page_cnt} / NULLIF(${store_visit_cnt},0) ;;
