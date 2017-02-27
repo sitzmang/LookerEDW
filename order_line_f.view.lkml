@@ -34,6 +34,14 @@ view: order_line_f {
     description: "Distinct Order Count"
   }
 
+  measure: order_sku_cnt {
+    type: count_distinct
+    value_format_name: decimal_0
+    sql: ${TABLE}.order_shk || '|' ||  ${TABLE}.product_shk;;
+    description: "Distinct Order/SKU Combination Count"
+    hidden: yes
+  }
+
   measure: order_cnt_prev {
     label: "Orders"
     view_label: "1b) % Prev"
@@ -254,7 +262,7 @@ view: order_line_f {
     label: "Avg Order SKUs"
     type: number
     value_format_name: decimal_1
-    sql: ${sku_cnt} / nullif( ${order_cnt}, 0 ) ;;
+    sql: ${order_sku_cnt} / nullif( ${order_cnt}, 0 ) ;;
     description: "SKUs / Orders"
   }
 
