@@ -37,7 +37,7 @@ view: order_line_f2 {
   }
 
   set: sales_channel_drill {
-    fields: [sales_channel_dm2.sales_channel_name, sales_channel_dm2.sales_channel_rollup_name, order_cnt]
+    fields: [sales_channel_dm2.sales_channel_name, sales_channel_dm2.sales_channel_rollup_name, order_cnt, sales_amt, unit_cnt]
   }
 
   set: sales_channel_drill2 {
