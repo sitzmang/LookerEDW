@@ -37,7 +37,7 @@ view: order_line_f2 {
   }
 
   set: sales_channel_drill {
-    fields: [sales_channel_dm.sales_channel_name]
+    fields: [sales_channel_dm2.sales_channel_name]
   }
 
   measure: order_cnt_prev {
