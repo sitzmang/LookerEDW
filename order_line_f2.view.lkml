@@ -29,9 +29,15 @@ view: order_line_f2 {
   measure: order_cnt {
     label: "Orders"
     type: count_distinct
+    drill_fields: [sales_channel_drill*]
     value_format_name: decimal_0
     sql: ${TABLE}.order_shk ;;
     description: "Distinct Order Count"
+
+  }
+
+  set: sales_channel_drill {
+    fields: [sales_channel_dm.sales_channel_name]
   }
 
   measure: order_cnt_prev {
