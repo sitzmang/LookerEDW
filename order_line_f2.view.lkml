@@ -29,7 +29,7 @@ view: order_line_f2 {
   measure: order_cnt {
     label: "Orders"
     type: count_distinct
-    drill_fields: [sales_channel_drill*]
+    drill_fields: [sales_channel_drill*, sales_channel_drill2*]
     value_format_name: decimal_0
     sql: ${TABLE}.order_shk ;;
     description: "Distinct Order Count"
@@ -39,6 +39,11 @@ view: order_line_f2 {
   set: sales_channel_drill {
     fields: [sales_channel_dm2.sales_channel_name, sales_channel_dm2.sales_channel_rollup_name, order_cnt]
   }
+
+  set: sales_channel_drill2 {
+    fields: [sales_channel_dm2.sales_channel_name, order_cnt]
+  }
+
 
   measure: order_cnt_prev {
     label: "Orders"
