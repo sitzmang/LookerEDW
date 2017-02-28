@@ -44,7 +44,7 @@ view: dds_sales_channel_f {
   }
 
   measure: order_conversion_rate {
-    label: "Site CVR"
+    label: "Site Conversion"
     group_label:"Visits"
     description: "Orders / Visits"
     type: number
@@ -70,7 +70,7 @@ view: dds_sales_channel_f {
   }
 
   measure: store_conversion_rate_prev {
-    label: "Store CVR"
+    label: "Store Conversion"
     view_label: "1b) % Prev"
     type: percent_of_previous
     value_format: "0.0\%"
