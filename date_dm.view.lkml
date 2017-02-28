@@ -183,7 +183,7 @@ view: date_dm {
     label: "Current Period WTD"
     group_label: "Current Period"
     type: string
-    sql: sql: ${TABLE}.cal_dt < current_date() and date_trunc( week, ${TABLE}cal_dt ) = date_trunc( week, dateadd( day, -1, current_date() ) );;
+    sql: sql: ${TABLE}.cal_dt < current_date() and date_trunc( week, ${TABLE}.cal_dt ) = date_trunc( week, dateadd( day, -1, current_date() ) );;
     hidden: no
   }
 
@@ -191,7 +191,7 @@ view: date_dm {
     label: "Current Period MTD"
     group_label: "Current Period"
     type: string
-    sql: ${TABLE}.cal_dt < current_date() and date_trunc( month, ${TABLE}cal_dt ) = date_trunc( month, dateadd( day, -1, current_date() ) );;
+    sql: ${TABLE}.cal_dt < current_date() and date_trunc( month, ${TABLE}.cal_dt ) = date_trunc( month, dateadd( day, -1, current_date() ) );;
     hidden: no
   }
 
@@ -199,7 +199,7 @@ view: date_dm {
     label: "Current Period YTD"
     group_label: "Current Period"
     type: string
-    sql: sql: ${TABLE}.cal_dt < current_date() and date_trunc( year, ${TABLE}cal_dt ) = date_trunc( year, dateadd( day, -1, current_date() ) );;
+    sql: sql: ${TABLE}.cal_dt < current_date() and date_trunc( year, ${TABLE}.cal_dt ) = date_trunc( year, dateadd( day, -1, current_date() ) );;
     hidden: no
   }
 
