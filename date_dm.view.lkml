@@ -179,6 +179,30 @@ view: date_dm {
     drill_fields: [cal_year_month_no, cal_year_day_no, cal_dt]
   }
 
+  dimension: current_period_wtd {
+    label: "Current Period WTD"
+    group_label: "Current Period"
+    type: string
+    sql: sql: ${TABLE}.cal_dt < current_date() and date_trunc( week, ${TABLE}cal_dt ) = date_trunc( week, dateadd( day, -1, current_date() ) );;
+    hidden: no
+  }
+
+  dimension: current_period_mtd {
+    label: "Current Period MTD"
+    group_label: "Current Period"
+    type: string
+    sql: ${TABLE}.cal_dt < current_date() and date_trunc( month, ${TABLE}cal_dt ) = date_trunc( month, dateadd( day, -1, current_date() ) );;
+    hidden: no
+  }
+
+  dimension: current_period_ytd {
+    label: "Current Period YTD"
+    group_label: "Current Period"
+    type: string
+    sql: sql: ${TABLE}.cal_dt < current_date() and date_trunc( year, ${TABLE}cal_dt ) = date_trunc( year, dateadd( day, -1, current_date() ) );;
+    hidden: no
+  }
+
   dimension: date_sid {
     type: string
     sql: ${TABLE}.DATE_SID ;;
