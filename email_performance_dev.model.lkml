@@ -12,6 +12,7 @@ include: "*.dashboard"
 
 explore: em_event_f {
   label: "Email Sends"
+  description: "Email send measures w/sales attribution by Business Unit, Email, List, Subscriber, etc."
   view_label: "1) Measures"
   persist_for: "8 hours"
   always_join: [em_email_dm]
@@ -107,6 +108,7 @@ explore: em_event_f {
 
 explore: em_list_subscriber_rpt {
   label: "List Subscribers"
+  description: "Email subscriber list sizes by Business Unit, Engagement Status & Aging, List, etc."
   view_label: "1) Measures"
   persist_for: "8 hours"
 
