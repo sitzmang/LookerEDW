@@ -63,7 +63,7 @@ view: sales_channel_dm {
     label: " Sales Channel Name"
     type: string
     sql: ${TABLE}.SALES_CHANNEL_NAME ;;
-    drill_fields: [general_mgr_name, sales_channel_rollup_name, sales_channel_name,product_dm.profit_centre_name]
+    drill_fields: [product_dm.profit_centre_name]
   }
 }
 
