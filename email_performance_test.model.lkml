@@ -33,7 +33,7 @@ explore: em_event_f2 {
   }
 
   join: email_sales_channel_dm {
-    from: sales_channel_dm_new
+    from: sales_channel_dm2
     view_label: "4) Sales Channel(Email)"
     sql_on: ${email_sales_channel_dm.sales_channel_shk} = ${em_event_f2.email_sales_channel_shk} ;;
     type: left_outer
@@ -41,7 +41,7 @@ explore: em_event_f2 {
   }
 
   join: order_sales_channel_dm {
-    from: sales_channel_dm_new
+    from: sales_channel_dm2
     view_label: "5) Sales Channel(Orders)"
     sql_on: ${order_sales_channel_dm.sales_channel_shk} = ${em_event_f2.order_sales_channel_shk} ;;
     type: left_outer
