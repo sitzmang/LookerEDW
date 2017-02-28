@@ -12,6 +12,7 @@ include: "*.dashboard"
 
 explore: order_line_f {
   label: "Order Line Sales"
+  description: "Order line sales measures by Sales Channel, Product, Customer, Order, etc."
   view_label: "1) Measures"
   persist_for: "8 hours"
   always_join: [order_line_status_dm]
