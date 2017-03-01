@@ -14,7 +14,7 @@ explore: order_line_f {
   label: "Order Line Sales"
   description: "Order line sales measures by Sales Channel, Product, Customer, Order, etc."
   view_label: "1) Measures"
-  persist_for: "8 hours"
+  persist_for: "30 minutes"
   always_join: [order_line_status_dm]
 
   always_filter: {
@@ -103,7 +103,7 @@ explore: dds_sales_channel_f {
   label: "Daily Summary (w/visits)"
   description: "Daily summary of visits and sales by sales channel."
   view_label: "1) Measures"
-  persist_for: "8 hours"
+  persist_for: "3 minutes"
 
   always_filter: {
     filters: {
