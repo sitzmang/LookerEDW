@@ -106,7 +106,7 @@ explore: dds_sales_channel_f2 {
 
   always_filter: {
     filters: {
-      field: sales_channel_dm.sales_channel_name
+      field: sales_channel_dm2.sales_channel_name
       value: "InterweaveStore.com"
     }
     filters: {
@@ -123,9 +123,9 @@ explore: dds_sales_channel_f2 {
     relationship: many_to_one
   }
 
-  join: sales_channel_dm {
+  join: sales_channel_dm2 {
     view_label: "3) Sales Channel"
-    sql_on: ${sales_channel_dm.sales_channel_shk} = ${dds_sales_channel_f2.sales_channel_shk} ;;
+    sql_on: ${sales_channel_dm2.sales_channel_shk} = ${dds_sales_channel_f2.sales_channel_shk} ;;
     type: inner
     relationship: many_to_one
   }
