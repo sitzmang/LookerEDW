@@ -97,8 +97,8 @@ explore: order_line_f {
     relationship: many_to_one
   }
 }
-explore: dds_sales_channel_f {
-  from: dds_sales_channel_f
+explore: dds_sales_channel_f2 {
+  from: dds_sales_channel_f2
   label: "Daily Summary (w/visits)"
   description: "Daily summary of visits and sales by sales channel."
   view_label: "1) Measures"
@@ -118,14 +118,14 @@ explore: dds_sales_channel_f {
   join: visit_date_dm {
     from: date_dm
     view_label: "2) Date Visited/Ordered"
-    sql_on: ${visit_date_dm.date_sid} = ${dds_sales_channel_f.request_date_sid} ;;
+    sql_on: ${visit_date_dm.date_sid} = ${dds_sales_channel_f2.request_date_sid} ;;
     type: inner
     relationship: many_to_one
   }
 
   join: sales_channel_dm {
     view_label: "3) Sales Channel"
-    sql_on: ${sales_channel_dm.sales_channel_shk} = ${dds_sales_channel_f.sales_channel_shk} ;;
+    sql_on: ${sales_channel_dm.sales_channel_shk} = ${dds_sales_channel_f2.sales_channel_shk} ;;
     type: inner
     relationship: many_to_one
   }
