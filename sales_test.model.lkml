@@ -97,3 +97,36 @@ explore: order_line_f {
     relationship: many_to_one
   }
 }
+explore: dds_sales_channel_f {
+  from: dds_sales_channel_f
+  label: "Daily Summary (w/visits)"
+  description: "Daily summary of visits and sales by sales channel."
+  view_label: "1) Measures"
+  persist_for: "3 minutes"
+
+  always_filter: {
+    filters: {
+      field: sales_channel_dm.sales_channel_name
+      value: "InterweaveStore.com"
+    }
+    filters: {
+      field: visit_date_dm.cal_dt
+      value: "30 days"
+    }
+  }
+
+  join: visit_date_dm {
+    from: date_dm
+    view_label: "2) Date Visited/Ordered"
+    sql_on: ${visit_date_dm.date_sid} = ${dds_sales_channel_f.request_date_sid} ;;
+    type: inner
+    relationship: many_to_one
+  }
+
+  join: sales_channel_dm {
+    view_label: "3) Sales Channel"
+    sql_on: ${sales_channel_dm.sales_channel_shk} = ${dds_sales_channel_f.sales_channel_shk} ;;
+    type: inner
+    relationship: many_to_one
+  }
+}
