@@ -110,10 +110,7 @@ explore: dds_sales_channel_f {
       field: sales_channel_dm.sales_channel_name
       value: "InterweaveStore.com"
     }
-    filters: {
-      field: visit_date_dm.cal_dt
-      value: "30 days"
-    }
+
   }
 
   join: visit_date_dm {
