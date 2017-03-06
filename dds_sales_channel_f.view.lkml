@@ -11,6 +11,15 @@ view: dds_sales_channel_f {
     sql: ${timespent_second_cnt} / 60 / NULLIF(${timespent_visit_cnt},0) ;;
   }
 
+  measure: email_signup_cnt {
+    label: "Email Signups"
+    group_label:"Visits"
+    description: "Email Signup Count"
+    type: sum
+    value_format_name: decimal_0
+    sql: ${TABLE}.email_signup_cnt;;
+  }
+
   measure: timespent_second_cnt {
     type: sum
     value_format_name: decimal_0
