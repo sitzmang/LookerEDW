@@ -360,7 +360,7 @@ view: em_event_f {
     group_label: "Sales"
     type: count_distinct
     value_format_name: decimal_0
-    sql: nullif( ${em_subscriber_shk} * ${em_event_type_dm.order_bt}, 0 ) ;;
+    sql: nullif( case when ${em_event_type_dm.order_bt} = 1 then ${em_subscriber_shk} else to_char( null ), 0 ) ;;
     description: "Distinct Subscribers Who Ordered"
   }
 
