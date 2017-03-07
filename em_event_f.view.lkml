@@ -3,19 +3,19 @@ view: em_event_f {
   #-- fk
 
   dimension: email_sales_channel_shk {
-    type: number
+    type: string
     sql: ${TABLE}.email_sales_channel_shk ;;
     hidden: yes
   }
 
   dimension: order_sales_channel_shk {
-    type: number
+    type: string
     sql: ${TABLE}.order_sales_channel_shk ;;
     hidden: yes
   }
 
   dimension: em_bu_shk {
-    type: number
+    type: string
     sql: ${TABLE}.em_bu_shk ;;
     hidden: yes
   }
@@ -39,25 +39,25 @@ view: em_event_f {
   }
 
   dimension: em_email_shk {
-    type: number
+    type: string
     sql: ${TABLE}.em_email_shk ;;
     hidden: yes
   }
 
   dimension: em_list_shk {
-    type: number
+    type: string
     sql: ${TABLE}.em_list_shk ;;
     hidden: yes
   }
 
   dimension: em_subscriber_shk {
-    type: number
+    type: string
     sql: ${TABLE}.em_subscriber_shk ;;
     hidden: yes
   }
 
   dimension: em_list_membership_shk {
-    type: number
+    type: string
     sql: ${TABLE}.em_list_membership_shk ;;
     hidden: yes
   }
