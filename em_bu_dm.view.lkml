@@ -3,7 +3,7 @@ view: em_bu_dm {
   #-- fk
 
   dimension: em_bu_shk {
-    type: number
+    type: string
     sql: ${TABLE}.em_bu_shk ;;
     hidden: yes
   }

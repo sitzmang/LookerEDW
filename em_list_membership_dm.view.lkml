@@ -3,7 +3,7 @@ view: em_list_membership_dm {
   #-- fk
 
   dimension: em_list_membership_shk {
-    type: number
+    type: string
     sql: ${TABLE}.em_list_membership_shk ;;
     hidden: yes
   }

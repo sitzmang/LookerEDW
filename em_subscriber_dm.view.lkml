@@ -3,13 +3,13 @@ view: em_subscriber_dm {
   #-- fk
 
   dimension: em_subscriber_shk {
-    type: number
+    type: string
     sql: ${TABLE}.em_subscriber_shk ;;
     hidden: yes
   }
 
   dimension: em_bu_shk {
-    type: number
+    type: string
     sql: ${TABLE}.em_bu_shk ;;
     hidden: yes
   }
