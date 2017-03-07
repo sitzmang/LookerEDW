@@ -380,7 +380,7 @@ view: em_event_f {
     group_label: "Subscribers"
     type: count_distinct
     value_format_name: decimal_0
-    sql: nullif( ${em_subscriber_shk} * ${em_event_type_dm.signup_bt}, 0 ) ;;
+    sql: nullif( case when ${em_event_type_dm.signup_bt} = 1 then ${em_subscriber_shk} else to_char( null ), 0 ) ;;
     description: "Distinct Subscribers Who Signed Up"
     hidden: no
   }
@@ -390,7 +390,7 @@ view: em_event_f {
     group_label: "Subscribers"
     type: count_distinct
     value_format_name: decimal_0
-    sql: nullif( ${em_subscriber_shk} * ${em_event_type_dm.sent_bt}, 0 ) ;;
+    sql: nullif( case when ${em_event_type_dm.sent_bt} = 1 then ${em_subscriber_shk} else to_char( null ), 0 ) ;;
     description: "Distinct Subscribers Who Were Sent"
   }
 
@@ -399,7 +399,7 @@ view: em_event_f {
     group_label: "Subscribers"
     type: count_distinct
     value_format_name: decimal_0
-    sql: nullif( ${em_subscriber_shk} * ${em_event_type_dm.open_bt}, 0 ) ;;
+    sql: nullif( case when ${em_event_type_dm.open_bt} = 1 then ${em_subscriber_shk} else to_char( null ), 0 ) ;;
     description: "Distinct Subscribers Who Opened"
   }
 
@@ -417,7 +417,7 @@ view: em_event_f {
     group_label: "Subscribers"
     type: count_distinct
     value_format_name: decimal_0
-    sql: nullif( ${em_subscriber_shk} * ${em_event_type_dm.bounce_bt}, 0 ) ;;
+    sql: nullif( case when ${em_event_type_dm.bounce_bt} = 1 then ${em_subscriber_shk} else to_char( null ), 0 ) ;;
     description: "Distinct Subscribers Who Bounced"
   }
 
@@ -435,7 +435,7 @@ view: em_event_f {
     group_label: "Subscribers"
     type: count_distinct
     value_format_name: decimal_0
-    sql: nullif( ${em_subscriber_shk} * ${em_event_type_dm.click_bt}, 0 ) ;;
+    sql: nullif( case when ${em_event_type_dm.click_bt} = 1 then ${em_subscriber_shk} else to_char( null ), 0 ) ;;
     description: "Distinct Subscribers Who Clicked"
   }
 
@@ -452,7 +452,7 @@ view: em_event_f {
     label: "Subscribers Complained"
     group_label: "Subscribers"
     type: count_distinct
-    sql: nullif( ${em_subscriber_shk} * ${em_event_type_dm.complaint_bt}, 0 ) ;;
+    sql: nullif( case when ${em_event_type_dm.complaint_bt} = 1 then ${em_subscriber_shk} else to_char( null ), 0 ) ;;
     description: "Distinct Subscribers Who Complained."
   }
 
@@ -469,7 +469,7 @@ view: em_event_f {
     label: "Subscribers Unsubed"
     group_label: "Subscribers"
     type: count_distinct
-    sql: nullif( ${em_subscriber_shk} * ${em_event_type_dm.unsub_bt}, 0 ) ;;
+    sql: nullif( case when ${em_event_type_dm.unsub_bt} = 1 then ${em_subscriber_shk} else to_char( null ), 0 ) ;;
     description: "Distinct Subscribers Who Unsubed."
   }
 
