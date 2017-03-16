@@ -130,7 +130,7 @@ explore: dds_sales_channel_f2 {
 
   join: mktg_source_dm {
     view_label: "4) Marketing Source"
-    sql_on: ${mktg_source_dm.mktg_source_shk} = ${dds_sales_channel_f2.sales_channel_shk} ;;
+    sql_on: ${mktg_source_dm.mktg_source_shk} = ${dds_sales_channel_f2.mktg_source_shk} ;;
     type: inner
     relationship: many_to_one
   }
