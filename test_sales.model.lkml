@@ -11,6 +11,7 @@ include: "*.view"
 include: "*.dashboard"
 
 explore: order_line_f {
+  from: order_line_f2
   label: "Order Line Sales"
   description: "Order line sales measures by Sales Channel, Product, Customer, Order, etc."
   view_label: "1) Measures"
@@ -96,9 +97,24 @@ explore: order_line_f {
     type: left_outer
     relationship: many_to_one
   }
+
+  join: mktg_source_dm {
+    view_label: "4) Marketing Source"
+    sql_on: ${mktg_source_dm.mktg_source_shk} = ${order_line_f.mktg_source_shk} ;;
+    type: inner
+    relationship: many_to_one
+  }
+
+  join: referring_domain_dm {
+    view_label: "5) Referring Domain"
+    sql_on: ${referring_domain_dm.referring_domain_shk} = ${order_line_f.referring_domain_shk} ;;
+    type: inner
+    relationship: many_to_one
+  }
+
 }
 
-explore: dds_sales_channel_f2 {
+explore: dds_sales_channel_f {
   from: dds_sales_channel_f2
   label: "Daily Summary (w/visits)"
   description: "Daily summary of visits and sales by sales channel."
@@ -116,28 +132,28 @@ explore: dds_sales_channel_f2 {
   join: visit_date_dm {
     from: date_dm
     view_label: "2) Date Visited/Ordered"
-    sql_on: ${visit_date_dm.date_sid} = ${dds_sales_channel_f2.request_date_sid} ;;
+    sql_on: ${visit_date_dm.date_sid} = ${dds_sales_channel_f.request_date_sid} ;;
     type: inner
     relationship: many_to_one
   }
 
   join: sales_channel_dm {
     view_label: "3) Sales Channel"
-    sql_on: ${sales_channel_dm.sales_channel_shk} = ${dds_sales_channel_f2.sales_channel_shk} ;;
+    sql_on: ${sales_channel_dm.sales_channel_shk} = ${dds_sales_channel_f.sales_channel_shk} ;;
     type: inner
     relationship: many_to_one
   }
 
   join: mktg_source_dm {
     view_label: "4) Marketing Source"
-    sql_on: ${mktg_source_dm.mktg_source_shk} = ${dds_sales_channel_f2.mktg_source_shk} ;;
+    sql_on: ${mktg_source_dm.mktg_source_shk} = ${dds_sales_channel_f.mktg_source_shk} ;;
     type: inner
     relationship: many_to_one
   }
 
   join: referring_domain_dm {
     view_label: "5) Referring Domain"
-    sql_on: ${referring_domain_dm.referring_domain_shk} = ${dds_sales_channel_f2.referring_domain_shk} ;;
+    sql_on: ${referring_domain_dm.referring_domain_shk} = ${dds_sales_channel_f.referring_domain_shk} ;;
     type: inner
     relationship: many_to_one
   }
