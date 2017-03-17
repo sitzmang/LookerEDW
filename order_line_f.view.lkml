@@ -7,7 +7,7 @@ view: order_line_f {
     description: "Distinct Customer Count"
     type: count_distinct
     value_format_name: decimal_0
-    sql: ${TABLE}.customer_shk ;;
+    sql: case when ${customer_dm.email_adrs} like '%@%.%' then ${customer_dm.email_adrs} else ${TABLE}.customer_shk end ;;
   }
 
   measure: customer_cnt_prev {
