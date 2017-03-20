@@ -437,13 +437,13 @@ view: dds_sales_channel_f2 {
   dimension: mktg_source_shk {
     type: string
     sql: ${TABLE}.mktg_source_shk ;;
-    hidden: no
+    hidden: yes
   }
 
   dimension: referring_domain_shk {
     type: string
     sql: ${TABLE}.referring_domain_shk ;;
-    hidden: no
+    hidden: yes
   }
 
 

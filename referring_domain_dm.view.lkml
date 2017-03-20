@@ -7,29 +7,35 @@ view: referring_domain_dm {
   dimension: referring_domain_shk{
     type: string
     sql: ${TABLE}.referring_domain_shk ;;
-    hidden: no
+    hidden: yes
   }
 
   dimension: ref_domain {
+    label: "Domain (full)"
+    description: "Full domain of referrer."
     type: string
     sql: ${TABLE}.ref_domain ;;
   }
 
-  dimension: domain_base {
+  dimension: ref_domain_base {
+    label: "Domain (base)"
+    description: "Base domain of referrer."
     type: string
     sql: ${TABLE}.domain_base ;;
   }
 
   dimension: referrer_type_name {
+    label: "Domain Type"
+    description: "Type classification for the referring domain."
     type: string
     sql: ${TABLE}.referrer_type_name ;;
     hidden: no
   }
 
-  dimension: referrer_type {
+  dimension: referrer_type_cd {
     type: number
-    sql: ${TABLE}.referrer_type_name ;;
-    hidden: no
+    sql: ${TABLE}.referrer_type ;;
+    hidden: yes
   }
 
 }
