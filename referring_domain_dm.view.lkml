@@ -10,18 +10,18 @@ view: referring_domain_dm {
     hidden: yes
   }
 
-  dimension: ref_domain {
+  dimension: referring_domain_str {
     label: "Domain (full)"
     description: "Full domain of referrer."
     type: string
-    sql: ${TABLE}.ref_domain ;;
+    sql: ${TABLE}.referring_domain_str ;;
   }
 
   dimension: ref_domain_base {
     label: "Domain (base)"
     description: "Base domain of referrer."
     type: string
-    sql: ${TABLE}.domain_base ;;
+    sql: ${TABLE}.referring_domain_base_str ;;
   }
 
   dimension: referrer_type_name {

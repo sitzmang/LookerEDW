@@ -147,14 +147,14 @@ explore: dds_sales_channel_f {
   join: mktg_source_dm {
     view_label: "4) Marketing Source"
     sql_on: ${mktg_source_dm.mktg_source_shk} = ${dds_sales_channel_f.mktg_source_shk} ;;
-    type: inner
+    type: left_outer
     relationship: many_to_one
   }
 
   join: referring_domain_dm {
     view_label: "5) Referring Domain"
     sql_on: ${referring_domain_dm.referring_domain_shk} = ${dds_sales_channel_f.referring_domain_shk} ;;
-    type: inner
+    type: left_outer
     relationship: many_to_one
   }
 }
