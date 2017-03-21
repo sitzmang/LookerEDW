@@ -136,6 +136,15 @@ view: em_event_f {
     hidden: yes
   }
 
+  measure: email_sent_cnt {
+    label: "Emails Sent"
+    group_label: "Emails(Distinct)"
+    type: count_distinct
+    value_format_name: decimal_0
+    sql: case when ${em_event_type_dm.sent_bt} = 1 then ${em_email_shk} else to_char( null ) end ;;
+    description: "Distinct emails sent."
+  }
+
   measure: email_signup_cnt {
     label: "Signups"
     group_label: "Emails(Distinct)"
