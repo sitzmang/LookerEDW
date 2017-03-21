@@ -442,7 +442,7 @@ view: dds_sales_channel_f2 {
 
   dimension: referring_domain_shk {
     type: string
-    sql: ${TABLE}.referring_domain_shk ;;
+    sql: ${TABLE}.referring_domain_type_l_shk ;;
     hidden: yes
   }
 
