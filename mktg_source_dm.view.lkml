@@ -11,25 +11,25 @@ view: mktg_source_dm {
     sql: ${TABLE}.mktg_channel_group_name ;;
   }
 
-  dimension: medium_cd {
+  dimension: medium_name {
     label: "Medium"
     description: "Value in utm_medium."
     type: string
-    sql: ${TABLE}.medium_cd ;;
+    sql: ${TABLE}.medium_name ;;
   }
 
-  dimension: source_cd {
+  dimension: source_name {
     label: "Source"
     description: "Value in utm_source."
     type: string
-    sql: ${TABLE}.source_cd ;;
+    sql: ${TABLE}.source_name ;;
   }
 
-  dimension: campaign_cd {
+  dimension: campaign_name {
     label: "Campaign"
     description: "Value in utm_campaign."
     type: string
-    sql: ${TABLE}.campaign_cd ;;
+    sql: ${TABLE}.campaign_name ;;
   }
 
   dimension: mktg_source_shk {
