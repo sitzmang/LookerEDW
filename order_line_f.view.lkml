@@ -461,4 +461,16 @@ view: order_line_f {
     sql: ${TABLE}.SYSTEM_SID ;;
     hidden: yes
   }
+
+  dimension: mktg_source_shk {
+    type: string
+    sql: ${TABLE}.mktg_source_shk ;;
+    hidden: yes
+  }
+
+  dimension: referring_domain_shk {
+    type: string
+    sql: ${TABLE}.referring_domain_type_l_shk ;;
+    hidden: yes
+  }
 }

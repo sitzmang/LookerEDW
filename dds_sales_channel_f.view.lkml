@@ -433,4 +433,17 @@ view: dds_sales_channel_f {
     sql: ${TABLE}.SALES_CHANNEL_SHK ;;
     hidden: yes
   }
+
+  dimension: mktg_source_shk {
+    type: string
+    sql: ${TABLE}.mktg_source_shk ;;
+    hidden: yes
+  }
+
+  dimension: referring_domain_shk {
+    type: string
+    sql: ${TABLE}.referring_domain_type_l_shk ;;
+    hidden: yes
+  }
+
 }

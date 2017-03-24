@@ -96,6 +96,21 @@ explore: order_line_f {
     type: left_outer
     relationship: many_to_one
   }
+
+  join: mktg_source_dm {
+    view_label: "Marketing Source"
+    sql_on: ${mktg_source_dm.mktg_source_shk} = ${order_line_f.mktg_source_shk} ;;
+    type: inner
+    relationship: many_to_one
+  }
+
+  join: referring_domain_dm {
+    view_label: "Referring Domain"
+    sql_on: ${referring_domain_dm.referring_domain_shk} = ${order_line_f.referring_domain_shk} ;;
+    type: inner
+    relationship: many_to_one
+  }
+
 }
 
 explore: dds_sales_channel_f {
@@ -127,4 +142,19 @@ explore: dds_sales_channel_f {
     type: inner
     relationship: many_to_one
   }
+
+  join: mktg_source_dm {
+    view_label: "Marketing Source"
+    sql_on: ${mktg_source_dm.mktg_source_shk} = ${dds_sales_channel_f.mktg_source_shk} ;;
+    type: left_outer
+    relationship: many_to_one
+  }
+
+  join: referring_domain_dm {
+    view_label: "Referring Domain"
+    sql_on: ${referring_domain_dm.referring_domain_shk} = ${dds_sales_channel_f.referring_domain_shk} ;;
+    type: left_outer
+    relationship: many_to_one
+  }
+
 }
