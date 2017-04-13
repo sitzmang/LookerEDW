@@ -13,8 +13,8 @@ include: "*.dashboard"
 explore: ddbs_sales_channel_f {
   from: ddbs_sales_channel_f
   label: "Budget"
-  description: "Daily key metrics comparing budget with actuals."
   view_label: "1) Measures"
+  description: "Daily key metrics comparing budget with actuals."
   persist_for: "3 minutes"
 
   always_filter: {
@@ -22,7 +22,6 @@ explore: ddbs_sales_channel_f {
       field: sales_channel_dm.sales_channel_name
       value: "InterweaveStore.com"
     }
-
   }
 
   join: budget_date_dm {
@@ -39,5 +38,4 @@ explore: ddbs_sales_channel_f {
     type: inner
     relationship: many_to_one
   }
-
 }
