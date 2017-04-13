@@ -17,17 +17,10 @@ view: ddbs_sales_channel_f {
     sql: ${TABLE}.act_visit_cnt;;
   }
 
-## measure: pct_to_budget_visit_cnt {
-##    label: "Percent to Budget Visits"
-##    description: "Actual visit count / budget visit count"
-##    type: number
-##    value_format_name: percent_2
-##    sql: ${TABLE}.act_visit_cnt / ${TABLE}.bgt_visit_cnt;;
-##  }
-
   measure: bgt_order_cnt {
     label: "Budget Orders"
     type: sum
+    value_format_name: decimal_0
     sql: ${TABLE}.bgt_order_cnt ;;
     hidden: no
   }
@@ -40,20 +33,62 @@ view: ddbs_sales_channel_f {
     hidden: no
   }
 
-  dimension: bgt_aov_amt {
-    label: "Budget AOV"
-    type: number
+  measure: bgt_sales_amt {
+    label: "Budget Sales"
+    type: sum
     value_format_name: usd
-    sql: ${TABLE}.bgt_aov_amt ;;
+    sql: ${TABLE}.bgt_sales_amt ;;
     hidden: no
   }
 
-  dimension: act_aov_amt {
-    label: "Actual AOV"
+  measure: act_sales_amt {
+    label: "Actual Sales"
+    type: sum
+    value_format_name: usd
+    sql: ${TABLE}.act_sales_amt ;;
+    hidden: no
+  }
+
+  measure: sales_variance_amt {
+    label: "Actual Sales - Budget Sales"
+    type: sum
+    value_format_name: usd
+    sql: ${TABLE}.act_sales_amt - ${TABLE}.bgt_sales_amt ;;
+    hidden: no
+    description: "Actual Sales - Budget Sales"
+  }
+
+  measure: sales_variance_pct {
+    label: "Percent Actual Sales to Budget"
+    type: number
+    value_format_name: percent_2
+    sql: ${act_sales_amt} / nullif( ${bgt_sales_amt}, 0 ) ;;
+    description: "Actual Sales / Budget Sales"
+  }
+
+  measure: avg_order_sales_actual_amt {
+    label: "Actual AOV Sales"
     type: number
     value_format_name: usd
-    sql: ${TABLE}.act_aov_amt ;;
-    hidden: no
+    sql: ${act_sales_amt} / nullif( ${act_order_cnt}, 0 ) ;;
+    description: "Actual Sales / Actual Orders"
+  }
+
+  measure: avg_order_sales_budget_amt {
+    label: "Budget AOV Sales $"
+    type: number
+    value_format_name: usd
+    sql: ${bgt_sales_amt} / nullif( ${bgt_order_cnt}, 0 ) ;;
+    description: "Budget Sales / Budget Orders"
+  }
+
+  measure: order_conversion_rate {
+    label: "Site Conversion"
+    ##group_label:"Visits"
+    description: "Actual orders / actual visits"
+    type: number
+    value_format_name: percent_2
+    sql: cast( ${act_order_cnt} as float)/NULLIF(${act_visit_cnt},0) ;;
   }
 
   dimension: sales_channel_shk {
