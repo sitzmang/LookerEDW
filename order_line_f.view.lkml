@@ -72,6 +72,15 @@ view: order_line_f {
     description: "Distinct SKU Count"
   }
 
+  measure: sku_cnt_pttl {
+    label: "SKUs"
+    view_label: "1c) % Total"
+    type: percent_of_total
+    value_format: "0.0\%"
+    sql: ${sku_cnt} ;;
+    direction: "column"
+  }
+
   measure: first_order_dt {
     label: "Order Date:First"
     type: date
