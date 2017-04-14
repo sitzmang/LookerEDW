@@ -53,11 +53,13 @@ view: dw_process_instance_f {
   dimension: process_start_dt {
     type: date_time
     sql: ${TABLE}.process_start_dt ;;
+    hidden: yes
   }
 
   dimension: process_end_dt {
     type: date_time
     sql: ${TABLE}.process_end_dt ;;
+    hidden: yes
   }
 
   dimension: last_ctrl_dt {

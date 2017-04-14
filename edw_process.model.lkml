@@ -31,8 +31,8 @@ explore: dw_process_instance_f {
 
   join: process_end_date {
     from: date_dm
-    view_label: "2) Date Process Completed"
-    sql_on: date_trunc(day,to_timestamp(${dw_process_instance_f.process_start_dt})) = ${process_end_date.cal_dt} ;;
+    view_label: "3) Date Process Completed"
+    sql_on: date_trunc(day,to_timestamp(${dw_process_instance_f.process_end_dt})) = ${process_end_date.cal_dt} ;;
     type: inner
     relationship: many_to_one
   }

@@ -142,6 +142,14 @@ view: product_dm {
     drill_fields: [sku]
   }
 
+  dimension_group: first_order_dt {
+    label: "First Order"
+    type: time
+    timeframes: [day_of_week, date, week, month, month_name, month_num, year]
+    sql: ${TABLE}.first_order_dt ;;
+    description: "Identifies the date a sku was first ordered."
+  }
+
   dimension: imprint_cd {
     type: string
     sql: ${TABLE}.IMPRINT_CD ;;

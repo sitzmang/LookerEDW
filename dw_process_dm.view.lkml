@@ -2,6 +2,11 @@ view: dw_process_dm {
   sql_table_name: edw.edw.dw_process_dm ;;
   #-- fk
 
+measure: process_cnt {
+  type: count_distinct
+  sql:${TABLE}.process_name ;;
+}
+
   dimension: process_sid {
     type: number
     sql: ${TABLE}.process_sid ;;
