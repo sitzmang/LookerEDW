@@ -37,6 +37,26 @@ view: ddbs_sales_channel_f {
     description: "Actual visits / budget visits."
   }
 
+  measure: cumulative_bgt_visits_amt {
+    label: "Cumulative Budget Visits"
+    view_label: "1b) Budget"
+    description: "Running total of budget visits."
+    type: running_total
+    value_format_name: usd
+    sql: ${bgt_visit_cnt} ;;
+    hidden: no
+  }
+
+  measure: cumulative_act_visits_amt {
+    label: "Cumulative Actual Visits"
+    view_label: "1c) Actual"
+    description: "Running total of actual visits."
+    type: running_total
+    value_format_name: usd
+    sql: ${act_visit_cnt} ;;
+    hidden: no
+  }
+
   measure: bgt_order_cnt {
     label: "Budget Orders"
     view_label: "1b) Budget"
@@ -55,6 +75,26 @@ view: ddbs_sales_channel_f {
     hidden: no
   }
 
+  measure: cumulative_bgt_orders_amt {
+    label: "Cumulative Budget Orders"
+    view_label: "1b) Budget"
+    description: "Running total of budget orders."
+    type: running_total
+    value_format_name: usd
+    sql: ${bgt_order_cnt} ;;
+    hidden: no
+  }
+
+  measure: cumulative_act_orders_amt {
+    label: "Cumulative Actual Orders"
+    view_label: "1c) Actual"
+    description: "Running total of actual orders."
+    type: running_total
+    value_format_name: usd
+    sql: ${act_order_cnt} ;;
+    hidden: no
+  }
+
   measure: bgt_sales_amt {
     label: "Budget Sales $"
     view_label: "1b) Budget"
@@ -70,6 +110,26 @@ view: ddbs_sales_channel_f {
     type: sum
     value_format_name: usd
     sql: ${TABLE}.act_sales_amt ;;
+    hidden: no
+  }
+
+  measure: cumulative_bgt_sales_amt {
+    label: "Cumulative Budget Sales $"
+    view_label: "1b) Budget"
+    description: "Running total of budget sales."
+    type: running_total
+    value_format_name: usd
+    sql: ${bgt_sales_amt} ;;
+    hidden: no
+  }
+
+  measure: cumulative_act_sales_amt {
+    label: "Cumulative Actual Sales $"
+    view_label: "1c) Actual"
+    description: "Running total of actual sales."
+    type: running_total
+    value_format_name: usd
+    sql: ${act_sales_amt} ;;
     hidden: no
   }
 
