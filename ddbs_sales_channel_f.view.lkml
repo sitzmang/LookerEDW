@@ -80,7 +80,7 @@ view: ddbs_sales_channel_f {
     view_label: "1b) Budget"
     description: "Running total of budget orders."
     type: running_total
-    value_format_name: usd
+    value_format_name: decimal_0
     sql: ${bgt_order_cnt} ;;
     hidden: no
   }
@@ -90,7 +90,7 @@ view: ddbs_sales_channel_f {
     view_label: "1c) Actual"
     description: "Running total of actual orders."
     type: running_total
-    value_format_name: usd
+    value_format_name: decimal_0
     sql: ${act_order_cnt} ;;
     hidden: no
   }
