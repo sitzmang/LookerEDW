@@ -3,6 +3,7 @@ view: ddbs_sales_channel_f {
 
   measure: bgt_visit_cnt {
     label: "Budget Visits"
+    view_label: "1b) Budget"
     type: sum
     value_format_name: decimal_0
     sql: ${TABLE}.bgt_visit_cnt ;;
@@ -11,14 +12,34 @@ view: ddbs_sales_channel_f {
 
   measure: act_visit_cnt {
     label: "Actual Visits"
+    view_label: "1c) Actual"
     description: "Actual Visit Count"
     type: sum
     value_format_name: decimal_0
     sql: ${TABLE}.act_visit_cnt;;
   }
 
+  measure: visit_variance_amt {
+    label: "Actual to Budget Visit Variance"
+    description: "Actual visits - budget visits."
+    view_label: "1d) Variances"
+    type: sum
+    value_format_name: decimal_0
+    sql:${TABLE}.act_visit_cnt - ${TABLE}.bgt_visit_cnt;;
+  }
+
+  measure: visit_variance_pct {
+    label: "% Actual to Budget Visit Variance"
+    view_label: "1d) Variances"
+    type: number
+    value_format_name: percent_2
+    sql: ${act_visit_cnt} / nullif( ${bgt_visit_cnt}, 0 ) ;;
+    description: "Actual visits / budget visits."
+  }
+
   measure: bgt_order_cnt {
     label: "Budget Orders"
+    view_label: "1b) Budget"
     type: sum
     value_format_name: decimal_0
     sql: ${TABLE}.bgt_order_cnt ;;
@@ -27,6 +48,7 @@ view: ddbs_sales_channel_f {
 
   measure: act_order_cnt {
     label: "Actual Orders"
+    view_label: "1c) Actual"
     type: sum
     value_format_name: decimal_0
     sql: ${TABLE}.act_order_cnt ;;
@@ -34,7 +56,8 @@ view: ddbs_sales_channel_f {
   }
 
   measure: bgt_sales_amt {
-    label: "Budget Sales"
+    label: "Budget Sales $"
+    view_label: "1b) Budget"
     type: sum
     value_format_name: usd
     sql: ${TABLE}.bgt_sales_amt ;;
@@ -42,7 +65,8 @@ view: ddbs_sales_channel_f {
   }
 
   measure: act_sales_amt {
-    label: "Actual Sales"
+    label: "Actual Sales $"
+    view_label: "1c) Actual"
     type: sum
     value_format_name: usd
     sql: ${TABLE}.act_sales_amt ;;
@@ -50,41 +74,44 @@ view: ddbs_sales_channel_f {
   }
 
   measure: sales_variance_amt {
-    label: "Actual Sales - Budget Sales"
+    label: "$ Actual to Budget Sales Variance"
+    view_label: "1d) Variances"
     type: sum
     value_format_name: usd
     sql: ${TABLE}.act_sales_amt - ${TABLE}.bgt_sales_amt ;;
     hidden: no
-    description: "Actual Sales - Budget Sales"
+    description: "Actual sales - budget sales."
   }
 
   measure: sales_variance_pct {
-    label: "Percent Actual Sales to Budget"
+    label: "% Actual to Budget Sales Variance"
+    view_label: "1d) Variances"
     type: number
     value_format_name: percent_2
     sql: ${act_sales_amt} / nullif( ${bgt_sales_amt}, 0 ) ;;
-    description: "Actual Sales / Budget Sales"
+    description: "Actual sales / budget sales."
   }
 
   measure: avg_order_sales_actual_amt {
     label: "Actual AOV Sales"
+    view_label: "1c) Actual"
     type: number
     value_format_name: usd
     sql: ${act_sales_amt} / nullif( ${act_order_cnt}, 0 ) ;;
-    description: "Actual Sales / Actual Orders"
+    description: "Actual sales / actual orders."
   }
 
   measure: avg_order_sales_budget_amt {
     label: "Budget AOV Sales $"
+    view_label: "1b) Budget"
     type: number
     value_format_name: usd
     sql: ${bgt_sales_amt} / nullif( ${bgt_order_cnt}, 0 ) ;;
-    description: "Budget Sales / Budget Orders"
+    description: "Budget sales / budget orders"
   }
 
   measure: order_conversion_rate {
     label: "Site Conversion"
-    ##group_label:"Visits"
     description: "Actual orders / actual visits"
     type: number
     value_format_name: percent_2
