@@ -42,7 +42,7 @@ view: ddbs_sales_channel_f {
     view_label: "1b) Budget"
     description: "Running total of budget visits."
     type: running_total
-    value_format_name: usd
+    value_format_name: decimal_0
     sql: ${bgt_visit_cnt} ;;
     hidden: no
   }
@@ -52,7 +52,7 @@ view: ddbs_sales_channel_f {
     view_label: "1c) Actual"
     description: "Running total of actual visits."
     type: running_total
-    value_format_name: usd
+    value_format_name: decimal_0
     sql: ${act_visit_cnt} ;;
     hidden: no
   }
