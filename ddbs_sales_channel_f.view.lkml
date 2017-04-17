@@ -202,6 +202,22 @@ view: ddbs_sales_channel_f {
     sql: ${act_sales_amt} ;;
   }
 
+  measure: avg_order_sales_amt_prev {
+    label: "Actual AOV Sales $"
+    view_label: "1b) % Prev"
+    type: percent_of_previous
+    value_format: "0.0\%"
+    sql: ${avg_order_sales_actual_amt} ;;
+  }
+
+  measure: order_conversion_rate_prev {
+    label: "Site Conversion"
+    view_label: "1b) % Prev"
+    type: percent_of_previous
+    value_format: "0.0\%"
+    sql: ${order_conversion_rate} ;;
+  }
+
   measure: act_visit_cnt_pttl {
     label: "Actual Visits"
     view_label: "1c) % Total"
