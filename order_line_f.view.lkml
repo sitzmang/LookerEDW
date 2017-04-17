@@ -78,7 +78,6 @@ view: order_line_f {
     type: percent_of_total
     value_format: "0.0\%"
     sql: ${sku_cnt} ;;
-    direction: "column"
   }
 
   measure: first_order_dt {
