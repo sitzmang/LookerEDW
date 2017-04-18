@@ -12,7 +12,7 @@ include: "*.dashboard"
 
 explore: ddbs_sales_channel_f {
   from: ddbs_sales_channel_f
-  label: "Budget"
+  label: "Daily Summary Actual to Budget"
   view_label: "1) Measures"
   description: "Daily key metrics comparing budget with actuals."
   persist_for: "3 minutes"
