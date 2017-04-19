@@ -3,6 +3,7 @@ view: ddbs_sales_channel_f {
 
   measure: bgt_visit_cnt {
     label: "Visits (Budget)"
+    description: "Budget visit count."
     group_label: "Budget"
     type: sum
     value_format_name: decimal_0
@@ -61,6 +62,7 @@ view: ddbs_sales_channel_f {
   measure: bgt_order_cnt {
     label: "Orders (Budget)"
     group_label: "Budget"
+    description: "Distinct budget order count."
     type: sum
     value_format_name: decimal_0
     sql: ${TABLE}.bgt_order_cnt ;;
@@ -70,6 +72,7 @@ view: ddbs_sales_channel_f {
   measure: act_order_cnt {
     label: "Orders (Actual)"
     group_label: "Actual"
+    description: "Distinct actual order count."
     type: sum
     value_format_name: decimal_0
     sql: ${TABLE}.act_order_cnt ;;
@@ -122,6 +125,7 @@ view: ddbs_sales_channel_f {
     type: sum
     value_format_name: usd
     sql: ${TABLE}.bgt_sales_amt ;;
+    description: "Budget product sales + shipping sales."
     hidden: no
   }
 
@@ -130,6 +134,7 @@ view: ddbs_sales_channel_f {
     group_label: "Actual"
     type: sum
     value_format_name: usd
+    description: "Actual product sales + shipping sales."
     sql: ${TABLE}.act_sales_amt ;;
     hidden: no
   }
