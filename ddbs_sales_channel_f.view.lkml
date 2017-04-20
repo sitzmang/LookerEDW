@@ -9,7 +9,7 @@ view: mdbs_sales_channel_f {
     type: sum
     value_format_name: decimal_0
     sql: ${TABLE}.period_day_cnt ;;
-    hidden: no
+    hidden: yes
   }
 
   measure: act_day_cnt {
@@ -18,7 +18,7 @@ view: mdbs_sales_channel_f {
     type: sum
     value_format_name: decimal_0
     sql: ${TABLE}.act_day_cnt ;;
-    hidden: no
+    hidden: yes
   }
 
   measure: future_day_cnt {
@@ -27,11 +27,12 @@ view: mdbs_sales_channel_f {
     type: number
     value_format_name: decimal_0
     sql: ${period_day_cnt} - ${act_day_cnt} ;;
-    hidden: no
+    hidden: yes
   }
 
   measure: est_sales_amt {
-    label: "Sales $ (Estimated)"
+    label: "Sales $ (Estimate)"
+    group_label: "Estimate"
     type: sum
     value_format_name: usd
     description: "Prior months = actual sales; future months= budget sales; current month = straight line predicted sales."
@@ -40,7 +41,8 @@ view: mdbs_sales_channel_f {
   }
 
   measure: avg_daily_sales_act {
-    label: "Average Daily Sales Actual"
+    label: "Avg Daily Sales $ (Actual)"
+    group_label: "Actual"
     type: number
     value_format_name: usd
     description: "act_sales / elapsed days in month."
@@ -48,8 +50,19 @@ view: mdbs_sales_channel_f {
     hidden: no
   }
 
+  measure: avg_daily_sales_bgt {
+    label: "Avg Daily Sales $ (Budget)"
+    group_label: "Budget"
+    type: number
+    value_format_name: usd
+    description: "Budget sales / day count."
+    sql: ${bgt_sales_amt} / (${act_day_cnt} + ${future_day_cnt});;
+    hidden: no
+  }
+
   measure: avg_daily_sales_needed {
-    label: "Average Daily Sales Needed"
+    label: "Avg Daily Sales $ (Needed)"
+    group_label: "Actual"
     type: number
     value_format_name: usd
     description: "act_sales / elapsed days in month."
@@ -59,6 +72,7 @@ view: mdbs_sales_channel_f {
 
   measure: avg_daily_sales_est {
     label: "Average Daily Sales Estimated"
+    group_label: "Estimate"
     type: number
     value_format_name: usd
     description: "est_sales / period day count."
