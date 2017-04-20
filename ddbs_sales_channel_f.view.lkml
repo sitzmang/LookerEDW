@@ -79,7 +79,7 @@ view: mdbs_sales_channel_f {
     value_format_name: usd
     description: "est_sales / period day count."
     sql: ${est_sales_amt} / ${period_day_cnt}  ;;
-    hidden: no
+    hidden: yes
   }
 
 
@@ -132,7 +132,7 @@ view: mdbs_sales_channel_f {
     value_format_name: decimal_0
     description: "est_visits / period day count."
     sql: ${est_visit_amt} / ${period_day_cnt}  ;;
-    hidden: no
+    hidden: yes
   }
 
 
@@ -185,7 +185,7 @@ view: mdbs_sales_channel_f {
     value_format_name: decimal_0
     description: "est_orders / period day count."
     sql: ${est_order_cnt} / ${period_day_cnt}  ;;
-    hidden: no
+    hidden: yes
   }
 
 # ---------------- version 2 ends here
