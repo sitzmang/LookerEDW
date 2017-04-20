@@ -37,7 +37,7 @@ view: mdbs_sales_channel_f {
     group_label: "Estimate"
     type: sum
     value_format_name: usd
-    description: "Prior months = actual sales; future months= budget sales; current month = straight line predicted sales."
+    description: "Prior months = actual sales; future months = budget sales; current month = straight line predicted sales."
     sql: ${TABLE}.est_sales_amt ;;
     hidden: no
   }
@@ -47,7 +47,7 @@ view: mdbs_sales_channel_f {
     group_label: "Actual"
     type: number
     value_format_name: usd
-    description: "act_sales / elapsed days in month."
+    description: "Actual sales / month elapsed days."
     sql: ${act_sales_amt} / nullif(${act_day_cnt}, 0)  ;;
     hidden: no
   }
@@ -57,7 +57,7 @@ view: mdbs_sales_channel_f {
     group_label: "Budget"
     type: number
     value_format_name: usd
-    description: "Budget sales / day count."
+    description: "Budget sales / month day count."
     sql: ${bgt_sales_amt} / (${act_day_cnt} + ${future_day_cnt});;
     hidden: no
   }
@@ -67,7 +67,7 @@ view: mdbs_sales_channel_f {
     group_label: "Actual"
     type: number
     value_format_name: usd
-    description: "act_sales / elapsed days in month."
+    description: "Actual sales / month elapsed days."
     sql: (${bgt_sales_amt} - ${act_sales_amt}) / nullif(${future_day_cnt}, 0)  ;;
     hidden: no
   }
@@ -77,7 +77,7 @@ view: mdbs_sales_channel_f {
     group_label: "Estimate"
     type: number
     value_format_name: usd
-    description: "est_sales / period day count."
+    description: "Estimate sales / period day count."
     sql: ${est_sales_amt} / ${period_day_cnt}  ;;
     hidden: yes
   }
@@ -100,7 +100,7 @@ view: mdbs_sales_channel_f {
     group_label: "Actual"
     type: number
     value_format_name: decimal_0
-    description: "act_visits / elapsed days in month."
+    description: "Actual visits / month elapsed days."
     sql: ${act_visit_cnt} / nullif(${act_day_cnt}, 0)  ;;
     hidden: no
   }
@@ -120,7 +120,7 @@ view: mdbs_sales_channel_f {
     group_label: "Actual"
     type: number
     value_format_name: decimal_0
-    description: "avg daily visits needed to meet budget by eom."
+    description: "Average daily visits needed to meet month-end budget."
     sql: (${bgt_visit_cnt} - ${act_visit_cnt}) / nullif(${future_day_cnt}, 0)  ;;
     hidden: no
   }
@@ -130,7 +130,7 @@ view: mdbs_sales_channel_f {
     group_label: "Estimate"
     type: number
     value_format_name: decimal_0
-    description: "est_visits / period day count."
+    description: "Estimated visits / period day count."
     sql: ${est_visit_amt} / ${period_day_cnt}  ;;
     hidden: yes
   }
@@ -153,7 +153,7 @@ view: mdbs_sales_channel_f {
     group_label: "Actual"
     type: number
     value_format_name: decimal_0
-    description: "act_orders / elapsed days in month."
+    description: "Actual orders / month elapsed days."
     sql: ${act_order_cnt} / nullif(${act_day_cnt}, 0)  ;;
     hidden: no
   }
@@ -173,7 +173,7 @@ view: mdbs_sales_channel_f {
     group_label: "Actual"
     type: number
     value_format_name: decimal_0
-    description: "avg daily orders needed to meet budget by eom."
+    description: "Average daily orders needed to meet month-end budget."
     sql: (${bgt_order_cnt} - ${act_order_cnt}) / nullif(${future_day_cnt}, 0)  ;;
     hidden: no
   }
@@ -183,7 +183,7 @@ view: mdbs_sales_channel_f {
     group_label: "Estimate"
     type: number
     value_format_name: decimal_0
-    description: "est_orders / period day count."
+    description: "Estimated orders / period day count."
     sql: ${est_order_cnt} / ${period_day_cnt}  ;;
     hidden: yes
   }
