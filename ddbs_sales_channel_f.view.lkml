@@ -73,7 +73,7 @@ view: mdbs_sales_channel_f {
   }
 
   measure: avg_daily_sales_est {
-    label: "Average Daily Sales Estimated"
+    label: "Avg Daily Sales $ (Estimate)"
     group_label: "Estimate"
     type: number
     value_format_name: usd
@@ -126,7 +126,7 @@ view: mdbs_sales_channel_f {
   }
 
   measure: avg_daily_visits_est {
-    label: "Average Daily Visits Estimate"
+    label: "Avg Daily Visits (Estimate)"
     group_label: "Estimate"
     type: number
     value_format_name: decimal_0
@@ -179,7 +179,7 @@ view: mdbs_sales_channel_f {
   }
 
   measure: avg_daily_orders_est {
-    label: "Average Daily Orders Estimate"
+    label: "Avg Daily Orders (Estimate)"
     group_label: "Estimate"
     type: number
     value_format_name: decimal_0
