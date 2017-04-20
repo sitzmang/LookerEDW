@@ -30,13 +30,15 @@ view: mdbs_sales_channel_f {
     hidden: yes
   }
 
+# ---------------- new sales measures
+
   measure: est_sales_amt {
     label: "Sales $ (Estimate)"
     group_label: "Estimate"
     type: sum
     value_format_name: usd
     description: "Prior months = actual sales; future months= budget sales; current month = straight line predicted sales."
-    sql: ${TABLE}.act_sales_amt ;;
+    sql: ${TABLE}.est_sales_amt ;;
     hidden: no
   }
 
@@ -77,6 +79,112 @@ view: mdbs_sales_channel_f {
     value_format_name: usd
     description: "est_sales / period day count."
     sql: ${est_sales_amt} / ${period_day_cnt}  ;;
+    hidden: no
+  }
+
+
+# ---------------- new visits measures
+
+  measure: est_visit_amt {
+    label: "Visits (Estimate)"
+    group_label: "Estimate"
+    type: sum
+    value_format_name: decimal_0
+    description: "Prior months = actual visits; future months = budget visits; current month = straight line predicted visits."
+    sql: ${TABLE}.est_visit_cnt ;;
+    hidden: no
+  }
+
+  measure: avg_daily_visits_act {
+    label: "Avg Daily Visits (Actual)"
+    group_label: "Actual"
+    type: number
+    value_format_name: decimal_0
+    description: "act_visits / elapsed days in month."
+    sql: ${act_visit_cnt} / nullif(${act_day_cnt}, 0)  ;;
+    hidden: no
+  }
+
+  measure: avg_daily_visits_bgt {
+    label: "Avg Daily Visits (Budget)"
+    group_label: "Budget"
+    type: number
+    value_format_name: decimal_0
+    description: "Budget visits / day count."
+    sql: ${bgt_visit_cnt} / (${act_day_cnt} + ${future_day_cnt});;
+    hidden: no
+  }
+
+  measure: avg_daily_visits_needed {
+    label: "Avg Daily Visits (Needed)"
+    group_label: "Actual"
+    type: number
+    value_format_name: decimal_0
+    description: "avg daily visits needed to meet budget by eom."
+    sql: (${bgt_visit_cnt} - ${act_visit_cnt}) / nullif(${future_day_cnt}, 0)  ;;
+    hidden: no
+  }
+
+  measure: avg_daily_visits_est {
+    label: "Average Daily Visits Estimate"
+    group_label: "Estimate"
+    type: number
+    value_format_name: decimal_0
+    description: "est_visits / period day count."
+    sql: ${est_visit_amt} / ${period_day_cnt}  ;;
+    hidden: no
+  }
+
+
+# ---------------- new orders measures
+
+  measure: est_order_cnt {
+    label: "Orders (Estimate)"
+    group_label: "Estimate"
+    type: sum
+    value_format_name: decimal_0
+    description: "Prior months = actual orders; future months = budget orders; current month = straight line predicted orders."
+    sql: ${TABLE}.est_order_cnt ;;
+    hidden: no
+  }
+
+  measure: avg_daily_orders_act {
+    label: "Avg Daily Orders (Actual)"
+    group_label: "Actual"
+    type: number
+    value_format_name: decimal_0
+    description: "act_orders / elapsed days in month."
+    sql: ${act_order_cnt} / nullif(${act_day_cnt}, 0)  ;;
+    hidden: no
+  }
+
+  measure: avg_daily_orders_bgt {
+    label: "Avg Daily Orders (Budget)"
+    group_label: "Budget"
+    type: number
+    value_format_name: decimal_0
+    description: "Budget orders / day count."
+    sql: ${bgt_order_cnt} / (${act_day_cnt} + ${future_day_cnt});;
+    hidden: no
+  }
+
+  measure: avg_daily_orders_needed {
+    label: "Avg Daily Orders (Needed)"
+    group_label: "Actual"
+    type: number
+    value_format_name: decimal_0
+    description: "avg daily orders needed to meet budget by eom."
+    sql: (${bgt_order_cnt} - ${act_order_cnt}}) / nullif(${future_day_cnt}, 0)  ;;
+    hidden: no
+  }
+
+  measure: avg_daily_orders_est {
+    label: "Average Daily Orders Estimate"
+    group_label: "Estimate"
+    type: number
+    value_format_name: decimal_0
+    description: "est_orders / period day count."
+    sql: ${est_order_cnt} / ${period_day_cnt}  ;;
     hidden: no
   }
 
