@@ -17,7 +17,7 @@ view: mdbs_sales_channel_f {
     description: "Total elapsed days within period thru eod yesterday."
     type: sum
     value_format_name: decimal_0
-    sql: ${TABLE}.period_day_cnt ;;
+    sql: ${TABLE}.act_day_cnt ;;
     hidden: no
   }
 
