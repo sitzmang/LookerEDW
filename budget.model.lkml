@@ -12,9 +12,9 @@ include: "*.dashboard"
 
 explore: mdbs_sales_channel_f {
   from: mdbs_sales_channel_f
-  label: "Daily Summary Actual to Budget"
+  label: "Monthly Summary Actual to Budget"
   view_label: "1) Measures"
-  description: "Daily key metrics comparing budget with actuals."
+  description: "Monthly key metrics comparing budget with actuals."
   persist_for: "3 minutes"
 
   always_filter: {
