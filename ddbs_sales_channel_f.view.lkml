@@ -174,7 +174,7 @@ view: mdbs_sales_channel_f {
     type: number
     value_format_name: decimal_0
     description: "avg daily orders needed to meet budget by eom."
-    sql: (${bgt_order_cnt} - ${act_order_cnt}}) / nullif(${future_day_cnt}, 0)  ;;
+    sql: (${bgt_order_cnt} - ${act_order_cnt}) / nullif(${future_day_cnt}, 0)  ;;
     hidden: no
   }
 
