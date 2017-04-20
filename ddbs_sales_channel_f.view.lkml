@@ -1,5 +1,72 @@
-view: ddbs_sales_channel_f {
-  sql_table_name: rpt.main.DDBS_SALES_CHANNEL_F ;;
+view: mdbs_sales_channel_f {
+  sql_table_name: rpt.main.mdbs_sales_channel_f ;;
+
+# ---------------- start version 2 here
+
+  measure: period_day_cnt {
+    label: "Period Day Count"
+    description: "Total days occurring within period."
+    type: sum
+    value_format_name: decimal_0
+    sql: ${TABLE}.period_day_cnt ;;
+    hidden: no
+  }
+
+  measure: act_day_cnt {
+    label: "Actual Day Count"
+    description: "Total elapsed days within period thru eod yesterday."
+    type: sum
+    value_format_name: decimal_0
+    sql: ${TABLE}.period_day_cnt ;;
+    hidden: no
+  }
+
+  measure: future_day_cnt {
+    label: "Future Day Count"
+    description: "Period day count - actual day count."
+    type: number
+    value_format_name: decimal_0
+    sql: ${period_day_cnt} - ${act_day_cnt} ;;
+    hidden: no
+  }
+
+  measure: est_sales_amt {
+    label: "Sales $ (Estimated)"
+    type: sum
+    value_format_name: usd
+    description: "Prior months = actual sales; future months= budget sales; current month = straight line predicted sales."
+    sql: ${TABLE}.act_sales_amt ;;
+    hidden: no
+  }
+
+  measure: avg_daily_sales_act {
+    label: "Average Daily Sales Actual"
+    type: number
+    value_format_name: usd
+    description: "act_sales / elapsed days in month."
+    sql: ${act_sales_amt} / nullif(${act_day_cnt}, 0)  ;;
+    hidden: no
+  }
+
+  measure: avg_daily_sales_needed {
+    label: "Average Daily Sales Needed"
+    type: number
+    value_format_name: usd
+    description: "act_sales / elapsed days in month."
+    sql: (${bgt_sales_amt} - ${act_sales_amt}) / nullif(${future_day_cnt}, 0)  ;;
+    hidden: no
+  }
+
+  measure: avg_daily_sales_est {
+    label: "Average Daily Sales Estimated"
+    type: number
+    value_format_name: usd
+    description: "est_sales / period day count."
+    sql: ${est_sales_amt} / ${period_day_cnt}  ;;
+    hidden: no
+  }
+
+# ---------------- version 2 ends here
 
   measure: bgt_visit_cnt {
     label: "Visits (Budget)"
@@ -125,7 +192,7 @@ view: ddbs_sales_channel_f {
     type: sum
     value_format_name: usd
     sql: ${TABLE}.bgt_sales_amt ;;
-    description: "Budget product sales + shipping sales."
+    description: "*** TBD"
     hidden: no
   }
 
