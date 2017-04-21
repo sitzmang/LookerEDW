@@ -112,7 +112,7 @@ view: mdbs_sales_channel_f {
     group_label: "Budget"
     type: number
     value_format_name: decimal_0
-    description: "Budget visits / day count."
+    description: "Budget visits / month day count."
     sql: ${bgt_visit_cnt} / (${act_day_cnt} + ${future_day_cnt});;
     hidden: no
   }
@@ -165,7 +165,7 @@ view: mdbs_sales_channel_f {
     group_label: "Budget"
     type: number
     value_format_name: decimal_0
-    description: "Budget orders / day count."
+    description: "Budget orders / month day count."
     sql: ${bgt_order_cnt} / (${act_day_cnt} + ${future_day_cnt});;
     hidden: no
   }
@@ -314,7 +314,7 @@ view: mdbs_sales_channel_f {
     type: sum
     value_format_name: usd
     sql: ${TABLE}.bgt_sales_amt ;;
-    description: "*** TBD"
+    description: "Budget Product Sales + Shipping Sales"
     hidden: no
   }
 
