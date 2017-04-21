@@ -9,7 +9,7 @@ view: mdbs_sales_channel_f {
     type: sum_distinct
     value_format_name: decimal_0
     sql: ${TABLE}.period_day_cnt ;;
-    sql_distinct_key:${TABLE}.sales_channel_shk ;;
+    sql_distinct_key:${TABLE}.date_sid ;;
     hidden: yes
   }
 
@@ -19,7 +19,7 @@ view: mdbs_sales_channel_f {
     type: sum_distinct
     value_format_name: decimal_0
     sql: ${TABLE}.act_day_cnt ;;
-    sql_distinct_key:${TABLE}.sales_channel_shk ;;
+    sql_distinct_key:${TABLE}.date_sid ;;
     hidden: yes
   }
 
