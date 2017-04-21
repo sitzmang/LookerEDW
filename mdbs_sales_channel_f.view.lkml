@@ -38,7 +38,7 @@ view: mdbs_sales_channel_f {
     label: "Sales $ (Projected)"
     group_label: "Projected"
     type: sum
-    value_format_name: usd
+    value_format_name: usd_0
     description: "Prior months = actual sales; future months = budget sales; current month = straight line predicted sales."
     sql: ${TABLE}.est_sales_amt ;;
     hidden: no
@@ -48,8 +48,8 @@ view: mdbs_sales_channel_f {
     label: "Avg Daily Sales $ (Actual)"
     group_label: "Actual"
     type: number
-    value_format_name: usd
-    description: "Actual sales / month elapsed days."
+    value_format_name: usd_0
+    description: "Actual sales / actual days."
     sql: ${act_sales_amt} / nullif(${act_day_cnt}, 0)  ;;
     hidden: no
   }
@@ -58,8 +58,8 @@ view: mdbs_sales_channel_f {
     label: "Avg Daily Sales $ (Budget)"
     group_label: "Budget"
     type: number
-    value_format_name: usd
-    description: "Budget sales / month day count."
+    value_format_name: usd_0
+    description: "Budget sales / period days."
     sql: ${bgt_sales_amt} / (${act_day_cnt} + ${future_day_cnt});;
     hidden: no
   }
@@ -68,8 +68,8 @@ view: mdbs_sales_channel_f {
     label: "Avg Daily Sales $ (Needed)"
     group_label: "Needed"
     type: number
-    value_format_name: usd
-    description: "Average daily sales needed to meet month-end budget."
+    value_format_name: usd_0
+    description: "Average daily sales needed to meet budget."
     sql: (${bgt_sales_amt} - ${act_sales_amt}) / nullif(${future_day_cnt}, 0)  ;;
     hidden: no
   }
@@ -78,7 +78,7 @@ view: mdbs_sales_channel_f {
     label: "Avg Daily Sales $ (Projected)"
     group_label: "Projected"
     type: number
-    value_format_name: usd
+    value_format_name: usd_0
     description: "Estimate sales / period day count."
     sql: ${est_sales_amt} / ${period_day_cnt}  ;;
     hidden: yes
@@ -102,7 +102,7 @@ view: mdbs_sales_channel_f {
     group_label: "Actual"
     type: number
     value_format_name: decimal_0
-    description: "Actual visits / month elapsed days."
+    description: "Actual visits / actual days."
     sql: ${act_visit_cnt} / nullif(${act_day_cnt}, 0)  ;;
     hidden: no
   }
@@ -112,7 +112,7 @@ view: mdbs_sales_channel_f {
     group_label: "Budget"
     type: number
     value_format_name: decimal_0
-    description: "Budget visits / month day count."
+    description: "Budget visits / period days."
     sql: ${bgt_visit_cnt} / (${act_day_cnt} + ${future_day_cnt});;
     hidden: no
   }
@@ -122,7 +122,7 @@ view: mdbs_sales_channel_f {
     group_label: "Needed"
     type: number
     value_format_name: decimal_0
-    description: "Average daily visits needed to meet month-end budget."
+    description: "Average daily visits needed to meet budget."
     sql: (${bgt_visit_cnt} - ${act_visit_cnt}) / nullif(${future_day_cnt}, 0)  ;;
     hidden: no
   }
@@ -155,7 +155,7 @@ view: mdbs_sales_channel_f {
     group_label: "Actual"
     type: number
     value_format_name: decimal_0
-    description: "Actual orders / month elapsed days."
+    description: "Actual orders / actual days."
     sql: ${act_order_cnt} / nullif(${act_day_cnt}, 0)  ;;
     hidden: no
   }
@@ -165,7 +165,7 @@ view: mdbs_sales_channel_f {
     group_label: "Budget"
     type: number
     value_format_name: decimal_0
-    description: "Budget orders / month day count."
+    description: "Budget orders / period days."
     sql: ${bgt_order_cnt} / (${act_day_cnt} + ${future_day_cnt});;
     hidden: no
   }
@@ -175,7 +175,7 @@ view: mdbs_sales_channel_f {
     group_label: "Needed"
     type: number
     value_format_name: decimal_0
-    description: "Average daily orders needed to meet month-end budget."
+    description: "Average daily orders needed to meet budget."
     sql: (${bgt_order_cnt} - ${act_order_cnt}) / nullif(${future_day_cnt}, 0)  ;;
     hidden: no
   }
@@ -312,7 +312,7 @@ view: mdbs_sales_channel_f {
     label: "Sales $ (Budget)"
     group_label: "Budget"
     type: sum
-    value_format_name: usd
+    value_format_name: usd_0
     sql: ${TABLE}.bgt_sales_amt ;;
     description: "Budget Product Sales + Shipping Sales"
     hidden: no
@@ -322,7 +322,7 @@ view: mdbs_sales_channel_f {
     label: "Sales $ (Actual)"
     group_label: "Actual"
     type: sum
-    value_format_name: usd
+    value_format_name: usd_0
     description: "Actual product sales + shipping sales."
     sql: ${TABLE}.act_sales_amt ;;
     hidden: no
@@ -333,7 +333,7 @@ view: mdbs_sales_channel_f {
     view_label: "1d) Cumulative"
     description: "Running total of budget sales."
     type: running_total
-    value_format_name: usd
+    value_format_name: usd_0
     sql: ${bgt_sales_amt} ;;
     hidden: no
   }
@@ -343,7 +343,7 @@ view: mdbs_sales_channel_f {
     view_label: "1d) Cumulative"
     description: "Running total of actual sales."
     type: running_total
-    value_format_name: usd
+    value_format_name: usd_0
     sql: ${act_sales_amt} ;;
     hidden: no
   }
