@@ -35,7 +35,7 @@ view: mdbs_sales_channel_f {
 # ---------------- new sales measures
 
   measure: est_sales_amt {
-    label: "Sales $ (Estimate)"
+    label: "Sales $ (Projected)"
     group_label: "Projected"
     type: sum
     value_format_name: usd
@@ -66,16 +66,16 @@ view: mdbs_sales_channel_f {
 
   measure: avg_daily_sales_needed {
     label: "Avg Daily Sales $ (Needed)"
-    group_label: "Actual"
+    group_label: "Needed"
     type: number
     value_format_name: usd
-    description: "Actual sales / month elapsed days."
+    description: "Average daily sales needed to meet month-end budget."
     sql: (${bgt_sales_amt} - ${act_sales_amt}) / nullif(${future_day_cnt}, 0)  ;;
     hidden: no
   }
 
   measure: avg_daily_sales_est {
-    label: "Avg Daily Sales $ (Estimate)"
+    label: "Avg Daily Sales $ (Projected)"
     group_label: "Projected"
     type: number
     value_format_name: usd
@@ -88,7 +88,7 @@ view: mdbs_sales_channel_f {
 # ---------------- new visits measures
 
   measure: est_visit_amt {
-    label: "Visits (Estimate)"
+    label: "Visits (Projected)"
     group_label: "Projected"
     type: sum
     value_format_name: decimal_0
@@ -119,7 +119,7 @@ view: mdbs_sales_channel_f {
 
   measure: avg_daily_visits_needed {
     label: "Avg Daily Visits (Needed)"
-    group_label: "Actual"
+    group_label: "Needed"
     type: number
     value_format_name: decimal_0
     description: "Average daily visits needed to meet month-end budget."
@@ -141,7 +141,7 @@ view: mdbs_sales_channel_f {
 # ---------------- new orders measures
 
   measure: est_order_cnt {
-    label: "Orders (Estimate)"
+    label: "Orders (Projected)"
     group_label: "Projected"
     type: sum
     value_format_name: decimal_0
@@ -172,7 +172,7 @@ view: mdbs_sales_channel_f {
 
   measure: avg_daily_orders_needed {
     label: "Avg Daily Orders (Needed)"
-    group_label: "Actual"
+    group_label: "Needed"
     type: number
     value_format_name: decimal_0
     description: "Average daily orders needed to meet month-end budget."
@@ -181,7 +181,7 @@ view: mdbs_sales_channel_f {
   }
 
   measure: avg_daily_orders_est {
-    label: "Avg Daily Orders (Estimate)"
+    label: "Avg Daily Orders (Projected)"
     group_label: "Projected"
     type: number
     value_format_name: decimal_0
@@ -386,12 +386,11 @@ view: mdbs_sales_channel_f {
   }
 
   measure: avg_order_sales_estimate_amt {
-    label: "AOV (Estimate)"
+    label: "AOV (Projected)"
     group_label: "Projected"
     type: number
     value_format_name: usd
     sql: ${est_sales_amt} / nullif( ${est_order_cnt}, 0 ) ;;
-    description: "Estimate sales / estimate orders."
     hidden: yes
   }
 
