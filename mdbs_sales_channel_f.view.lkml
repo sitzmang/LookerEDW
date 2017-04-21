@@ -6,18 +6,20 @@ view: mdbs_sales_channel_f {
   measure: period_day_cnt {
     label: "Period Day Count"
     description: "Total days occurring within period."
-    type: sum
+    type: sum_distinct
     value_format_name: decimal_0
     sql: ${TABLE}.period_day_cnt ;;
+    sql_distinct_key:${TABLE}.sales_channel_shk ;;
     hidden: yes
   }
 
   measure: act_day_cnt {
     label: "Actual Day Count"
     description: "Total elapsed days within period thru eod yesterday."
-    type: sum
+    type: sum_distinct
     value_format_name: decimal_0
     sql: ${TABLE}.act_day_cnt ;;
+    sql_distinct_key:${TABLE}.sales_channel_shk ;;
     hidden: yes
   }
 
