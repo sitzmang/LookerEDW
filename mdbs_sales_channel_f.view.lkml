@@ -34,7 +34,7 @@ view: mdbs_sales_channel_f {
 
   measure: est_sales_amt {
     label: "Sales $ (Estimate)"
-    group_label: "Estimate"
+    group_label: "Projected"
     type: sum
     value_format_name: usd
     description: "Prior months = actual sales; future months = budget sales; current month = straight line predicted sales."
@@ -74,7 +74,7 @@ view: mdbs_sales_channel_f {
 
   measure: avg_daily_sales_est {
     label: "Avg Daily Sales $ (Estimate)"
-    group_label: "Estimate"
+    group_label: "Projected"
     type: number
     value_format_name: usd
     description: "Estimate sales / period day count."
@@ -87,7 +87,7 @@ view: mdbs_sales_channel_f {
 
   measure: est_visit_amt {
     label: "Visits (Estimate)"
-    group_label: "Estimate"
+    group_label: "Projected"
     type: sum
     value_format_name: decimal_0
     description: "Prior months = actual visits; future months = budget visits; current month = straight line predicted visits."
@@ -140,7 +140,7 @@ view: mdbs_sales_channel_f {
 
   measure: est_order_cnt {
     label: "Orders (Estimate)"
-    group_label: "Estimate"
+    group_label: "Projected"
     type: sum
     value_format_name: decimal_0
     description: "Prior months = actual orders; future months = budget orders; current month = straight line predicted orders."
@@ -180,7 +180,7 @@ view: mdbs_sales_channel_f {
 
   measure: avg_daily_orders_est {
     label: "Avg Daily Orders (Estimate)"
-    group_label: "Estimate"
+    group_label: "Projected"
     type: number
     value_format_name: decimal_0
     description: "Estimated orders / period day count."
@@ -385,7 +385,7 @@ view: mdbs_sales_channel_f {
 
   measure: avg_order_sales_estimate_amt {
     label: "AOV (Estimate)"
-    group_label: "Estimate"
+    group_label: "Projected"
     type: number
     value_format_name: usd
     sql: ${est_sales_amt} / nullif( ${est_order_cnt}, 0 ) ;;
