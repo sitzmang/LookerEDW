@@ -354,6 +354,9 @@ view: mdbs_sales_channel_f {
     type: sum
     value_format: "$#,##0.00;($#,##0.00)"
     sql: ${TABLE}.est_sales_amt - ${TABLE}.bgt_sales_amt ;;
+    html: {% if value < 0 %}
+      <p style="color: red ">{{ rendered_value }}</p>
+      {% endif %};;
     hidden: no
     description: "Actual sales - budget sales."
   }
