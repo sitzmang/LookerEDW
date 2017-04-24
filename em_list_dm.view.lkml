@@ -21,9 +21,10 @@ view: em_list_dm {
   }
 
   dimension: src_list_id {
+    label: "List ID"
     type: number
     sql: ${TABLE}.src_list_id ;;
-    hidden: yes
+    hidden: no
   }
 
   dimension: deb_list_bt {
