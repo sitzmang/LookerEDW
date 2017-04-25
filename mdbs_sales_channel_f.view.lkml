@@ -24,12 +24,13 @@ view: mdbs_sales_channel_f {
   }
 
   measure: future_day_cnt {
-    label: "Future Day Count"
+    label: "Remaining Days"
+    group_label: "Needed"
     description: "Period day count - actual day count."
     type: number
     value_format_name: decimal_0
     sql: ${period_day_cnt} - ${act_day_cnt} ;;
-    hidden: yes
+    hidden: no
   }
 
 # ---------------- new sales measures
