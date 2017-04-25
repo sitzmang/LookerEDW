@@ -42,6 +42,7 @@ view: mdbs_sales_channel_f {
     value_format_name: usd_0
     description: "Prior months = actual sales; future months = budget sales; current month = straight line predicted sales."
     sql: ${TABLE}.est_sales_amt ;;
+    html: <a title = "Prior months = actual sales; future months = budget sales; current month = straight line predicted sales." </a> {{rendered_value}};;
     hidden: no
   }
 
