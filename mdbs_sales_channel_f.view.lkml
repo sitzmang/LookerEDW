@@ -219,6 +219,8 @@ view: mdbs_sales_channel_f {
     value_format: "#,##0;(#,##0)"
     html: {% if value < 0 %}
     <div style="color:red">{{rendered_value}}</div>
+    {% elsif value > 0 %}
+    <div style="color:black"><b>{{rendered_value}}</b></div>
     {% endif %};;
     sql:${TABLE}.est_visit_cnt - ${TABLE}.bgt_visit_cnt;;
   }
@@ -230,6 +232,8 @@ view: mdbs_sales_channel_f {
     value_format: "0.0%;(0.0%)"
     html: {% if value < 0 %}
     <div style="color:red">{{rendered_value}}</div>
+    {% elsif value > 0 %}
+    <div style="color:black"><b>{{rendered_value}}</b></div>
     {% endif %};;
     sql: (${est_visit_amt} / nullif( ${bgt_visit_cnt}, 0 ))-1 ;;
     description: "Actual visits / budget visits."
@@ -283,6 +287,8 @@ view: mdbs_sales_channel_f {
     value_format: "#,##0;(#,##0)"
     html: {% if value < 0 %}
     <div style="color:red">{{rendered_value}}</div>
+    {% elsif value > 0 %}
+    <div style="color:black"><b>{{rendered_value}}</b></div>
     {% endif %};;
     sql:${TABLE}.est_order_cnt - ${TABLE}.bgt_order_cnt;;
   }
@@ -294,6 +300,8 @@ view: mdbs_sales_channel_f {
     value_format: "0.0%;(0.0%)"
     html: {% if value < 0 %}
     <div style="color:red">{{rendered_value}}</div>
+    {% elsif value > 0 %}
+    <div style="color:black"><b>{{rendered_value}}</b></div>
     {% endif %};;
     sql: (${est_order_cnt} / nullif( ${bgt_order_cnt}, 0 ))-1 ;;
     description: "Actual orders / budget orders."
@@ -367,6 +375,8 @@ view: mdbs_sales_channel_f {
     sql: ${TABLE}.est_sales_amt - ${TABLE}.bgt_sales_amt ;;
     html: {% if value < 0 %}
     <div style="color:red">{{rendered_value}}</div>
+    {% elsif value > 0 %}
+    <div style="color:black"><b>{{rendered_value}}</b></div>
     {% endif %};;
     hidden: no
     description: "Actual sales - budget sales."
@@ -379,6 +389,8 @@ view: mdbs_sales_channel_f {
     value_format: "0.0%;(0.0%)"
     html: {% if value < 0 %}
     <div style="color:red">{{rendered_value}}</div>
+    {% elsif value > 0 %}
+    <div style="color:black"><b>{{rendered_value}}</b></div>
     {% endif %};;
     sql: (${est_sales_amt} / nullif( ${bgt_sales_amt}, 0 ))-1 ;;
     description: "Actual sales / budget sales."
@@ -418,6 +430,8 @@ view: mdbs_sales_channel_f {
     value_format: "$#,##0.00;($#,##0.00)"
     html: {% if value < 0 %}
     <div style="color:red">{{rendered_value}}</div>
+    {% elsif value > 0 %}
+    <div style="color:black"><b>{{rendered_value}}</b></div>
     {% endif %};;
     sql: ${avg_order_sales_estimate_amt} - ${avg_order_sales_budget_amt} ;;
     description: "AOV actual - AOV budget."
@@ -430,6 +444,8 @@ view: mdbs_sales_channel_f {
     value_format: "0.0%;(0.0%)"
     html: {% if value < 0 %}
     <div style="color:red">{{rendered_value}}</div>
+    {% elsif value > 0 %}
+    <div style="color:black"><b>{{rendered_value}}</b></div>
     {% endif %};;
     sql: (${avg_order_sales_estimate_amt} / nullif( ${avg_order_sales_budget_amt}, 0 ))-1 ;;
     description: "AOV actual / AOV budget."
@@ -451,6 +467,8 @@ view: mdbs_sales_channel_f {
     value_format: "0.0%;(0.0%)"
     html: {% if value < 0 %}
     <div style="color:red">{{rendered_value}}</div>
+    {% elsif value > 0 %}
+    <div style="color:black"><b>{{rendered_value}}</b></div>
     {% endif %};;
     sql: (${act_order_conversion_rate} / nullif( ${bgt_order_conversion_rate}, 0 ))-1 ;;
     description: "Actual site conversion / budget site conversion."
