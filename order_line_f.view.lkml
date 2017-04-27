@@ -4,7 +4,7 @@ view: order_line_f {
 
   measure: customer_cnt {
     label: "Customers"
-    description: "Distinct Customer Count"
+    description: "Count of distinct customers."
     type: count_distinct
     value_format_name: decimal_0
     sql: case when ${customer_dm.email_adrs} like '%@%.%' then ${customer_dm.email_adrs} else ${TABLE}.customer_shk end ;;
@@ -16,6 +16,7 @@ view: order_line_f {
     type: percent_of_previous
     value_format: "0.0\%"
     sql: ${customer_cnt} ;;
+    description: "(Customers (Current Period) - Customers (Previous Period)) / Customers (Current Period)"
   }
 
   measure: customer_cnt_pttl {
@@ -24,6 +25,7 @@ view: order_line_f {
     type: percent_of_total
     value_format: "0.0\%"
     sql: ${customer_cnt} ;;
+    description: "Customers (Current Period) / Customers (All Periods)"
   }
 
   measure: order_cnt {
@@ -31,7 +33,7 @@ view: order_line_f {
     type: count_distinct
     value_format_name: decimal_0
     sql: ${TABLE}.order_shk ;;
-    description: "Distinct Order Count"
+    description: "Count of distinct orders."
   }
 
   measure: order_sku_cnt {
@@ -48,6 +50,7 @@ view: order_line_f {
     type: percent_of_previous
     value_format: "0.0\%"
     sql: ${order_cnt} ;;
+    description: "(Orders (Current Period) - Orders (Previous Period)) / Orders (Current Period)"
   }
 
   measure: order_cnt_pttl {
@@ -56,6 +59,7 @@ view: order_line_f {
     type: percent_of_total
     value_format: "0.0\%"
     sql: ${order_cnt} ;;
+    description: "Orders (Current Period) / Orders (All Periods)"
   }
 
   measure: order_line_cnt {
@@ -69,7 +73,7 @@ view: order_line_f {
     type: count_distinct
     value_format_name: decimal_0
     sql: ${TABLE}.product_shk ;;
-    description: "Distinct SKU Count"
+    description: "Count of distinct SKUs."
   }
 
   measure: sku_cnt_pttl {
@@ -78,20 +82,21 @@ view: order_line_f {
     type: percent_of_total
     value_format: "0.0\%"
     sql: ${sku_cnt} ;;
+    description: "SKUs (Current Period) / SKUs (All Periods)"
   }
 
   measure: first_order_dt {
     label: "Order Date:First"
     type: date
     sql: min( ${order_date_dm.cal_dt} ) ;;
-    description: "Earliest Order Date"
+    description: "Earliest order date."
   }
 
   measure: last_order_dt {
     label: "Order Date:Last"
     type: date
     sql: max( ${order_date_dm.cal_dt} ) ;;
-    description: "Latest Order Date"
+    description: "Latest order date."
   }
 
   measure: order_date_cnt {
@@ -99,21 +104,21 @@ view: order_line_f {
     type: count_distinct
     value_format_name: decimal_0
     sql: ${TABLE}.order_date_sid ;;
-    description: "Distinct Order Date Count"
+    description: "Count of distinct order dates."
   }
 
   measure: first_ship_dt {
     label: "Ship Date:First"
     type: date
     sql: min( ${ship_date_dm.cal_dt} ) ;;
-    description: "Earliest Ship Date"
+    description: "Earliest ship date."
   }
 
   measure: last_ship_dt {
     label: "Ship Date:Last"
     type: date
     sql: max( ${ship_date_dm.cal_dt} ) ;;
-    description: "Latest Ship Date"
+    description: "Latest ship date."
   }
 
   measure: ship_date_cnt {
@@ -121,7 +126,7 @@ view: order_line_f {
     type: count_distinct
     value_format_name: decimal_0
     sql: ${TABLE}.ship_date_sid ;;
-    description: "Distinct Ship Date Count"
+    description: "Count of distinct ship dates."
   }
 
   measure: avg_order_to_ship_day_cnt {
@@ -129,7 +134,7 @@ view: order_line_f {
     type: average
     value_format_name: decimal_0
     sql: datediff( day, ${order_date_dm.cal_dt}, ${ship_date_dm.cal_dt} ) ;;
-    description: "Avg Days from Order to Ship Date"
+    description: "Average days from order to ship date."
   }
 
   measure: product_cost_amt {
@@ -137,7 +142,7 @@ view: order_line_f {
     type: sum
     value_format_name: usd
     sql: ${TABLE}.PRODUCT_COST_AMT ;;
-    description: "Product Cost Amount."
+    description: "Product cost amount."
   }
 
   measure: product_margin_amt {
@@ -145,7 +150,7 @@ view: order_line_f {
     type: sum
     value_format_name: usd
     sql: ${TABLE}.PRODUCT_MARGIN_AMT ;;
-    description: "Product Margin Amount."
+    description: "Product margin amount."
   }
 
   measure: product_margin_pct {
@@ -153,7 +158,7 @@ view: order_line_f {
     type: number
     value_format_name: percent_1
     sql: ${product_margin_amt} / nullif( ${product_sales_amt}, 0 ) ;;
-    description: "Product Margin / Product Sales."
+    description: "Product Margin $ / Product Sales $"
   }
 
   measure: product_sales_amt {
@@ -161,7 +166,7 @@ view: order_line_f {
     type: sum
     value_format_name: usd
     sql: ${TABLE}.PRODUCT_SALES_AMT ;;
-    description: "Price paid for product after discounts."
+    description: "Product sales net of discounts."
   }
 
   measure: product_sales_amt_prev {
@@ -170,6 +175,7 @@ view: order_line_f {
     type: percent_of_previous
     value_format: "0.0\%"
     sql: ${product_sales_amt} ;;
+    description: "(Product Sales $ (Current Period) - Product Sales $ (Previous Period)) / Product Sales $ (Current Period)"
   }
 
   measure: product_sales_amt_pttl {
@@ -178,6 +184,7 @@ view: order_line_f {
     type: percent_of_total
     value_format: "0.0\%"
     sql: ${product_sales_amt} ;;
+    description: "Product Sales $ (Current Period) / Product Sales $ (All Periods)"
   }
 
   measure: shipping_sales_amt {
@@ -185,7 +192,7 @@ view: order_line_f {
     type: sum
     value_format_name: usd_0
     sql: ${TABLE}.SHIPPING_SALES_AMT ;;
-    description: "Price paid for shipping after discounts."
+    description: "Shipping sales net of discounts."
   }
 
   measure: shipping_sales_amt_prev {
@@ -194,6 +201,7 @@ view: order_line_f {
     type: percent_of_previous
     value_format: "0.0\%"
     sql: ${shipping_sales_amt} ;;
+    description: "(Shipping Sales $ (Current Period) - Shipping Sales $ (Previous Period)) / Shipping Sales $ (Current Period)"
   }
 
   measure: shipping_sales_amt_pttl {
@@ -202,6 +210,7 @@ view: order_line_f {
     type: percent_of_total
     value_format: "0.0\%"
     sql: ${shipping_sales_amt} ;;
+    description: "Shipping Sales $ (Current Period) / Shipping Sales $ (All Periods)"
   }
 
   measure: sales_amt {
@@ -209,7 +218,7 @@ view: order_line_f {
     type: sum
     value_format_name: usd
     sql: ${TABLE}.SALES_AMT ;;
-    description: "Product Sales + Shipping Sales"
+    description: "Product Sales $ + Shipping Sales $"
   }
 
   measure: sales_amt_prev {
@@ -218,6 +227,7 @@ view: order_line_f {
     type: percent_of_previous
     value_format: "0.0\%"
     sql: ${sales_amt} ;;
+    description: "(Sales $ (Current Period) - Sales $ (Previous Period)) / Sales $ (Current Period)"
   }
 
   measure: sales_amt_pttl {
@@ -226,6 +236,7 @@ view: order_line_f {
     type: percent_of_total
     value_format: "0.0\%"
     sql: ${sales_amt} ;;
+    description: "Sales $ (Current Period) / Sales $ (All Periods)"
   }
 
   measure: sales_tax_amt {
@@ -240,6 +251,7 @@ view: order_line_f {
     type: sum
     value_format_name: decimal_2
     sql: ${TABLE}.UNIT_CNT ;;
+    description: "Sum of units per order."
   }
 
   measure: avg_order_product_sales_amt {
@@ -247,7 +259,7 @@ view: order_line_f {
     type: number
     value_format_name: usd
     sql: ${product_sales_amt} / nullif( ${order_cnt}, 0 ) ;;
-    description: "Product Sales / Orders"
+    description: "Product Sales $ / Orders"
   }
 
   measure: avg_order_sales_amt {
@@ -255,7 +267,7 @@ view: order_line_f {
     type: number
     value_format_name: usd
     sql: ${sales_amt} / nullif( ${order_cnt}, 0 ) ;;
-    description: "Sales / Orders"
+    description: "Sales $ / Orders"
   }
 
   measure: avg_order_sales_amt_prev {
@@ -264,6 +276,7 @@ view: order_line_f {
     type: percent_of_previous
     value_format: "0.0\%"
     sql: ${avg_order_sales_amt} ;;
+    description: "(AOV Sales $ (Current Period) - AOV Sales $ (Previous Period)) / AOV Sales $ (Current Period)"
   }
 
   measure: avg_order_sku_cnt {
@@ -287,7 +300,7 @@ view: order_line_f {
     type: number
     value_format_name: usd
     sql: ${product_margin_amt} / nullif( ${customer_cnt}, 0 ) ;;
-    description: "Product Margin / Customers"
+    description: "Product Margin $ / Customers"
   }
 
   measure: avg_customer_sales_amt {
@@ -295,7 +308,7 @@ view: order_line_f {
     type: number
     value_format_name: usd
     sql: ${sales_amt} / nullif( ${customer_cnt}, 0 ) ;;
-    description: "Sales / Customers"
+    description: "Sales $ / Customers"
   }
 
   measure: avg_customer_amt {
@@ -303,7 +316,7 @@ view: order_line_f {
     type: number
     value_format_name: usd
     sql: ${product_sales_amt} / nullif( ${customer_cnt}, 0 ) ;;
-    description: "Product Sales / Customers"
+    description: "Product Sales $ / Customers"
   }
 
   measure: avg_customer_unit_cnt {
@@ -319,7 +332,7 @@ view: order_line_f {
     type: number
     value_format_name: usd
     sql: ${product_sales_amt} / nullif( ${sku_cnt}, 0 ) ;;
-    description: "Product Sales / SKUs"
+    description: "Product Sales $ / SKUs"
   }
 
   measure: avg_sku_unit_cnt {
@@ -335,7 +348,7 @@ view: order_line_f {
     type: number
     value_format_name: usd
     sql: ${product_cost_amt} / nullif( ${unit_cnt}, 0 ) ;;
-    description: "Product Cost / Units"
+    description: "Product Cost $ / Units"
   }
 
   measure: avg_unit_product_margin_amt {
@@ -343,7 +356,7 @@ view: order_line_f {
     type: number
     value_format_name: usd
     sql: ${product_margin_amt} / nullif( ${unit_cnt}, 0 ) ;;
-    description: "Product Margin / Units"
+    description: "Product Margin $ / Units"
   }
 
   measure: avg_unit_productg_sales_amt {
@@ -351,7 +364,7 @@ view: order_line_f {
     type: number
     value_format_name: usd
     sql: ${product_sales_amt} / nullif( ${unit_cnt}, 0 ) ;;
-    description: "Product Sales / Units"
+    description: "Product Sales $ / Units"
   }
 
   measure: avg_unit_product_sales_amt_prev {
@@ -360,14 +373,15 @@ view: order_line_f {
     type: percent_of_previous
     value_format: "0.0\%"
     sql: ${avg_unit_productg_sales_amt} ;;
+    description: "(Avg Unit Product Sales $ (Current Period) - Avg Unit Product Sales $ (Previous Period)) / Avg Unit Product Sales $ (Current Period)"
   }
 
   measure: avg_daily_sales {
-    label: "Avg Daily Sales"
+    label: "Avg Daily Sales $"
     type: number
     value_format_name: usd
     sql: ${sales_amt} / ${order_date_cnt};;
-    description: "Sales / Order Date:Days"
+    description: "Sales $ / Days"
   }
 
   measure: avg_daily_orders {
@@ -375,7 +389,7 @@ view: order_line_f {
     type: number
     value_format_name: decimal_0
     sql: ${order_cnt} / ${order_date_cnt};;
-    description: "Orders / Order Date:Days"
+    description: "Orders / Days"
   }
 
   #-- other
