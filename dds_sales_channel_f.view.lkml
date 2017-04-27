@@ -5,7 +5,7 @@ view: dds_sales_channel_f {
   measure: avg_visit_minutes {
     label: "Avg Visit Minutes"
     group_label:"Visits"
-    description: "Avg Minutes on Site  / Visit"
+    description: "Average minutes on site per visit."
     type: number
     value_format_name: decimal_1
     sql: ${timespent_second_cnt} / 60 / NULLIF(${timespent_visit_cnt},0) ;;
@@ -14,7 +14,7 @@ view: dds_sales_channel_f {
   measure: email_signup_cnt {
     label: "Email Signups"
     group_label:"Visits"
-    description: "Email Signup Count"
+    description: "Count of distinct email signups."
     type: sum
     value_format_name: decimal_0
     sql: ${TABLE}.email_signup_cnt;;
@@ -63,6 +63,7 @@ view: dds_sales_channel_f {
 
   measure: order_conversion_rate_prev {
     label: "Site Conversion"
+    description: "(Site Conversion (Current Period) - Site Conversion (Previous Period)) / Site Conversion (Current Period)"
     view_label: "1b) % Prev"
     type: percent_of_previous
     value_format: "0.0\%"
@@ -84,6 +85,7 @@ view: dds_sales_channel_f {
     type: percent_of_previous
     value_format: "0.0\%"
     sql: ${store_conversion_rate} ;;
+    description: "(Store Conversion (Current Period) - Store Conversion (Previous Period)) / Store Conversion (Current Period)"
   }
 
   measure: order_cnt {
@@ -98,6 +100,7 @@ view: dds_sales_channel_f {
   measure: order_cnt_prev {
     label: "Orders"
     view_label: "1b) % Prev"
+    description: "(Orders (Current Period) - Orders (Previous Period)) / Orders (Current Period)"
     type: percent_of_previous
     value_format: "0.0\%"
     sql: ${order_cnt} ;;
@@ -109,6 +112,7 @@ view: dds_sales_channel_f {
     type: percent_of_total
     value_format: "0.0\%"
     sql: ${order_cnt} ;;
+    description: "Orders (Current Period) / Orders (All Periods)"
   }
 
   measure: visit_order_cnt {
@@ -121,7 +125,7 @@ view: dds_sales_channel_f {
   measure: page_cnt {
     label: "Page Views"
     group_label:"Visits"
-    description: "Count of page views."
+    description: "Count of distinct page views."
     type: sum
     value_format_name: decimal_0
     sql: ${TABLE}.page_cnt ;;
@@ -151,6 +155,7 @@ view: dds_sales_channel_f {
     type: percent_of_previous
     value_format: "0.0\%"
     sql: ${visit_cnt} ;;
+    description: "(Visits (Current Period) - Visits (Previous Period)) / Visits (Current Period)"
   }
 
   measure: visit_cnt_pttl {
@@ -159,12 +164,13 @@ view: dds_sales_channel_f {
     type: percent_of_total
     value_format: "0.0\%"
     sql: ${visit_cnt} ;;
+    description: "Visits (Current Period) / Visits (All Periods)"
   }
 
   measure: bounce_cnt {
     label: "Visit Bounces"
     group_label:"Visits"
-    description: "Bounce Count"
+    description: "Single page visit."
     type: sum
     value_format_name: decimal_0
     sql: ${TABLE}.bounce_visit_cnt;;
@@ -173,7 +179,7 @@ view: dds_sales_channel_f {
   measure: visit_bounce_rate {
     label: "Visit Bounce Rate"
     group_label:"Visits"
-    description: "Visits with Bounce / Visits"
+    description: "Visit Bounces / Visits"
     type: number
     value_format_name: percent_1
     sql: cast( ${bounce_cnt} as float)/NULLIF(${visit_cnt},0) ;;
@@ -228,6 +234,7 @@ view: dds_sales_channel_f {
     type: percent_of_previous
     value_format: "0.0\%"
     sql: ${product_sales_amt} ;;
+    description: "(Product Sales $ (Current Period) - Product Sales $ (Previous Period)) / Product Sales $ (Current Period)"
   }
 
   measure: product_sales_amt_pttl {
@@ -236,6 +243,7 @@ view: dds_sales_channel_f {
     type: percent_of_total
     value_format: "0.0\%"
     sql: ${product_sales_amt} ;;
+    description: "Product Sales $ (Current Period) / Product Sales $ (All Periods)"
   }
 
   measure: shipping_sales_amt {
@@ -253,6 +261,7 @@ view: dds_sales_channel_f {
     type: percent_of_previous
     value_format: "0.0\%"
     sql: ${shipping_sales_amt} ;;
+    description: "(Shipping Sales $ (Current Period) - Shipping Sales $ (Previous Period)) / Shipping Sales $ (Current Period)"
   }
 
   measure: shipping_sales_amt_pttl {
@@ -261,6 +270,7 @@ view: dds_sales_channel_f {
     type: percent_of_total
     value_format: "0.0\%"
     sql: ${shipping_sales_amt} ;;
+    description: "Shipping Sales $ (Current Period) / Shipping Sales $ (All Periods)"
   }
 
   measure: sales_amt {
@@ -278,6 +288,7 @@ view: dds_sales_channel_f {
     type: percent_of_previous
     value_format: "0.0\%"
     sql: ${sales_amt} ;;
+    description: "(Sales $ (Current Period) - Sales $ (Previous Period)) / Sales $ (Current Period)"
   }
 
   measure: sales_amt_pttl {
@@ -286,12 +297,13 @@ view: dds_sales_channel_f {
     type: percent_of_total
     value_format: "0.0\%"
     sql: ${sales_amt} ;;
+    description: "Sales $ (Current Period) / Sales $ (All Periods)"
   }
 
   measure: store_visit_cnt {
     label: "Store Visits"
     group_label:"Visits"
-    description: "Store Visit Count"
+    description: "Count of distinct store visits."
     type: sum
     value_format_name: decimal_0
     sql: ${TABLE}.store_visit_cnt;;
@@ -301,7 +313,7 @@ view: dds_sales_channel_f {
   measure: store_visit_rate {
     label: "Store Visit Rate"
     group_label:"Visits"
-    description: "Store Visit Count / Visits"
+    description: "Store Visits / Visits"
     type: number
     value_format_name: percent_1
     sql: cast( ${store_visit_cnt} as float)/NULLIF(${visit_cnt},0) ;;
@@ -338,6 +350,7 @@ view: dds_sales_channel_f {
   measure: avg_order_sales_amt_prev {
     label: "AOV Sales $"
     view_label: "1b) % Prev"
+    description: "(AOV Sales $ (Current Period) - AOV Sales $ (Previous Period)) / AOV Sales $ (Current Period)"
     type: percent_of_previous
     value_format: "0.0\%"
     sql: ${avg_order_sales_amt} ;;
@@ -385,6 +398,7 @@ view: dds_sales_channel_f {
     type: percent_of_previous
     value_format: "0.0\%"
     sql: ${avg_unit_productg_sales_amt} ;;
+    description: "(Avg Unit Product Sales $ (Current Period) - Avg Unit Product Sales $ (Previous Period)) / Avg Unit Product Sales $ (Current Period)"
   }
 
   measure: date_cnt {
@@ -420,7 +434,7 @@ view: dds_sales_channel_f {
     type: number
     value_format_name: decimal_0
     sql: ${visit_cnt} / ${date_cnt};;
-    description: "Visits / Date:Days"
+    description: "Visits / Days"
   }
 
   dimension: request_date_sid {
