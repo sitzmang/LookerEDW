@@ -89,7 +89,7 @@ view: dds_sales_channel_f {
   measure: order_cnt {
     label: "Orders"
     group_label:"Sales"
-    description: "Order Count"
+    description: "Count of distinct orders."
     type: sum
     value_format_name: decimal_0
     sql: ${TABLE}.order_cnt;;
@@ -192,7 +192,7 @@ view: dds_sales_channel_f {
     type: sum
     value_format_name: usd
     sql: ${TABLE}.PRODUCT_COST_AMT ;;
-    description: "Product Cost Amount."
+    description: "Product cost amount."
   }
 
   measure: product_margin_amt {
@@ -201,7 +201,7 @@ view: dds_sales_channel_f {
     type: sum
     value_format_name: usd
     sql: ${TABLE}.PRODUCT_MARGIN_AMT ;;
-    description: "Product Margin Amount."
+    description: "Product margin amount."
   }
 
   measure: product_margin_pct {
@@ -210,7 +210,7 @@ view: dds_sales_channel_f {
     type: number
     value_format_name: percent_1
     sql: ${product_margin_amt} / nullif( ${product_sales_amt}, 0 ) ;;
-    description: "Product Margin / Product Sales."
+    description: "Product Margin $ / Product Sales $"
   }
 
   measure: product_sales_amt {
@@ -219,7 +219,7 @@ view: dds_sales_channel_f {
     type: sum
     value_format_name: usd
     sql: ${TABLE}.PRODUCT_SALES_AMT ;;
-    description: "Price paid for product after discounts."
+    description: "Product sales net of discounts."
   }
 
   measure: product_sales_amt_prev {
@@ -244,7 +244,7 @@ view: dds_sales_channel_f {
     type: sum
     value_format_name: usd_0
     sql: ${TABLE}.SHIPPING_SALES_AMT ;;
-    description: "Price paid for shipping after discounts."
+    description: "Shipping sales net of discounts."
   }
 
   measure: shipping_sales_amt_prev {
@@ -269,7 +269,7 @@ view: dds_sales_channel_f {
     type: sum
     value_format_name: usd
     sql: ${TABLE}.SALES_AMT ;;
-    description: "Product Sales + Shipping Sales"
+    description: "Product Sales $ + Shipping Sales $"
   }
 
   measure: sales_amt_prev {
@@ -314,6 +314,7 @@ view: dds_sales_channel_f {
     type: sum
     value_format_name: decimal_2
     sql: ${TABLE}.UNIT_CNT ;;
+    description: "Sum of units per order."
   }
 
   measure: avg_order_product_sales_amt {
@@ -322,7 +323,7 @@ view: dds_sales_channel_f {
     type: number
     value_format_name: usd
     sql: ${product_sales_amt} / nullif( ${order_cnt}, 0 ) ;;
-    description: "Product Sales / Orders"
+    description: "Product Sales $ / Orders"
   }
 
   measure: avg_order_sales_amt {
@@ -331,7 +332,7 @@ view: dds_sales_channel_f {
     type: number
     value_format_name: usd
     sql: ${sales_amt} / nullif( ${order_cnt}, 0 ) ;;
-    description: "Sales / Orders"
+    description: "Sales $ / Orders"
   }
 
   measure: avg_order_sales_amt_prev {
@@ -357,7 +358,7 @@ view: dds_sales_channel_f {
     type: number
     value_format_name: usd
     sql: ${product_cost_amt} / nullif( ${unit_cnt}, 0 ) ;;
-    description: "Product Cost / Units"
+    description: "Product Cost $ / Units"
   }
 
   measure: avg_unit_product_margin_amt {
@@ -366,7 +367,7 @@ view: dds_sales_channel_f {
     type: number
     value_format_name: usd
     sql: ${product_margin_amt} / nullif( ${unit_cnt}, 0 ) ;;
-    description: "Product Margin / Units"
+    description: "Product Margin $ / Units"
   }
 
   measure: avg_unit_productg_sales_amt {
@@ -375,7 +376,7 @@ view: dds_sales_channel_f {
     type: number
     value_format_name: usd
     sql: ${product_sales_amt} / nullif( ${unit_cnt}, 0 ) ;;
-    description: "Product Sales / Units"
+    description: "Product Sales $ / Units"
   }
 
   measure: avg_unit_product_sales_amt_prev {
@@ -396,12 +397,12 @@ view: dds_sales_channel_f {
   }
 
   measure: avg_daily_sales_to_date {
-    label: "Avg Daily Sales"
+    label: "Avg Daily Sales $"
     group_label:"Sales"
     type: number
     value_format_name: usd
     sql: ${sales_amt} / ${date_cnt};;
-    description: "Sales / Date:Days"
+    description: "Sales $ / Days"
   }
 
   measure: avg_daily_orders_to_date {
@@ -410,7 +411,7 @@ view: dds_sales_channel_f {
     type: number
     value_format_name: decimal_0
     sql: ${order_cnt} / ${date_cnt};;
-    description: "Orders / Date:Days"
+    description: "Orders / Days"
   }
 
   measure: avg_daily_visits_to_date {
