@@ -4,6 +4,7 @@ view: order_line_f {
 
   measure: customer_cnt {
     label: "Customers"
+    group_label: "Customers"
     description: "Count of distinct customers."
     type: count_distinct
     value_format_name: decimal_0
@@ -30,6 +31,7 @@ view: order_line_f {
 
   measure: order_cnt {
     label: "Orders"
+    group_label: "Orders / Units / SKUs"
     type: count_distinct
     value_format_name: decimal_0
     sql: ${TABLE}.order_shk ;;
@@ -64,12 +66,14 @@ view: order_line_f {
 
   measure: order_line_cnt {
     label: "Order Lines"
+    group_label: "Orders / Units / SKUs"
     type: count
     value_format_name: decimal_0
   }
 
   measure: sku_cnt {
     label: "SKUs"
+    group_label: "Orders / Units / SKUs"
     type: count_distinct
     value_format_name: decimal_0
     sql: ${TABLE}.product_shk ;;
@@ -87,6 +91,7 @@ view: order_line_f {
 
   measure: first_order_dt {
     label: "Order Date:First"
+    group_label: "Order / Ship Dates"
     type: date
     sql: min( ${order_date_dm.cal_dt} ) ;;
     description: "Earliest order date."
@@ -94,6 +99,7 @@ view: order_line_f {
 
   measure: last_order_dt {
     label: "Order Date:Last"
+    group_label: "Order / Ship Dates"
     type: date
     sql: max( ${order_date_dm.cal_dt} ) ;;
     description: "Latest order date."
@@ -101,6 +107,7 @@ view: order_line_f {
 
   measure: order_date_cnt {
     label: "Order Date:Days"
+    group_label: "Order / Ship Dates"
     type: count_distinct
     value_format_name: decimal_0
     sql: ${TABLE}.order_date_sid ;;
@@ -109,6 +116,7 @@ view: order_line_f {
 
   measure: first_ship_dt {
     label: "Ship Date:First"
+    group_label: "Order / Ship Dates"
     type: date
     sql: min( ${ship_date_dm.cal_dt} ) ;;
     description: "Earliest ship date."
@@ -116,6 +124,7 @@ view: order_line_f {
 
   measure: last_ship_dt {
     label: "Ship Date:Last"
+    group_label: "Order / Ship Dates"
     type: date
     sql: max( ${ship_date_dm.cal_dt} ) ;;
     description: "Latest ship date."
@@ -123,6 +132,7 @@ view: order_line_f {
 
   measure: ship_date_cnt {
     label: "Ship Date:Days"
+    group_label: "Order / Ship Dates"
     type: count_distinct
     value_format_name: decimal_0
     sql: ${TABLE}.ship_date_sid ;;
@@ -131,6 +141,7 @@ view: order_line_f {
 
   measure: avg_order_to_ship_day_cnt {
     label: "Ship Date:Avg Order to Ship Days"
+    group_label: "Order / Ship Dates"
     type: average
     value_format_name: decimal_0
     sql: datediff( day, ${order_date_dm.cal_dt}, ${ship_date_dm.cal_dt} ) ;;
@@ -139,6 +150,7 @@ view: order_line_f {
 
   measure: product_cost_amt {
     label: "Product Cost $"
+    group_label: "Sales / Cost / Margin"
     type: sum
     value_format_name: usd
     sql: ${TABLE}.PRODUCT_COST_AMT ;;
@@ -147,6 +159,7 @@ view: order_line_f {
 
   measure: product_margin_amt {
     label: "Product Margin $"
+    group_label: "Sales / Cost / Margin"
     type: sum
     value_format_name: usd
     sql: ${TABLE}.PRODUCT_MARGIN_AMT ;;
@@ -155,6 +168,7 @@ view: order_line_f {
 
   measure: product_margin_pct {
     label: "Product Margin %"
+    group_label: "Sales / Cost / Margin"
     type: number
     value_format_name: percent_1
     sql: ${product_margin_amt} / nullif( ${product_sales_amt}, 0 ) ;;
@@ -163,6 +177,7 @@ view: order_line_f {
 
   measure: product_sales_amt {
     label: "Product Sales $"
+    group_label: "Sales / Cost / Margin"
     type: sum
     value_format_name: usd
     sql: ${TABLE}.PRODUCT_SALES_AMT ;;
@@ -189,6 +204,7 @@ view: order_line_f {
 
   measure: shipping_sales_amt {
     label: "Shipping Sales $"
+    group_label: "Sales / Cost / Margin"
     type: sum
     value_format_name: usd_0
     sql: ${TABLE}.SHIPPING_SALES_AMT ;;
@@ -215,6 +231,7 @@ view: order_line_f {
 
   measure: sales_amt {
     label: "Sales $"
+    group_label: "Sales / Cost / Margin"
     type: sum
     value_format_name: usd
     sql: ${TABLE}.SALES_AMT ;;
@@ -241,6 +258,7 @@ view: order_line_f {
 
   measure: sales_tax_amt {
     label: "Sales Tax $"
+    group_label: "Sales / Cost / Margin"
     type: sum
     value_format_name: usd_0
     sql: ${TABLE}.sales_tax_amt ;;
@@ -248,6 +266,7 @@ view: order_line_f {
 
   measure: unit_cnt {
     label: "Units"
+    group_label: "Orders / Units / SKUs"
     type: sum
     value_format_name: decimal_2
     sql: ${TABLE}.UNIT_CNT ;;
@@ -256,6 +275,7 @@ view: order_line_f {
 
   measure: avg_order_product_sales_amt {
     label: "AOV Product Sales $"
+    group_label: "Sales / Cost / Margin"
     type: number
     value_format_name: usd
     sql: ${product_sales_amt} / nullif( ${order_cnt}, 0 ) ;;
@@ -264,6 +284,7 @@ view: order_line_f {
 
   measure: avg_order_sales_amt {
     label: "AOV Sales $"
+    group_label: "Sales / Cost / Margin"
     type: number
     value_format_name: usd
     sql: ${sales_amt} / nullif( ${order_cnt}, 0 ) ;;
@@ -281,6 +302,7 @@ view: order_line_f {
 
   measure: avg_order_sku_cnt {
     label: "Avg Order SKUs"
+    group_label: "Orders / Units / SKUs"
     type: number
     value_format_name: decimal_1
     sql: ${order_sku_cnt} / nullif( ${order_cnt}, 0 ) ;;
@@ -289,6 +311,7 @@ view: order_line_f {
 
   measure: avg_order_unit_cnt {
     label: "Avg Order Units"
+    group_label: "Orders / Units / SKUs"
     type: number
     value_format_name: decimal_1
     sql: ${unit_cnt} / nullif( ${order_cnt}, 0 ) ;;
@@ -297,6 +320,7 @@ view: order_line_f {
 
   measure: avg_customer_product_margin_amt {
     label: "Avg Customer Product Margin $"
+    group_label: "Customers"
     type: number
     value_format_name: usd
     sql: ${product_margin_amt} / nullif( ${customer_cnt}, 0 ) ;;
@@ -305,6 +329,7 @@ view: order_line_f {
 
   measure: avg_customer_sales_amt {
     label: "Avg Customer Sales $"
+    group_label: "Customers"
     type: number
     value_format_name: usd
     sql: ${sales_amt} / nullif( ${customer_cnt}, 0 ) ;;
@@ -313,6 +338,7 @@ view: order_line_f {
 
   measure: avg_customer_amt {
     label: "Avg Customer Product Sales $"
+    group_label: "Customers"
     type: number
     value_format_name: usd
     sql: ${product_sales_amt} / nullif( ${customer_cnt}, 0 ) ;;
@@ -321,6 +347,7 @@ view: order_line_f {
 
   measure: avg_customer_unit_cnt {
     label: "Avg Customer Units"
+    group_label: "Customers"
     type: number
     value_format_name: decimal_1
     sql: ${unit_cnt} / nullif( ${customer_cnt}, 0 ) ;;
@@ -329,6 +356,7 @@ view: order_line_f {
 
   measure: avg_sku_amt {
     label: "Avg SKU Product Sales $"
+    group_label: "Orders / Units / SKUs"
     type: number
     value_format_name: usd
     sql: ${product_sales_amt} / nullif( ${sku_cnt}, 0 ) ;;
@@ -337,6 +365,7 @@ view: order_line_f {
 
   measure: avg_sku_unit_cnt {
     label: "Avg SKU Units"
+    group_label: "Orders / Units / SKUs"
     type: number
     value_format_name: decimal_1
     sql: ${unit_cnt} / nullif( ${sku_cnt}, 0 ) ;;
@@ -345,6 +374,7 @@ view: order_line_f {
 
   measure: avg_unit_product_cost_amt {
     label: "Avg Unit Product Cost $"
+    group_label: "Sales / Cost / Margin"
     type: number
     value_format_name: usd
     sql: ${product_cost_amt} / nullif( ${unit_cnt}, 0 ) ;;
@@ -353,6 +383,7 @@ view: order_line_f {
 
   measure: avg_unit_product_margin_amt {
     label: "Avg Unit Product Margin $"
+    group_label: "Sales / Cost / Margin"
     type: number
     value_format_name: usd
     sql: ${product_margin_amt} / nullif( ${unit_cnt}, 0 ) ;;
@@ -361,6 +392,7 @@ view: order_line_f {
 
   measure: avg_unit_productg_sales_amt {
     label: "Avg Unit Product Sales $"
+    group_label: "Sales / Cost / Margin"
     type: number
     value_format_name: usd
     sql: ${product_sales_amt} / nullif( ${unit_cnt}, 0 ) ;;
@@ -378,6 +410,7 @@ view: order_line_f {
 
   measure: avg_daily_sales {
     label: "Avg Daily Sales $"
+    group_label: "Sales / Cost / Margin"
     type: number
     value_format_name: usd
     sql: ${sales_amt} / ${order_date_cnt};;
@@ -386,6 +419,7 @@ view: order_line_f {
 
   measure: avg_daily_orders {
     label: "Avg Daily Orders"
+    group_label: "Orders / Units / SKUs"
     type: number
     value_format_name: decimal_0
     sql: ${order_cnt} / ${order_date_cnt};;
