@@ -59,7 +59,7 @@ view: product_dm {
   dimension: physical_product_fl {
     label: "Physical Product"
     type: yesno
-    sql: case when ${book_type_cd} in ( '1','4','5' ) then 1 else 0 end = 1 ;;
+    sql: ${TABLE}.physical_product_bt = 1 ;;
     description: "Physical product to ship."
   }
 
