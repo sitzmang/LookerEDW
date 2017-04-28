@@ -320,6 +320,15 @@ view: dds_sales_channel_f {
     hidden: no
   }
 
+  measure: nonstore_visit_cnt {
+    label: "Non-Store Visits"
+    group_label:"Visits"
+    description: "Visits - Store Visits"
+    type: number
+    value_format_name: decimal_0
+    sql: ${visit_cnt} - ${store_visit_cnt} ;;
+  }
+
   measure: unit_cnt {
     label: "Units"
     group_label:"Sales"
