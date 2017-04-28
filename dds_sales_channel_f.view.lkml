@@ -303,7 +303,7 @@ view: dds_sales_channel_f {
   measure: store_visit_cnt {
     label: "Store Visits"
     group_label:"Visits"
-    description: "Count of distinct store visits."
+    description: "Count of distinct visits with a store page."
     type: sum
     value_format_name: decimal_0
     sql: ${TABLE}.store_visit_cnt;;
