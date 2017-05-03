@@ -105,4 +105,19 @@ explore: em_event_f {
     type: left_outer
     relationship: many_to_one
   }
+
+  join: test_mktg_source_dm_email {
+    view_label: "Email Marketing Source"
+    sql_on: ${test_mktg_source_dm_email.mktg_source_shk} = ${em_event_f.EMAIL_MKTG_SOURCE_SHK} ;;
+    type: left_outer
+    relationship: many_to_one
+  }
+
+  join: test_mktg_source_dm_order {
+    view_label: "Order Marketing Source"
+    sql_on: ${test_mktg_source_dm_order.mktg_source_shk} = ${em_event_f.ORDER_MKTG_SOURCE_SHK} ;;
+    type: left_outer
+    relationship: many_to_one
+  }
+
 }
