@@ -80,6 +80,28 @@ view: mdbs_sales_channel_f {
     sql: ${TABLE}.act_visit_cnt;;
   }
 
+# ---------------- Measures (Open)
+  measure: open_order_cnt {
+    label: "Orders (Open)"
+    group_label: "Actual"
+    description: "Count of distinct orders (Open)."
+    type: sum
+    value_format_name: decimal_0
+    sql: ${TABLE}.open_order_cnt ;;
+    hidden: no
+  }
+
+  measure: open_sales_amt {
+    label: "Sales $ (Open)"
+    group_label: "Actual"
+    type: sum
+    value_format_name: usd_0
+    description: "Product Sales $ (Open) + Shipping Sales $ (Open)"
+    sql: ${TABLE}.open_sales_amt ;;
+    hidden: no
+  }
+
+
 # ---------------- Measures (Budget)
 
   measure: avg_order_sales_budget_amt {
