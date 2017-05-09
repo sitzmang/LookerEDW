@@ -55,9 +55,10 @@ view: date_dm {
 
   dimension: cal_month_dt {
     group_label: "Calendar"
+    label: "Cal Month Date"
     type: date
     sql: ${TABLE}.cal_month_dt ;;
-    hidden: yes
+    hidden: no
   }
 
   dimension: cal_month_label {
