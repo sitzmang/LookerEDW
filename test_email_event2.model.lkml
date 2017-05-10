@@ -36,7 +36,7 @@ explore: em_event_f {
 
   join: email_sales_channel_dm {
     from: sales_channel_dm
-    view_label: "4) Sales Channel(Email)"
+    view_label: "4) Sales Channel(eMail)"
     sql_on: ${email_sales_channel_dm.sales_channel_shk} = ${em_event_f.email_sales_channel_shk} ;;
     type: left_outer
     relationship: many_to_one
@@ -107,14 +107,14 @@ explore: em_event_f {
   }
 
   join: test_mktg_source_dm_email {
-    view_label: "Email Marketing Source"
+    view_label: "Marketing Source(eMail)"
     sql_on: ${test_mktg_source_dm_email.mktg_source_shk} = ${em_event_f.EMAIL_MKTG_SOURCE_SHK} ;;
     type: left_outer
     relationship: many_to_one
   }
 
   join: test_mktg_source_dm_order {
-    view_label: "Order Marketing Source"
+    view_label: "Marketing Source(Orders)"
     sql_on: ${test_mktg_source_dm_order.mktg_source_shk} = ${em_event_f.ORDER_MKTG_SOURCE_SHK} ;;
     type: left_outer
     relationship: many_to_one
