@@ -247,7 +247,16 @@ view: mdbs_sales_channel_f {
     hidden: no
   }
 
-  measure: est_visit_amt {
+  measure: est_order_conversion_rate {
+    label: "Site Conversion (Projected)"
+    group_label: "Projected"
+    description: "Orders (Projected) / Visits (Projected)"
+    type: number
+    value_format_name: percent_2
+    sql: cast( ${est_order_cnt} as float)/NULLIF(${est_visit_cnt},0) ;;
+  }
+
+  measure: est_visit_cnt {
     label: "Visits (Projected)"
     group_label: "Projected"
     type: sum
@@ -273,7 +282,7 @@ view: mdbs_sales_channel_f {
     type: number
     value_format_name: decimal_0
     description: "Estimated visits / period day count."
-    sql: ${est_visit_amt} / ${period_day_cnt}  ;;
+    sql: ${est_visit_cnt} / ${period_day_cnt}  ;;
     hidden: yes
   }
 
@@ -421,7 +430,7 @@ view: mdbs_sales_channel_f {
           {% elsif value > 0 %}
           <div style="color:black"><b>{{rendered_value}}</b></div>
           {% endif %};;
-    sql: (${est_visit_amt} / nullif( ${bgt_visit_cnt}, 0 ))-1 ;;
+    sql: (${est_visit_cnt} / nullif( ${bgt_visit_cnt}, 0 ))-1 ;;
     description: "Visits (Actual) / Visits (Budget)"
   }
 
