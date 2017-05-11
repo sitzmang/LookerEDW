@@ -224,85 +224,86 @@ view: mdbs_sales_channel_f {
     hidden: no
   }
 
-# ---------------- Measures (Projected/Estimate)
+# ---------------- Measures (Actual/Forecast)
 
   measure: est_order_cnt {
-    label: "Orders (Projected)"
-    group_label: "Projected"
+    label: "Orders (Act/Fcst)"
+    group_label: "Actual/Forecast"
     type: sum
     value_format_name: decimal_0
-    description: "Current month: Avg Daily Orders (Actual) * Days in Month; Prior months: Orders (Actual); Future months: Orders (Budget)."
+    description: "Current month: Avg Daily Orders (Actual) * Days in Month; Prior months: Orders (Actual); Future months: Orders (Act/Fcst)."
     sql: ${TABLE}.est_order_cnt ;;
     hidden: no
   }
 
   measure: est_sales_amt {
-    label: "Sales $ (Projected)"
-    group_label: "Projected"
+    label: "Sales $ (Act/Fcst)"
+    group_label: "Actual/Forecast"
     type: sum
     value_format_name: usd_0
-    description: "Current month: Avg Daily Sales $ (Actual) * Days in Month; Prior months: Sales $ (Actual); Future months: Sales $ (Budget)."
+    description: "Current month: Avg Daily Sales $ (Actual) * Days in Month; Prior months: Sales $ (Actual); Future months: Sales $ (Act/Fcst)."
     sql: ${TABLE}.est_sales_amt ;;
     ## html: <a title = "Prior months = actual sales; future months = budget sales; current month = straight line predicted sales." </a> {{ _field._name }};;
     hidden: no
   }
 
   measure: est_order_conversion_rate {
-    label: "Site Conversion (Projected)"
-    group_label: "Projected"
-    description: "Orders (Projected) / Visits (Projected)"
+    label: "Site Conversion (Act/Fcst)"
+    group_label: "Actual/Forecast"
+    description: "Orders (Act/Fcst) / Visits (Act/Fcst)"
     type: number
     value_format_name: percent_2
     sql: cast( ${est_order_cnt} as float)/NULLIF(${est_visit_cnt},0) ;;
   }
 
   measure: est_visit_cnt {
-    label: "Visits (Projected)"
-    group_label: "Projected"
+    label: "Visits (Act/Fcst)"
+    group_label: "Actual/Forecast"
     type: sum
     value_format_name: decimal_0
-    description: "Current month: Avg Daily Visits (Actual) * Days in Month; Prior months: Visits (Actual); Future months: Visits (Budget)."
+    description: "Current month: Avg Daily Visits (Actual) * Days in Month; Prior months: Visits (Actual); Future months: Visits (Act/Fcst)."
     sql: ${TABLE}.est_visit_cnt ;;
     hidden: no
   }
 
   measure: avg_daily_sales_est {
-    label: "Avg Daily Sales $ (Projected)"
-    group_label: "Projected"
+    label: "Avg Daily Sales $ (Act/Fcst)"
+    group_label: "Actual/Forecast"
     type: number
     value_format_name: usd_0
-    description: "Estimate sales / period day count."
+    description: "Act/Fcst sales / period day count."
     sql: ${est_sales_amt} / ${period_day_cnt}  ;;
     hidden: yes
   }
 
   measure: avg_daily_visits_est {
-    label: "Avg Daily Visits (Estimate)"
-    group_label: "Estimate"
+    label: "Avg Daily Visits (Act/Fcst)"
+    group_label: "Actual/Forecast"
     type: number
     value_format_name: decimal_0
-    description: "Estimated visits / period day count."
+    description: "Act/Fcst visits / period day count."
     sql: ${est_visit_cnt} / ${period_day_cnt}  ;;
     hidden: yes
   }
 
   measure: avg_daily_orders_est {
-    label: "Avg Daily Orders (Projected)"
-    group_label: "Projected"
+    label: "Avg Daily Orders (Act/Fcst)"
+    group_label: "Actual/Forecast"
     type: number
     value_format_name: decimal_0
-    description: "Estimated orders / period day count."
+    description: "Act/Fcst orders / period day count."
     sql: ${est_order_cnt} / ${period_day_cnt}  ;;
     hidden: yes
   }
 
   measure: avg_order_sales_estimate_amt {
-    label: "AOV (Projected)"
-    group_label: "Projected"
+    label: "AOV Sales $ (Act/Fcst)"
+    group_label: "Actual/Forecast"
     type: number
     value_format_name: usd
+    description: "Sales $ (Act/Fcst) / Orders (Act/Fcst)"
     sql: ${est_sales_amt} / nullif( ${est_order_cnt}, 0 ) ;;
-    hidden: yes
+    hidden: no
   }
 
 # ---------------- Measures (Variance)
@@ -318,7 +319,7 @@ view: mdbs_sales_channel_f {
           <div style="color:black"><b>{{rendered_value}}</b></div>
           {% endif %};;
     sql: ${avg_order_sales_estimate_amt} - ${avg_order_sales_budget_amt} ;;
-    description: "AOV Sales $ (Actual) - AOV Sales $ (Budget)"
+    description: "AOV Sales $ (Act/Fcst) - AOV Sales $ (Budget)"
   }
 
   measure: avg_order_sales_variance_pct {
@@ -332,12 +333,12 @@ view: mdbs_sales_channel_f {
           <div style="color:black"><b>{{rendered_value}}</b></div>
           {% endif %};;
     sql: (${avg_order_sales_estimate_amt} / nullif( ${avg_order_sales_budget_amt}, 0 ))-1 ;;
-    description: "AOV Sales $ (Actual) / AOV Sales $ (Budget)"
+    description: "AOV Sales $ (Act/Fcst) / AOV Sales $ (Budget)"
   }
 
   measure: order_variance_amt {
     label: "Orders (Var)"
-    description: "Orders (Actual) - Orders (Budget)"
+    description: "Orders (Act/Fcst) - Orders (Budget)"
     group_label: "Variance to Budget"
     type: sum
     value_format: "#,##0;(#,##0)"
@@ -360,7 +361,7 @@ view: mdbs_sales_channel_f {
           <div style="color:black"><b>{{rendered_value}}</b></div>
           {% endif %};;
     sql: (${est_order_cnt} / nullif( ${bgt_order_cnt}, 0 ))-1 ;;
-    description: "Orders (Actual) / Orders (Budget)"
+    description: "Orders (Act/Fcst) / Orders (Budget)"
   }
 
   measure: sales_variance_amt {
@@ -375,7 +376,7 @@ view: mdbs_sales_channel_f {
           <div style="color:black"><b>{{rendered_value}}</b></div>
           {% endif %};;
     hidden: no
-    description: "Sales $ (Actual) - Sales $ (Budget)"
+    description: "Sales $ (Act/Fcst) - Sales $ (Budget)"
   }
 
   measure: sales_variance_pct {
@@ -389,7 +390,7 @@ view: mdbs_sales_channel_f {
           <div style="color:black"><b>{{rendered_value}}</b></div>
           {% endif %};;
     sql: (${est_sales_amt} / nullif( ${bgt_sales_amt}, 0 ))-1 ;;
-    description: "Sales $ (Actual) / Sales $ (Budget)"
+    description: "Sales $ (Act/Fcst) / Sales $ (Budget)"
   }
 
   measure: order_conversion_rate_variance_pct {
@@ -402,13 +403,13 @@ view: mdbs_sales_channel_f {
           {% elsif value > 0 %}
           <div style="color:black"><b>{{rendered_value}}</b></div>
           {% endif %};;
-    sql: (${act_order_conversion_rate} / nullif( ${bgt_order_conversion_rate}, 0 ))-1 ;;
-    description: "Site conversion (Actual)  / Site conversion (Budget)"
+    sql: (${est_order_conversion_rate} / nullif( ${bgt_order_conversion_rate}, 0 ))-1 ;;
+    description: "Site conversion (Act/Fcst)  / Site conversion (Budget)"
   }
 
   measure: visit_variance_amt {
     label: "Visits (Var)"
-    description: "Vists (Actual) - Visits (Budget)"
+    description: "Vists (Act/Fcst) - Visits (Budget)"
     group_label: "Variance to Budget"
     type: sum
     value_format: "#,##0;(#,##0)"
@@ -431,7 +432,7 @@ view: mdbs_sales_channel_f {
           <div style="color:black"><b>{{rendered_value}}</b></div>
           {% endif %};;
     sql: (${est_visit_cnt} / nullif( ${bgt_visit_cnt}, 0 ))-1 ;;
-    description: "Visits (Actual) / Visits (Budget)"
+    description: "Visits (Act/Fcst) / Visits (Budget)"
   }
 
 # ---------------- Measures (% Prev)
