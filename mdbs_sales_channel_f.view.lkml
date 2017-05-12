@@ -71,6 +71,25 @@ view: mdbs_sales_channel_f {
     sql: cast( ${act_order_cnt} as float)/NULLIF(${act_visit_cnt},0) ;;
   }
 
+  measure: act_store_conversion_rate {
+    label: "Store Conversion (Actual)"
+    group_label: "Actual"
+    description: "Orders (Actual) / Store Visits (Actual)"
+    type: number
+    value_format_name: percent_2
+    sql: cast( ${act_order_cnt} as float)/NULLIF(${act_store_visit_cnt},0) ;;
+  }
+
+  measure: act_store_visit_rate {
+    label: "Store Visit Rate (Actual)"
+    group_label:"Actual"
+    description: "Store Visits (Actual) / Visits (Actual)"
+    type: number
+    value_format_name: percent_1
+    sql: cast( ${act_store_visit_cnt} as float)/NULLIF(${act_visit_cnt},0) ;;
+    hidden: no
+  }
+
   measure: act_visit_cnt {
     label: "Visits (Actual)"
     group_label: "Actual"
@@ -80,7 +99,16 @@ view: mdbs_sales_channel_f {
     sql: ${TABLE}.act_visit_cnt;;
   }
 
-# ---------------- Measures (Open)
+  measure: act_store_visit_cnt {
+    label: "Store Visits (Actual)"
+    group_label: "Actual"
+    description: "Count of distinct visits with a store page (Actual)."
+    type: sum
+    value_format_name: decimal_0
+    sql: ${TABLE}.act_store_visit_cnt;;
+  }
+
+  # ---------------- Measures (Open)
   measure: open_order_cnt {
     label: "Orders (Open)"
     group_label: "Actual"
