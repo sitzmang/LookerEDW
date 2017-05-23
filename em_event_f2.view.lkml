@@ -313,6 +313,16 @@ view: em_event_f2 {
     description: "Product Sales + Shipping Sales"
   }
 
+  measure: sales_amt_pttl {
+    label: "Sales $"
+    group_label: "Sales"
+    view_label: "1c) % Total"
+    type: percent_of_total
+    value_format: "0.0\%"
+    sql: ${sales_amt} ;;
+    description: "Sales $ (Current Period) / Sales $ (All Periods)"
+  }
+
   measure: avg_order_sales_amt {
     label: "AOV Sales $"
     group_label: "Sales"
