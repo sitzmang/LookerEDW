@@ -14,6 +14,18 @@ view: em_event_f {
     hidden: yes
   }
 
+  dimension: ORDER_MKTG_SOURCE_SHK {
+    type: string
+    sql: ${TABLE}.ORDER_MKTG_SOURCE_SHK ;;
+    hidden: yes
+  }
+
+  dimension: EMAIL_MKTG_SOURCE_SHK {
+    type: string
+    sql: ${TABLE}.EMAIL_MKTG_SOURCE_SHK ;;
+    hidden: yes
+  }
+
   dimension: em_bu_shk {
     type: string
     sql: ${TABLE}.em_bu_shk ;;
