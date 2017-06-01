@@ -104,6 +104,22 @@ explore: em_event_f {
     type: left_outer
     relationship: many_to_one
   }
+
+  join: mktg_source_dm_email {
+    from: mktg_source_dm
+    view_label: "Marketing Source(Email)"
+    sql_on: ${mktg_source_dm_email.mktg_source_shk} = ${em_event_f.EMAIL_MKTG_SOURCE_SHK} ;;
+    type: left_outer
+    relationship: many_to_one
+  }
+
+  join: mktg_source_dm_order {
+    from: mktg_source_dm
+    view_label: "Marketing Source(Orders)"
+    sql_on: ${mktg_source_dm_order.mktg_source_shk} = ${em_event_f.ORDER_MKTG_SOURCE_SHK} ;;
+    type: left_outer
+    relationship: many_to_one
+  }
 }
 
 explore: em_list_subscriber_rpt {
