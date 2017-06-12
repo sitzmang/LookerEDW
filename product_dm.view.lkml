@@ -10,6 +10,14 @@ view: product_dm {
 
   #-- dimensions
 
+  dimension: alternate_product_type {
+    label: "Alternate Product Type"
+    type: string
+    sql: ${TABLE}.PRODUCT_TYPE_NAME ;;
+    description: "Further distinguishes product edition/medium; useful to distinguish webinars from courses."
+    drill_fields: [sku]
+  }
+
   dimension: author_cd {
     label: "Author"
     type: string
