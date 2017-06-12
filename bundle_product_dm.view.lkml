@@ -10,9 +10,7 @@ view: bundle_product_dm {
       ,product_name
       FROM
         rpt.main.product_dm
-      WHERE bundle_bt = 1
-      GROUP BY
-        customer_id ;;
+      WHERE bundle_bt = 1 ;;
   }
     #-- pk
 
