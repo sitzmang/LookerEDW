@@ -1,17 +1,5 @@
 view: bundle_product_dm {
-  derived_table: {
-    sql:
-      SELECT
-        product_shk
-      ,src_product_id
-      ,isbn_10_no
-      ,isbn_13_no
-      ,sku
-      ,product_name
-      FROM
-        rpt.main.product_dm
-      WHERE bundle_bt = 1 ;;
-  }
+  sql_table_name: RPT.MAIN.BUNDLE_PRODUCT_DM ;;
     #-- pk
 
     dimension: product_shk {
