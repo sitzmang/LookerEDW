@@ -62,7 +62,7 @@ explore: order_line_f2 {
   }
 
   join: bundle_product_dm {
-    view_label: "Product"
+    view_label: "Bundle Product"
     sql_on: ${bundle_product_dm.product_shk} = ${order_line_f2.bundle_product_shk} ;;
     type: left_outer
     relationship: many_to_one
