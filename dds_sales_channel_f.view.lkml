@@ -154,7 +154,7 @@ view: dds_sales_channel_f {
     view_label: "1b) % Prev"
     type: percent_of_previous
     value_format: "0.0\%"
-    sql: ${visit_cnt} ;;
+    sql: COALESCE(${visit_cnt},0) ;;
     description: "(Visits (Current Period) - Visits (Previous Period)) / Visits (Current Period)"
   }
 

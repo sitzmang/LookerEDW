@@ -35,6 +35,7 @@ view: order_dm {
   dimension: src_order_no {
     label: "Order No"
     type: string
-    sql: ${TABLE}.SRC_ORDER_NO ;;
+    sql: ${TABLE}.SRC_ORDER_NO;;
+    drill_fields:[product_dm.sku]
   }
 }
