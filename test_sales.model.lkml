@@ -10,7 +10,7 @@ include: "*.view"
 # include all the dashboards
 include: "*.dashboard"
 
-explore: order_line_f2 {
+explore: order_line_f {
   label: "Order Line Sales"
   description: "Order line sales measures by Sales Channel, Product, Customer, Order, etc."
   view_label: "1) Measures"
@@ -26,7 +26,7 @@ explore: order_line_f2 {
 
   join: system_dm {
     view_label: "System"
-    sql_on: ${system_dm.system_sid} = ${order_line_f2.system_sid} ;;
+    sql_on: ${system_dm.system_sid} = ${order_line_f.system_sid} ;;
     type: inner
     relationship: many_to_one
   }
@@ -34,7 +34,7 @@ explore: order_line_f2 {
   join: order_date_dm {
     from: date_dm
     view_label: "2) Date Ordered"
-    sql_on: ${order_date_dm.date_sid} = ${order_line_f2.order_date_sid} ;;
+    sql_on: ${order_date_dm.date_sid} = ${order_line_f.order_date_sid} ;;
     type: inner
     relationship: many_to_one
   }
@@ -42,35 +42,28 @@ explore: order_line_f2 {
   join: ship_date_dm {
     from: date_dm
     view_label: "3) Date Shipped"
-    sql_on: ${ship_date_dm.date_sid} = ${order_line_f2.ship_date_sid} ;;
+    sql_on: ${ship_date_dm.date_sid} = ${order_line_f.ship_date_sid} ;;
     type: inner
     relationship: many_to_one
   }
 
   join: sales_channel_dm {
     view_label: "4) Sales Channel"
-    sql_on: ${sales_channel_dm.sales_channel_shk} = ${order_line_f2.sales_channel_shk} ;;
+    sql_on: ${sales_channel_dm.sales_channel_shk} = ${order_line_f.sales_channel_shk} ;;
     type: inner
     relationship: many_to_one
   }
 
   join: product_dm {
     view_label: "Product"
-    sql_on: ${product_dm.product_shk} = ${order_line_f2.product_shk} ;;
-    type: left_outer
-    relationship: many_to_one
-  }
-
-  join: bundle_product_dm {
-    view_label: "Product - Bundle"
-    sql_on: ${bundle_product_dm.product_shk} = ${order_line_f2.bundle_product_shk} ;;
+    sql_on: ${product_dm.product_shk} = ${order_line_f.product_shk} ;;
     type: left_outer
     relationship: many_to_one
   }
 
   join: order_line_status_dm {
     view_label: "Order Line Status"
-    sql_on: ${order_line_status_dm.order_line_status_shk} = ${order_line_f2.order_line_status_shk} ;;
+    sql_on: ${order_line_status_dm.order_line_status_shk} = ${order_line_f.order_line_status_shk} ;;
     type: left_outer
     relationship: many_to_one
   }
@@ -78,42 +71,42 @@ explore: order_line_f2 {
   join: billing_location_dm {
     from: location_dm
     view_label: "Location Billing"
-    sql_on: ${billing_location_dm.state_cd_shk} = ${order_line_f2.billing_state_shk} ;;
+    sql_on: ${billing_location_dm.state_cd_shk} = ${order_line_f.billing_state_shk} ;;
     type: left_outer
     relationship: many_to_one
   }
 
   join: customer_dm {
     view_label: "Customer"
-    sql_on: ${customer_dm.customer_shk} = ${order_line_f2.customer_shk} ;;
+    sql_on: ${customer_dm.customer_shk} = ${order_line_f.customer_shk} ;;
     type: left_outer
     relationship: many_to_one
   }
 
   join: order_dm {
     view_label: "Order"
-    sql_on: ${order_dm.order_shk} = ${order_line_f2.order_shk} ;;
+    sql_on: ${order_dm.order_shk} = ${order_line_f.order_shk} ;;
     type: left_outer
     relationship: many_to_one
   }
 
   join: order_line_dm {
     view_label: "Order Line"
-    sql_on: ${order_line_dm.order_line_shk} = ${order_line_f2.order_line_shk} ;;
+    sql_on: ${order_line_dm.order_line_shk} = ${order_line_f.order_line_shk} ;;
     type: left_outer
     relationship: many_to_one
   }
 
   join: mktg_source_dm {
     view_label: "Marketing Source"
-    sql_on: ${mktg_source_dm.mktg_source_shk} = ${order_line_f2.mktg_source_shk} ;;
+    sql_on: ${mktg_source_dm.mktg_source_shk} = ${order_line_f.mktg_source_shk} ;;
     type: left_outer
     relationship: many_to_one
   }
 
   join: referring_domain_dm {
     view_label: "Referring Domain"
-    sql_on: ${referring_domain_dm.referring_domain_shk} = ${order_line_f2.referring_domain_shk} ;;
+    sql_on: ${referring_domain_dm.referring_domain_shk} = ${order_line_f.referring_domain_shk} ;;
     type: left_outer
     relationship: many_to_one
   }
