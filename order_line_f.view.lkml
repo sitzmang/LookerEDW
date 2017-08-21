@@ -206,7 +206,7 @@ view: order_line_f {
     label: "Shipping Sales $"
     group_label: "Sales / Cost / Margin"
     type: sum
-    value_format_name: usd_0
+    value_format_name: usd
     sql: ${TABLE}.SHIPPING_SALES_AMT ;;
     description: "Shipping sales net of discounts."
   }
